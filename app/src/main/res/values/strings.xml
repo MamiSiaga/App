@@ -23,4 +23,8 @@
     <string name="informasi_anak">Informasi Anak</string>
     <string name="konten">Konten</string>
     <string name="panduan_penggunaan">Panduan</string>
+    <string name="user_email">haimama@mail.com</string>
+    <string name="keluar">Keluar</string>
+    <string name="user_name">Mama</string>
+    <string name="user_profile">User Profile</string>
 </resources>
