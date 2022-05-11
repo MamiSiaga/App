@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_1.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_2.xml" value="0.166" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_3.xml" value="0.166" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/button_black.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/button_blue.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/button_white.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/custom_dialog_shape.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/edittext_border.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_daftar.xml" value="0.22" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_masuk.xml" value="0.15" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_view_pager.xml" value="0.18" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_dialog.xml" value="0.33" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_profil.xml" value="0.15677083333333333" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_view_pager1.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_view_pager2.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.16" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MasukActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ViewTitle1"
+        android:paddingBottom="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/app_name"
+            style="@style/BigHeader"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageview_gambar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textview_judul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/selamat_datang"
+        style="@style/BigHeader"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_title"/>
+
+    <TextView
+        android:id="@+id/textview_deskripsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/silahkan_masuk"
+        style="@style/BigHeader"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_judul"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_email"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        style="@style/EditTextStyle"
+        android:hint="@string/e_mail"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_deskripsi" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_kata_sandi"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        style="@style/EditTextStyle"
+        android:hint="@string/kata_sandi"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_email" />
+
+    <TextView
+        android:id="@+id/textview_lupa_kata_sandi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Lupa kata sandi?"
+        style="@style/ClickableText"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edittext_kata_sandi" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_masuk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/masuk"
+        style="@style/ButtonBlueStyle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_lupa_kata_sandi" />
+
+    <TextView
+        android:id="@+id/textview_keterangan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/belum_memiliki_akun"
+        android:layout_marginStart="15dp"
+        style="@style/Description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/textview_daftar"
+        app:layout_constraintTop_toBottomOf="@id/button_masuk" />
+
+    <TextView
+        android:id="@+id/textview_daftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/daftar"
+        android:layout_marginEnd="15dp"
+        style="@style/ClickableText"
+        app:layout_constraintLeft_toRightOf="@id/textview_keterangan"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_masuk" />
+</androidx.constraintlayout.widget.ConstraintLayout>

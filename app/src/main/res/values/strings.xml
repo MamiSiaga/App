@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MamiSiaga</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_profil">Profil</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">A</string>
+    <string name="tab_text_2">B</string>
+    <string name="incorrect_email_format">Format e-mail salah.</string>
+    <string name="e_mail">E-mail</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
+    <string name="lanjut">Lanjut</string>
+    <string name="silahkan_masuk">Silahkan masuk!</string>
+    <string name="kata_sandi">Kata sandi</string>
+    <string name="belum_memiliki_akun">Belum memiliki akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk">Masuk</string>
+    <string name="hai">Hai</string>
+    <string name="status">Status</string>
+    <string name="bergabung_dengan_mamisiaga_sekarang">Bergabung dengan MamiSiaga sekarang!</string>
+    <string name="selamat_datang">Selamat datang!</string>
+    <string name="informasi_ibu_hamil">Informasi Ibu Hamil</string>
+    <string name="informasi_anak">Informasi Anak</string>
+    <string name="konten">Konten</string>
+    <string name="panduan_penggunaan">Panduan</string>
+</resources>
