@@ -53,14 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/silahkan_masuk"
-        style="@style/BigHeader"
+        style="@style/SmallerHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_judul"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_email"
-        android:layout_width="match_parent"
         android:layout_marginTop="50dp"
         style="@style/EditTextStyle"
         android:hint="@string/e_mail"
@@ -70,7 +69,6 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_kata_sandi"
-        android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         style="@style/EditTextStyle"
         android:hint="@string/kata_sandi"
@@ -84,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Lupa kata sandi?"
+        android:text="@string/lupa_kata_sandi"
         style="@style/ClickableText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edittext_kata_sandi" />

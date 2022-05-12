@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_menu.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_1.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_2.xml" value="0.166" />
@@ -12,10 +13,13 @@
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/button_white.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/custom_dialog_shape.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/edittext_border.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.155" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_daftar.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_informasi_ibu_hamil.xml" value="0.2" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_login.xml" value="0.16" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_masuk.xml" value="0.15" />

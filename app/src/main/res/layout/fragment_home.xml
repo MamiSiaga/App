@@ -11,14 +11,13 @@
         android:paddingBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
         <View
             android:id="@+id/view_title"
             style="@style/ViewTitle2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -28,7 +27,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -39,7 +38,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="25dp"
             android:text="@string/hai"
-            app:layout_constraintLeft_toRightOf="@id/imageview_gambar"
+            app:layout_constraintStart_toEndOf="@id/imageview_gambar"
             app:layout_constraintTop_toTopOf="@id/imageview_gambar" />
 
         <TextView
@@ -49,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/status"
-            app:layout_constraintLeft_toRightOf="@id/imageview_gambar"
+            app:layout_constraintStart_toEndOf="@id/imageview_gambar"
             app:layout_constraintTop_toBottomOf="@id/textview_nama" />
 
         <com.google.android.material.card.MaterialCardView
@@ -59,13 +58,13 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_status">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/informasi_ibu_hamil"
                     style="@style/VerticalMenuStyle"
@@ -138,5 +137,26 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textview_status_kehamilan"
+            style="@style/BigHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview_menu_utama" />
+
+        <TextView
+            android:id="@+id/textview_minggu_kehamilan"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/minggu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_status_kehamilan" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -7,14 +7,14 @@
     android:orientation="vertical"
     tools:context=".ui.ViewPagerActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/title"
+        android:id="@+id/judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageButton
-            android:id="@+id/imagebutton_back"
+            android:id="@+id/imagebutton_keluar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_launcher_foreground"
@@ -43,7 +43,7 @@
         app:tabTextColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/judul" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

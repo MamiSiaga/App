@@ -31,9 +31,9 @@ class ViewPagerActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0f
 
-        binding.imagebuttonBack.setOnClickListener {
-            onBackPressed()
-        }
+        //binding.imagebuttonKeluar.setOnClickListener {
+          //  onBackPressed()
+        //}
     }
 
     companion object {

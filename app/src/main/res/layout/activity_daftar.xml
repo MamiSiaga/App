@@ -53,14 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/bergabung_dengan_mamisiaga_sekarang"
-        style="@style/BigHeader"
+        style="@style/SmallerHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_judul"/>
 
     <com.mamisiaga.customview.CustomEditTextEmail
         android:id="@+id/edittext_email"
-        android:layout_width="match_parent"
         android:layout_marginTop="50dp"
         style="@style/EditTextStyle"
         android:hint="@string/e_mail"
@@ -70,8 +69,6 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_lanjut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="@string/lanjut"
         style="@style/ButtonBlueStyle"
