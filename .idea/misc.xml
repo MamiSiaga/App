@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/activity_child.xml" value="0.14666666666666667" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/activity_daftar.xml" value="0.1" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/activity_home.xml" value="0.1796875" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/bottom_sheet_dialog_anak.xml" value="0.22" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/custom_dialog.xml" value="0.22" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/fragment_child_info.xml" value="0.22" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/fragment_profil.xml" value="0.14666666666666667" />
+        <entry key="..\:/FIA/Kuliah/Bangkit/Capstone/branch/app/src/main/res/layout/item_anak.xml" value="0.16666666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_1.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_2.xml" value="0.166" />

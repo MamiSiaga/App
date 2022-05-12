@@ -27,4 +27,17 @@
     <string name="keluar">Keluar</string>
     <string name="user_name">Mama</string>
     <string name="user_profile">User Profile</string>
+    <string name="anak">Anak: %s</string>
+    <string name="informasi_imunisasi">Imunisasi</string>
+    <string name="gizi_anak">Gizi Anak</string>
+    <string name="vitamin">Pemberian Vitamin A</string>
+    <string name="scan_kms">Scan KMS</string>
+    <string name="grafik_anak">Grafik Pertumbuhan Anak</string>
+    <string name="title_info_anak">Informasi Anak</string>
+    <string name="info_umum">Informasi Umum</string>
+    <string name="no_data">Belum ada data anak</string>
+    <string name="tambah_data_anak">Tambah data anak</string>
+    <string name="foto_anak">Foto anak</string>
+    <string name="nama_anak">Nama Anak</string>
+    <string name="tgl_lahir">Tanggal lahir</string>
 </resources>

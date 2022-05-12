@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MamiSiaga">
         <activity
+            android:name=".ui.ChildActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MasukActivity"
             android:exported="false" />
         <activity
