@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ChildActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anak"
+            style="@style/SmallHeader"
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintEnd_toEndOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textViewAnak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/BigHeader"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/anak"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView_menuAnak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewAnak">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutInfoImunisasi"
+                style="@style/VerticalMenuStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/layoutInfoGizi"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewImunisasi"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:src="@drawable/ic_baseline_vaccines_24" />
+
+                <TextView
+                    android:id="@+id/textViewImunisasi"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:text="@string/informasi_imunisasi" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutInfoGizi"
+                style="@style/VerticalMenuStyle"
+                app:layout_constraintStart_toEndOf="@+id/layoutInfoImunisasi"
+                app:layout_constraintEnd_toStartOf="@+id/layoutPemberianVitamin"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewGizi"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:src="@drawable/ic_home_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textViewGizi"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:text="@string/gizi_anak" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutPemberianVitamin"
+                style="@style/VerticalMenuStyle"
+                app:layout_constraintStart_toEndOf="@+id/layoutInfoGizi"
+                app:layout_constraintEnd_toStartOf="@+id/layoutScanPhoto"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewVitA"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:src="@drawable/ic_home_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textViewVitA"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:text="@string/vitamin" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutScanPhoto"
+                style="@style/VerticalMenuStyle"
+                app:layout_constraintStart_toEndOf="@+id/layoutPemberianVitamin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewScan"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:src="@drawable/ic_home_black_24dp" />
+
+                <TextView
+                    android:id="@+id/textScan"
+                    style="@style/InsideVerticalMenuStyle"
+                    android:text="@string/scan_kms" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/textViewGrafik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/BigHeader"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/grafik_anak"
+        app:layout_constraintTop_toBottomOf="@id/cardView_menuAnak"
+        app:layout_constraintStart_toStartOf="parent"/>
+    
+    <ImageView
+        android:layout_width="326dp"
+        android:layout_height="232dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewGrafik"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

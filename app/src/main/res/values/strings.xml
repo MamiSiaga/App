@@ -41,4 +41,17 @@
     <string name="user_email">haimama@mail.com</string>
     <string name="keluar">Keluar</string>
     <string name="lupa_kata_sandi">Lupa kata sandi?</string>
+    <string name="anak">Anak</string>
+    <string name="informasi_imunisasi">Informasi Imunisasi</string>
+    <string name="gizi_anak">Gizi Anak</string>
+    <string name="scan_kms">Scan KMS</string>
+    <string name="grafik_anak">Grafik Anak</string>
+    <string name="vitamin">Vitamin</string>
+    <string name="foto_anak">Foto Anak</string>
+    <string name="nama_anak">Nama Anak</string>
+    <string name="tgl_lahir">Tgl Lahir</string>
+    <string name="title_info_anak">Informasi Anak</string>
+    <string name="info_umum">Informasi Umum</string>
+    <string name="tambah_data_anak">Tambah data anak</string>
+    <string name="no_data">Tidak ada data.</string>
 </resources>

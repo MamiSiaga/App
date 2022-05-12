@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.FragmentHomeBinding
+import com.mamisiaga.ui.ChildActivity
 import com.mamisiaga.ui.InformasiIbuHamilActivity
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -44,6 +45,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         //showLineChart()
 
         binding.informasiIbuHamil.setOnClickListener(this)
+        binding.informasiAnak.setOnClickListener(this)
     }
 
     override fun onDestroyView() {
@@ -55,6 +57,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
         when(view.id) {
             R.id.informasi_ibu_hamil -> {
                 val intent = Intent(activity, InformasiIbuHamilActivity::class.java)
+
+                startActivity(intent)
+            }
+            R.id.informasi_anak -> {
+                val intent = Intent(activity, ChildActivity::class.java)
 
                 startActivity(intent)
             }
