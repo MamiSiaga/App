@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.ViewPagerActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/judul"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageButton
             android:id="@+id/imagebutton_keluar"
             android:layout_width="wrap_content"
@@ -25,8 +27,8 @@
             android:id="@+id/textview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="40dp"
+            android:gravity="center"
             android:text="Title"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -40,10 +42,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabTextColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judul" />
+        app:layout_constraintTop_toBottomOf="@+id/judul"
+        app:tabTextColor="@color/black" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

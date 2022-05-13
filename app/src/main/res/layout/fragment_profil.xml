@@ -9,19 +9,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
         style="@style/AppBar"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/SmallHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_profil"
-            style="@style/SmallHeader"
-            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"
             app:layout_constraintEnd_toEndOf="@id/appBar"
-            app:layout_constraintTop_toTopOf="@id/appBar"
-            app:layout_constraintBottom_toBottomOf="@id/appBar"/>
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -31,41 +31,39 @@
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/user_profile"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        android:contentDescription="@string/user_profile" />
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 
     <TextView
         android:id="@+id/textViewName"
+        style="@style/BigHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/BigHeader"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="@string/user_name"
         app:layout_constraintStart_toEndOf="@+id/userAvatar"
         app:layout_constraintTop_toTopOf="@id/userAvatar" />
 
     <TextView
+        style="@style/BoldDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/BoldDescription"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/textViewName"
+        android:text="@string/user_email"
         app:layout_constraintStart_toEndOf="@id/userAvatar"
-        android:text="@string/user_email"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewName" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ButtonKeluar"
         style="@style/ButtonBlueStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/keluar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userAvatar"
-        android:text="@string/keluar" />
+        app:layout_constraintTop_toBottomOf="@id/userAvatar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

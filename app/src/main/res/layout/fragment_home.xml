@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.home.HomeFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
+        android:paddingBottom="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <View
             android:id="@+id/view_title"
             style="@style/ViewTitle2"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -55,21 +57,23 @@
             android:id="@+id/cardview_menu_utama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="16dp"
             app:cardCornerRadius="20dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_status">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/informasi_ibu_hamil"
                     style="@style/VerticalMenuStyle"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/informasi_anak"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
@@ -86,9 +90,10 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/informasi_anak"
                     style="@style/VerticalMenuStyle"
-                    app:layout_constraintStart_toEndOf="@+id/informasi_ibu_hamil"
                     app:layout_constraintEnd_toStartOf="@+id/konten"
+                    app:layout_constraintStart_toEndOf="@+id/informasi_ibu_hamil"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <ImageView
                         android:id="@+id/imageview_informasi_anak"
                         style="@style/InsideVerticalMenuStyle"
@@ -103,8 +108,8 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/konten"
                     style="@style/VerticalMenuStyle"
-                    app:layout_constraintStart_toEndOf="@+id/informasi_anak"
                     app:layout_constraintEnd_toStartOf="@+id/panduan_penggunaan"
+                    app:layout_constraintStart_toEndOf="@+id/informasi_anak"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
@@ -121,8 +126,8 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/panduan_penggunaan"
                     style="@style/VerticalMenuStyle"
-                    app:layout_constraintStart_toEndOf="@+id/konten"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/konten"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
@@ -143,8 +148,8 @@
             style="@style/BigHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
             android:text="@string/status"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cardview_menu_utama" />

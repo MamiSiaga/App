@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MamiSiaga">
         <activity
-            android:name=".ui.ChildActivity"
+            android:name=".ui.AnakActivity"
             android:exported="false" />
         <activity
             android:name=".ui.InformasiIbuHamilActivity"

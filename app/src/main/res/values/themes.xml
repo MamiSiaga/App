@@ -22,10 +22,6 @@
         <item name="android:background">@drawable/background_title_2</item>
     </style>
 
-    <style name="ViewTitle3">
-        <item name="android:background">@drawable/background_title_3</item>
-    </style>
-
     <style name="AppBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">64dp</item>

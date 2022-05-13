@@ -1,17 +1,16 @@
 package com.mamisiaga.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mamisiaga.R
-import com.mamisiaga.databinding.FragmentChildInfoBinding
+import androidx.fragment.app.Fragment
+import com.mamisiaga.databinding.FragmentInformasiAnakBinding
 
 
-class ChildInfoFragment : Fragment() {
+class InformasiAnakFragment : Fragment() {
 
-    private var _binding: FragmentChildInfoBinding? = null
+    private var _binding: FragmentInformasiAnakBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +18,7 @@ class ChildInfoFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentChildInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentInformasiAnakBinding.inflate(inflater, container, false)
 
         return binding.root
     }

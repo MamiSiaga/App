@@ -5,22 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MasukActivity">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/view_title"
+        style="@style/ViewTitle1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/ViewTitle1"
-        android:paddingBottom="50dp"
+        android:paddingBottom="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/textview_title"
+            style="@style/BigHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="32dp"
             android:text="@string/app_name"
-            style="@style/BigHeader"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +31,7 @@
             android:id="@+id/imageview_gambar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -38,30 +40,30 @@
 
     <TextView
         android:id="@+id/textview_judul"
+        style="@style/BigHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="@string/selamat_datang"
-        style="@style/BigHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_title"/>
+        app:layout_constraintTop_toBottomOf="@id/view_title" />
 
     <TextView
         android:id="@+id/textview_deskripsi"
+        style="@style/SmallerHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:text="@string/silahkan_masuk"
-        style="@style/SmallerHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_judul"/>
+        app:layout_constraintTop_toBottomOf="@id/textview_judul" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_email"
-        android:layout_marginTop="50dp"
         style="@style/EditTextStyle"
+        android:layout_marginTop="40dp"
         android:hint="@string/e_mail"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -69,8 +71,8 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_kata_sandi"
-        android:layout_marginTop="10dp"
         style="@style/EditTextStyle"
+        android:layout_marginTop="16dp"
         android:hint="@string/kata_sandi"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,46 +80,46 @@
 
     <TextView
         android:id="@+id/textview_lupa_kata_sandi"
+        style="@style/ClickableText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/lupa_kata_sandi"
-        style="@style/ClickableText"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edittext_kata_sandi" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_masuk"
+        style="@style/ButtonBlueStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/masuk"
-        style="@style/ButtonBlueStyle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_lupa_kata_sandi" />
 
     <TextView
         android:id="@+id/textview_keterangan"
+        style="@style/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:text="@string/belum_memiliki_akun"
-        android:layout_marginStart="15dp"
-        style="@style/Description"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/textview_daftar"
         app:layout_constraintTop_toBottomOf="@id/button_masuk" />
 
     <TextView
         android:id="@+id/textview_daftar"
+        style="@style/ClickableText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/daftar"
-        android:layout_marginEnd="15dp"
-        style="@style/ClickableText"
         app:layout_constraintLeft_toRightOf="@id/textview_keterangan"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_masuk" />

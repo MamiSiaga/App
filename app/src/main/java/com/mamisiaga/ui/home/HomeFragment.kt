@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.FragmentHomeBinding
-import com.mamisiaga.ui.ChildActivity
+import com.mamisiaga.ui.AnakActivity
 import com.mamisiaga.ui.InformasiIbuHamilActivity
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -61,7 +61,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.informasi_anak -> {
-                val intent = Intent(activity, ChildActivity::class.java)
+                val intent = Intent(activity, AnakActivity::class.java)
 
                 startActivity(intent)
             }
