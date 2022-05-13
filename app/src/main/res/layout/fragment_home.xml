@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <View
-            android:id="@+id/view_title"
+            android:id="@+id/view_judul"
             style="@style/ViewTitle2"
             android:layout_width="match_parent"
             android:layout_height="200dp"

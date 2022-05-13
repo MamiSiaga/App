@@ -55,4 +55,11 @@
     <string name="tambah_data_anak">Tambah data anak</string>
     <string name="no_data">Tidak ada data.</string>
     <string name="daftar_anak">Daftar Anak</string>
+    <string name="nama">Nama</string>
+    <string name="nik">NIK</string>
+    <string name="tanggal_lahir">Tanggal lahir</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="apakah_anda_mengikuti_program_posyandu">Apakah Anda mengikuti program Posyandu?</string>
+    <string name="ketik_ulang_kata_sandi">Ketik ulang kata sandi</string>
 </resources>
