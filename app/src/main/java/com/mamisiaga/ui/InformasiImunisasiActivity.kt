@@ -1,6 +1,7 @@
 package com.mamisiaga.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -8,15 +9,15 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mamisiaga.R
 import com.mamisiaga.adapter.SectionsPagerAdapter
-import com.mamisiaga.databinding.ActivityViewPagerBinding
+import com.mamisiaga.databinding.ActivityInformasiImunisasiBinding
 
-class ViewPagerActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityViewPagerBinding
+class InformasiImunisasiActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityInformasiImunisasiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityViewPagerBinding.inflate(layoutInflater)
+        binding = ActivityInformasiImunisasiBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -31,9 +32,7 @@ class ViewPagerActivity : AppCompatActivity() {
 
         supportActionBar?.elevation = 0f
 
-        //binding.imagebuttonKeluar.setOnClickListener {
-          //  onBackPressed()
-        //}
+        binding.imagebuttonKeluar.setOnClickListener(this)
     }
 
     companion object {
@@ -42,5 +41,13 @@ class ViewPagerActivity : AppCompatActivity() {
             R.string.tab_text_1,
             R.string.tab_text_2
         )
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.imagebutton_keluar -> {
+                onBackPressed()
+            }
+        }
     }
 }

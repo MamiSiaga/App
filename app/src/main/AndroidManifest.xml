@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MamiSiaga">
         <activity
+            android:name=".ui.TambahAnakActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.HasilGambarActivity"
             android:exported="false" />
         <activity
@@ -34,7 +37,7 @@
             android:name=".ui.DaftarActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ViewPagerActivity"
+            android:name=".ui.InformasiImunisasiActivity"
             android:exported="false" />
         <activity
             android:name=".ui.HomeActivity"

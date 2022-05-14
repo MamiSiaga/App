@@ -1,9 +1,8 @@
 package com.mamisiaga.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mamisiaga.R
+import androidx.appcompat.app.AppCompatActivity
 import com.mamisiaga.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
