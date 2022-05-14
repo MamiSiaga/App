@@ -62,4 +62,8 @@
     <string name="tidak">Tidak</string>
     <string name="apakah_anda_mengikuti_program_posyandu">Apakah Anda mengikuti program Posyandu?</string>
     <string name="ketik_ulang_kata_sandi">Ketik ulang kata sandi</string>
+    <string name="lokasi_rumah_sakit">Lokasi rumah sakit</string>
+    <string name="simpan">Simpan</string>
+    <string name="kontrol_kehamilan">Kontrol kehamilan</string>
+    <string name="tanggal_melahirkan">Tanggal melahirkan</string>
 </resources>

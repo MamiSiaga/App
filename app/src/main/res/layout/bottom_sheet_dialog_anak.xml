@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButtonTutup"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="clip_vertical"
@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         android:text="Edit data anak"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonTutup" />
 
     <TextView
         android:id="@+id/textViewHapusAnak"

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 fun String.withDateFormat(): String {
-    val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+    val format = SimpleDateFormat("dd-MM-yyyy", Locale("id", "ID"))
     val date = format.parse(this) as Date
 
     return DateFormat.getDateInstance(DateFormat.FULL).format(date)
