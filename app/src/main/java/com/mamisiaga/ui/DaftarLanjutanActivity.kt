@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityDaftarLanjutanBinding
 import com.mamisiaga.tools.withDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
@@ -55,7 +54,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onDateSet(datePicker: DatePicker, year: Int, month: Int, day: Int) {
         val year = datePicker.year
-        val month = datePicker.month
+        val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
 
         binding.edittextTglLahir.setText("$day-$month-$year".withDateFormat())

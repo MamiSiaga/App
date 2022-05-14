@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.HasilGambarActivity">
+    <ImageButton
+        android:id="@+id/imagebutton_keluar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/blue_50"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageview_gambar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
+        app:srcCompat="@color/blue_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imagebutton_keluar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_simpan"
+        style="@style/ButtonBlueStyle"
+        android:layout_marginTop="40dp"
+        android:text="@string/lanjut"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_gambar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_ambil_ulang"
+        style="@style/ButtonWhiteStyle"
+        android:layout_marginTop="16dp"
+        android:text="@string/ambil_ulang"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_simpan" />
+</androidx.constraintlayout.widget.ConstraintLayout>
