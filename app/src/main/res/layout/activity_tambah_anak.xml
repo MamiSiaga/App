@@ -44,205 +44,197 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textview_data_anak_baru_lahir"
-                style="@style/BigHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/data_anak_baru_lahir"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textview_data_anak_baru_lahir_deskripsi"
-                style="@style/Description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/silahkan_mengisi_form_dengan_benar"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_nama"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:hint="@string/nama"
-                android:inputType="text"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir_deskripsi" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_nik"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:hint="@string/nik"
-                android:inputType="number"
-                android:maxLength="16"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_tgl_lahir"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:focusable="false"
-                android:focusableInTouchMode="true"
-                android:hint="@string/tanggal_lahir"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_nik" />
-
-            <TextView
-                android:id="@+id/textview_jenis_kelamin"
-                style="@style/SmallHeader"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/jenis_kelamin"
+                android:paddingBottom="90sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_laki_laki"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/laki_laki"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_jenis_kelamin" />
+                <TextView
+                    android:id="@+id/textview_data_anak_baru_lahir"
+                    style="@style/BigHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/data_anak_baru_lahir"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_perempuan"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/perempuan"
-                app:layout_constraintStart_toEndOf="@id/radiobutton_laki_laki"
-                app:layout_constraintTop_toBottomOf="@id/textview_jenis_kelamin" />
+                <TextView
+                    android:id="@+id/textview_data_anak_baru_lahir_deskripsi"
+                    style="@style/Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/silahkan_mengisi_form_dengan_benar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir" />
 
-            <TextView
-                android:id="@+id/textview_golongan_darah"
-                style="@style/SmallHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/golongan_darah"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radiobutton_laki_laki" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_nama"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/nama"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir_deskripsi" />
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_a"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/a"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_nik"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/nik"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_b"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/b"
-                app:layout_constraintStart_toEndOf="@id/radiobutton_a"
-                app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_tgl_lahir"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/tanggal_lahir"
+                    android:inputType="date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_nik" />
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_ab"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/ab"
-                app:layout_constraintStart_toEndOf="@id/radiobutton_b"
-                app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                <TextView
+                    android:id="@+id/textview_jenis_kelamin"
+                    style="@style/SmallHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/jenis_kelamin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radiobutton_o"
-                style="@style/BoldDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/o"
-                app:layout_constraintStart_toEndOf="@id/radiobutton_ab"
-                app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                <RadioGroup
+                    android:id="@+id/radiogroup_jenis_kelamin"
+                    style="@style/RadioGroupStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_jenis_kelamin">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_berat_badan"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:hint="@string/berat_badan"
-                android:inputType="number"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radiobutton_a" />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_laki_laki"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/laki_laki" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_tinggi_badan"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:hint="@string/tinggi_badan"
-                android:inputType="number"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_berat_badan" />
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_perempuan"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/perempuan" />
+                </RadioGroup>
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/edittext_lingkar_kepala"
-                style="@style/EditTextStyle"
-                android:layout_marginTop="16dp"
-                android:hint="@string/lingkar_kepala"
-                android:inputType="number"
-                android:maxLines="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_tinggi_badan" />
+                <TextView
+                    android:id="@+id/textview_golongan_darah"
+                    style="@style/SmallHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/golongan_darah"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radiogroup_jenis_kelamin" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_daftar"
-                style="@style/ButtonBlueStyle"
-                android:layout_marginTop="40dp"
-                android:text="@string/daftar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edittext_lingkar_kepala" />
+                <RadioGroup
+                    android:id="@+id/radiogroup_golongan_darah"
+                    style="@style/RadioGroupStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_a"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/a"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_b"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/b"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_a"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_ab"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/ab"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_b"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_o"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/o"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_ab"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                </RadioGroup>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_berat_badan"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="24dp"
+                    android:hint="@string/berat_badan"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radiogroup_golongan_darah" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_tinggi_badan"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/tinggi_badan"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_berat_badan" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_lingkar_kepala"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/lingkar_kepala"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tinggi_badan" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_tambah_anak"
+                    style="@style/ButtonBlueStyle"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/tambah_anak"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_lingkar_kepala" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

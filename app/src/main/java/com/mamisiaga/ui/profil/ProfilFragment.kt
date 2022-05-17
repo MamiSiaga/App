@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import com.mamisiaga.R
 import com.mamisiaga.databinding.FragmentProfilBinding
+import com.mamisiaga.tools.isConnected
 
-class ProfilFragment : Fragment() {
-
+class ProfilFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfilBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -22,21 +18,50 @@ class ProfilFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this)[ProfilViewModel::class.java]
+        //val dashboardViewModel =
+        //ViewModelProvider(this)[IbuViewModel::class.java]
 
         _binding = FragmentProfilBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         //val textView: TextView = binding.textProfil
         //dashboardViewModel.text.observe(viewLifecycleOwner) {
-            //textView.text = it
+        //textView.text = it
         //}
-        return root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        drawLayout()
+
+        binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.button_muat_ulang -> {
+                drawLayout()
+            }
+            R.id.ButtonKeluar -> {
+
+            }
+        }
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(requireActivity().applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
     }
 }

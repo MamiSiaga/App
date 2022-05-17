@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.InformasiAnakFragment">
+    tools:context=".ui.InformasiAnakActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
@@ -103,14 +103,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDataAnak"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="500dp"
         android:layout_margin="16dp"
         android:visibility="visible"
-        tools:listitem="@layout/item_anak"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak" />
+        app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak"
+        tools:listitem="@layout/item_anak" />
 
     <TextView
         android:layout_width="wrap_content"

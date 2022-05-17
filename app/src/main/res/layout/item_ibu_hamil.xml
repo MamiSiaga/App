@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardview_anak"
+    android:id="@+id/cardview_kontrol_kehamilan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
@@ -17,27 +17,65 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textview_anc_log"
-            style="@style/SmallHeader"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/kontrol_kehamilan"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewTglLahirAnak"
-            style="@style/Description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/tgl_lahir"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pertanyaan"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_anc_log" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textview_isi_pertanyaan"
+                style="@style/SmallHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/kontrol_kehamilan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_deskripsi"
+                style="@style/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/rekomendasi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_isi_pertanyaan" />
+
+            <TextView
+                android:id="@+id/textView_status"
+                style="@style/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/status"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
+
+            <TextView
+                android:id="@+id/textView_tanggal_kontrol_kehamilan"
+                style="@style/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/tanggal"
+                app:layout_constraintStart_toEndOf="@id/textView_status"
+                app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/opsi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="28dp"
+            android:foregroundGravity="center_horizontal"
+            android:src="@drawable/ic_home_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/pertanyaan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

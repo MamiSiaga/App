@@ -81,4 +81,18 @@
     <string name="lingkar_kepala">Lingkar kepala</string>
     <string name="data_anak_baru_lahir">Data Anak Baru Lahir</string>
     <string name="silahkan_mengisi_form_dengan_benar">Silahkan mengisi form dengan benar.</string>
+    <string name="gagal_merespon_permintaan">Gagal merespon permintaan</string>
+    <string name="tidak_ada_koneksi_internet">Tidak ada koneksi Internet</string>
+    <string name="muat_ulang">Muat Ulang</string>
+    <string name="rekomendasi">Rekomendasi</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="informasi_kontrol_kehamilan">Informasi Kontrol Kehamilan</string>
+    <string name="tidak_mendapatkan_permission">Tidak mendapatkan permission.</string>
+    <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
+    <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
+    <string name="sudah_periksa">Sudah Periksa?</string>
+    <string name="pertanyaan">Pertanyaan</string>
+    <string name="mohon_mengisi_dengan_jujur">Mohon centang dnegan jujur terkait pemeriksaan apa saja yang dilakukan.</string>
+    <string name="meliputi">Meliputi …</string>
+    <string name="kumpulkan">Kumpulkan</string>
 </resources>
