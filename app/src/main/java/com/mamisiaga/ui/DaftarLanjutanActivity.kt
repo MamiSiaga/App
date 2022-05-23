@@ -57,7 +57,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
-            R.id.edittext_tgl_lahir -> {
+            R.id.edittext_tgl_hamil -> {
                 val calendar = Calendar.getInstance()
                 val year = calendar.get(Calendar.YEAR)
                 val month = calendar.get(Calendar.MONTH)

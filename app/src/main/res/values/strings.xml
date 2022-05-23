@@ -95,4 +95,45 @@
     <string name="mohon_mengisi_dengan_jujur">Mohon centang dnegan jujur terkait pemeriksaan apa saja yang dilakukan.</string>
     <string name="meliputi">Meliputi …</string>
     <string name="kumpulkan">Kumpulkan</string>
+    <string name="imunisasi_yang_harus_dipenuhi">Imunisasi yang harus dipenuhi</string>
+    <string name="yuk_selesaikan_agar_tubuh_anak_anda_kebal">Yuk, selesaikan agar tubuh anak Anda kebal!</string>
+    <string name="nama_imunisasi">Nama Imunisasi</string>
+    <string name="diberikan_sebelum_dosis_ke_berikutnya">Diberikan sebelum dosis ke berikutnya</string>
+    <string name="rekomendasi_imunisasi_berdasarkan_jenis">Rekomendasi Imunisasi Berdasarkan Jenis</string>
+    <string name="menu_opsi">Menu Item</string>
+    <string name="kehamilan_ke">Kehamilan ke-</string>
+    <string name="tambah_data_kehamilan">Tambah Data Kehamilan</string>
+    <string name="tambah">Tambah</string>
+    <string name="tanggal_hamil">Tanggal hamil</string>
+    <string name="sedang_memuat">Sedang memuat...</string>
+    <string-array name="kontrol_kehamilan_sekarang_mulai_array">
+        <item>Detail kontrol kehamilan</item>
+        <item>Buat Jadwal</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_sudah_jadwal_array">
+        <item>Detail kontrol kehamilan</item>
+        <item>Buat Jadwal</item>
+        <item>Hapus Jadwal</item>
+        <item>Sudah periksa?</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_selesai_array">
+        <item>Detail kontrol kehamilan</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_locked_array">
+        <item>Detail kontrol kehamilan</item>
+    </string-array>
+    <string-array name="opsi_anak_array">
+        <item>Edit anak</item>
+        <item>Hapus anak</item>
+    </string-array>
+    <string-array name="imunisasi_mulai_array">
+        <item>Buat jadwal</item>
+    </string-array>
+    <string-array name="imunisasi_sudah_jadwal_array">
+        <item>Edit jadwal</item>
+    </string-array>
+    <string-array name="imunisasi_sudah_hari_array">
+        <item>Edit jadwal</item>
+        <item>Unggah sertifikat</item>
+    </string-array>
 </resources>

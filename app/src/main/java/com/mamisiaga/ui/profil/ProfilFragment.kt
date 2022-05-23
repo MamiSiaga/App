@@ -1,25 +1,44 @@
 package com.mamisiaga.ui.profil
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.`class`.Ibu
 import com.mamisiaga.databinding.FragmentProfilBinding
+import com.mamisiaga.repository.IbuPreference
 import com.mamisiaga.tools.isConnected
+import com.mamisiaga.ui.MainActivity
+import com.mamisiaga.viewmodel.IbuPreferenceViewModel
+import com.mamisiaga.viewmodel.IbuViewModel
+import com.mamisiaga.viewmodelfactory.ViewModelFactory
+
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class ProfilFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentProfilBinding? = null
+    private var _ibuViewModel: IbuViewModel? = null
+    private lateinit var ibu: Ibu
     private val binding get() = _binding!!
+    private val ibuViewModel get() = _ibuViewModel!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //val dashboardViewModel =
-        //ViewModelProvider(this)[IbuViewModel::class.java]
+        _ibuViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.IbuViewModelFactory(requireActivity().applicationContext)
+        )[IbuViewModel::class.java]
 
         _binding = FragmentProfilBinding.inflate(inflater, container, false)
 
@@ -49,9 +68,22 @@ class ProfilFragment : Fragment(), View.OnClickListener {
                 drawLayout()
             }
             R.id.ButtonKeluar -> {
-
+                logout()
             }
         }
+    }
+
+    private fun logout() {
+        val ibuPreferenceViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.IbuPreferenceViewModelFactory(IbuPreference.getInstance(requireActivity().dataStore))
+        )[IbuPreferenceViewModel::class.java]
+
+        ibuPreferenceViewModel.keluar()
+
+        requireActivity().finish()
+
+        startActivity(Intent(this@ProfilFragment.context, MainActivity::class.java))
     }
 
     private fun drawLayout() {

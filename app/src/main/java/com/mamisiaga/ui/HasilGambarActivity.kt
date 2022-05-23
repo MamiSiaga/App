@@ -25,7 +25,7 @@ class HasilGambarActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonAmbilUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
-        binding.buttonSimpan.setOnClickListener(this)
+        binding.buttonLanjut.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -40,7 +40,7 @@ class HasilGambarActivity : AppCompatActivity(), View.OnClickListener {
 
                 finish()
             }
-            R.id.button_simpan -> {
+            R.id.button_tambah -> {
                 //...
 
                 finish()

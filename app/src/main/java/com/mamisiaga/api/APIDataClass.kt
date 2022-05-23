@@ -39,6 +39,73 @@ data class GetIbuResponse(
     val message: String
 )
 
+data class AddKehamilanResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class EditKehamilanResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class DeleteKehamilanResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class GetKontrolKehamilanResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("kontrolKehamilanData")
+    val kontrolKehamilanData: List<KontrolKehamilanData>
+)
+
+data class KontrolKehamilanData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("date")
+    val date: String?
+)
+
+data class GetKontrolKehamilanDoneResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class SubmitKontrolKehamilanNotDoneResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class GetKontrolKehamilanNotDoneResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
 data class GetAnakResponse(
     @field:SerializedName("error")
     val error: Boolean,
@@ -59,4 +126,150 @@ data class AnakData(
 
     @field:SerializedName("dateOfBirth")
     val dateOfBirth: String
+)
+
+data class AddAnakResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class EditAnakResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class DeleteAnakResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class GetImunisasiNotDoneResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("imunisasiNotDoneData")
+    val imunisasiNotDoneData: List<ImunisasiNotDoneData>
+)
+
+data class ImunisasiNotDoneData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("dateOfBirth")
+    val date: String?
+)
+
+data class GetImunisasiDoneResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("imunisasiDoneData")
+    val imunisasiDoneData: List<ImunisasiDoneData>
+)
+
+data class ImunisasiDoneData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("dateOfBirth")
+    val date: String
+)
+
+data class GetImunisasiByJenisResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("imunisasiByJenisData")
+    val imunisasiByJenisData: List<ImunisasiByJenisData>
+)
+
+data class ImunisasiByJenisData(
+    @field:SerializedName("id")
+    val id: String,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("dateOfBirth")
+    val date: String
+)
+
+data class AddJadwalImunisasiResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class EditJadwalImunisasiResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class GetKMSResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class KMSData(
+    @field:SerializedName("month")
+    val error: Boolean,
+
+    @field:SerializedName("weight")
+    val message: String
+)
+
+data class AddKMSResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class EditKMSResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class DeleteKMSResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
 )

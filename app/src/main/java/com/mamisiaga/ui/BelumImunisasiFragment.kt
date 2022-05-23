@@ -1,60 +1,87 @@
 package com.mamisiaga.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mamisiaga.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.mamisiaga.databinding.FragmentBelumImunisasiBinding
+import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.viewmodel.ImunisasiViewModel
+import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BelumImunisasiFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BelumImunisasiFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentBelumImunisasiBinding? = null
+    private var _imunisasiViewModel: ImunisasiViewModel? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    //private lateinit var imunisasi: Imunisasi
+    private val binding get() = _binding!!
+    private val imunisasiViewModel get() = _imunisasiViewModel!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_belum_imunisasi, container, false)
+    ): View {
+        _imunisasiViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.ImunisasiViewModelFactory(requireActivity().applicationContext)
+        )[ImunisasiViewModel::class.java]
+
+        _binding = FragmentBelumImunisasiBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BelumImunisasiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BelumImunisasiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //showGraph()
+
+        //showLineChart()
+
+        //drawLayout()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        _imunisasiViewModel = null
+    }
+
+    private fun getImunisasiNotDoneResponse() {
+        imunisasiViewModel.getImunisasiNotDoneResponse("anak1").observe(this) { resultResponse ->
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+
+                }
+                is ResultResponse.Success -> {
+                    /*
+                    imunisasiDataAdapter.submitList(resultResponse.data.imunisasiData)
+
+                    if (resultResponse.data.imunisasiData.isEmpty()) {
+                        binding.recyclerViewDataAnak.visibility = View.GONE
+                        binding.textviewTidakAdaData.visibility = View.VISIBLE
+                    } else {
+                        binding.recyclerViewDataAnak.visibility = View.VISIBLE
+                        binding.textviewTidakAdaData.visibility = View.GONE
+                    }
+                     */
+                }
+                is ResultResponse.Error -> {
+                    when (resultResponse.error) {
+                        //"No Internet Connection" -> showFailure()
+                        //else -> showMasukError(true)
+                    }
                 }
             }
+
+            with(binding.recyclerviewImunisasiSaatIni) {
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                //adapter = imunisasiDataAdapter
+            }
+        }
     }
 }

@@ -103,7 +103,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewDataAnak"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:layout_margin="16dp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +112,7 @@
         tools:listitem="@layout/item_anak" />
 
     <TextView
+        android:id="@+id/textview_tidak_ada_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/no_data"

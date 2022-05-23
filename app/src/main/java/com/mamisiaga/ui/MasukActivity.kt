@@ -87,7 +87,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
         val email = binding.edittextEmail.text.toString()
         val password = binding.edittextKataSandi.text.toString()
 
-        autentikasiViewModel.masuk(email, password)
+        //autentikasiViewModel.masuk(email, password)
 
         val dialog = Dialog(this)
 

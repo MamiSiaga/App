@@ -29,6 +29,39 @@ interface APIService {
         @Query("id") id: String
     ): GetAnakResponse
 
+    @FormUrlEncoded
+    //@POST(MASUK)
+    suspend fun addAnakResponse(
+        @Field("name") name: String,
+        @Field("nik") nik: String,
+        @Field("dateOfBirth") dateOfBirth: String,
+        @Field("gender") gender: String,
+        @Field("bloodType") blood: String,
+        @Field("weight") weight: Double,
+        @Field("height") height: Double,
+        @Field("headDiameter") headDiameter: Double,
+    ): AddAnakResponse
+
+    @FormUrlEncoded
+    //@PUT(MASUK) // not sure
+    suspend fun editAnakResponse(
+        @Field("id") id: String,
+        @Field("name") name: String,
+        @Field("nik") nik: String,
+        @Field("dateOfBirth") dateOfBirth: String,
+        @Field("gender") gender: String,
+        @Field("bloodType") blood: String,
+        @Field("weight") weight: Double,
+        @Field("height") height: Double,
+        @Field("headDiameter") headDiameter: Double
+    ): EditAnakResponse
+
+    @FormUrlEncoded
+    //@DELETE(MASUK)
+    suspend fun deleteAnakResponse(
+        @Field("id") id: String
+    ): DeleteAnakResponse
+
     companion object {
         private const val DAFTAR = "daftar"
         private const val MASUK = "masuk"
@@ -36,5 +69,3 @@ interface APIService {
         private const val ANAK = "anak"
     }
 }
-
-

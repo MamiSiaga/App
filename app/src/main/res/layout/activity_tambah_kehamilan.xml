@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RencanaMelahirkanActivity">
-
+    tools:context=".ui.TambahKehamilanActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
         style="@style/AppBar"
@@ -28,7 +27,7 @@
             style="@style/SmallHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rencana_melahirkan"
+            android:text="@string/tambah_data_kehamilan"
             app:layout_constraintBottom_toBottomOf="@id/appBar"
             app:layout_constraintEnd_toEndOf="@id/appBar"
             app:layout_constraintStart_toStartOf="@id/appBar"
@@ -42,37 +41,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="@string/rencana_melahirkan"
+        android:text="@string/kehamilan_ke"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edittext_lokasi_rumah_sakit"
-        style="@style/EditTextStyle"
-        android:layout_marginTop="16dp"
-        android:hint="@string/lokasi_rumah_sakit"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_kehamilan_ke" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_tgl_hamil"
         style="@style/EditTextStyle"
         android:layout_marginTop="16dp"
-        android:hint="@string/tanggal_melahirkan"
+        android:hint="@string/tanggal_hamil"
         android:inputType="date"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_lokasi_rumah_sakit" />
+        app:layout_constraintTop_toBottomOf="@id/textView_kehamilan_ke" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_simpan"
+        android:id="@+id/button_tambah"
         style="@style/ButtonBlueStyle"
         android:layout_marginTop="40dp"
-        android:text="@string/simpan"
+        android:text="@string/tambah"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edittext_tgl_hamil" />

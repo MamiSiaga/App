@@ -1,10 +1,8 @@
-package com.mamisiaga.tools
+package com.mamisiaga.usecase
 
 import android.content.Context
 import com.mamisiaga.api.APIConfig
-import com.mamisiaga.repository.AnakRepository
-import com.mamisiaga.repository.AutentikasiRepository
-import com.mamisiaga.repository.IbuRepository
+import com.mamisiaga.repository.*
 import com.mamisiaga.usecase.*
 
 object Injection {
@@ -42,5 +40,29 @@ object Injection {
         val repository = provideAnakRepository()
 
         return AnakInteractor(repository)
+    }
+
+    private fun provideKehamilanRepository(): KehamilanRepository {
+        val apiService = APIConfig.getAPIService()
+
+        return KehamilanRepository.getInstance(apiService)
+    }
+
+    fun provideKehamilanUseCase(): KehamilanUseCase {
+        val repository = provideKehamilanRepository()
+
+        return KehamilanInteractor(repository)
+    }
+
+    private fun provideImunisasiRepository(): ImunisasiRepository {
+        val apiService = APIConfig.getAPIService()
+
+        return ImunisasiRepository.getInstance(apiService)
+    }
+
+    fun provideImunisasiUseCase(): ImunisasiUseCase {
+        val repository = provideImunisasiRepository()
+
+        return ImunisasiInteractor(repository)
     }
 }

@@ -9,7 +9,7 @@
     android:layout_gravity="center"
     android:orientation="vertical"
     card_view:cardElevation="0dp"
-    tools:keep="@layout/story_item">
+    tools:keep="@layout/item_pertanyaan_kontrol_kehamilan">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/view"
@@ -18,14 +18,14 @@
         android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/pertanyaan"
+            android:id="@+id/imunisasi_anak"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textview_isi_pertanyaan"
+                android:id="@+id/textview_isi_imunisasi_anak"
                 style="@style/SmallHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/meliputi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_isi_pertanyaan" />
+                app:layout_constraintTop_toBottomOf="@id/textview_isi_imunisasi_anak" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -53,7 +53,7 @@
             android:src="@drawable/ic_home_black_24dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:text=""
-            app:layout_constraintTop_toTopOf="@id/pertanyaan" />
+            app:layout_constraintTop_toTopOf="@id/imunisasi_anak" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

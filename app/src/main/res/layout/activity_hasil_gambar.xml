@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/imagebutton_keluar" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_simpan"
+        android:id="@+id/button_lanjut"
         style="@style/ButtonBlueStyle"
         android:layout_marginTop="40dp"
         android:text="@string/lanjut"
@@ -44,5 +44,5 @@
         android:text="@string/ambil_ulang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_simpan" />
+        app:layout_constraintTop_toBottomOf="@id/button_lanjut" />
 </androidx.constraintlayout.widget.ConstraintLayout>

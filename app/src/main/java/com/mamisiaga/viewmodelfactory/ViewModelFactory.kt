@@ -4,11 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.repository.IbuPreference
-import com.mamisiaga.tools.Injection
-import com.mamisiaga.viewmodel.AnakViewModel
-import com.mamisiaga.viewmodel.AutentikasiViewModel
-import com.mamisiaga.viewmodel.IbuPreferenceViewModel
-import com.mamisiaga.viewmodel.IbuViewModel
+import com.mamisiaga.usecase.Injection
+import com.mamisiaga.viewmodel.*
 
 class ViewModelFactory {
     class IbuPreferenceViewModelFactory(private val ibuPreference: IbuPreference) :
@@ -42,11 +39,31 @@ class ViewModelFactory {
         }
     }
 
+    class KehamilanViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AnakViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return KehamilanViewModel(Injection.provideKehamilanUseCase()) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
+
     class AnakViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(IbuViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(AnakViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return AnakViewModel(Injection.provideAnakUseCase()) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
+    }
+
+    class ImunisasiViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AnakViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return ImunisasiViewModel(Injection.provideImunisasiUseCase()) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class")
         }
@@ -66,5 +83,5 @@ class ViewModelFactory {
             throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
-     */
+    */
 }

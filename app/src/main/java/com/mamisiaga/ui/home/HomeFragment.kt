@@ -12,7 +12,6 @@ import com.mamisiaga.R
 import com.mamisiaga.`class`.Ibu
 import com.mamisiaga.databinding.FragmentHomeBinding
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.ui.AnakActivity
 import com.mamisiaga.ui.InformasiAnakActivity
 import com.mamisiaga.ui.InformasiIbuHamilActivity
 import com.mamisiaga.viewmodel.IbuViewModel

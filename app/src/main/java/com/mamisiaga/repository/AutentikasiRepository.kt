@@ -1,6 +1,5 @@
 package com.mamisiaga.repository
 
-import androidx.lifecycle.liveData
 import com.mamisiaga.`class`.IbuDaftar
 import com.mamisiaga.api.APIService
 import com.mamisiaga.tools.ResultResponse
@@ -12,7 +11,15 @@ class AutentikasiRepository private constructor(private val apiService: APIServi
         emit(ResultResponse.Loading)
 
         try {
-            emit(ResultResponse.Success(apiService.daftarResponse(ibuDaftar.name, ibuDaftar.email, ibuDaftar.password)))
+            emit(
+                ResultResponse.Success(
+                    apiService.daftarResponse(
+                        ibuDaftar.name,
+                        ibuDaftar.email,
+                        ibuDaftar.password
+                    )
+                )
+            )
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))

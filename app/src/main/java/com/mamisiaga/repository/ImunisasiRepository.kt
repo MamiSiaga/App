@@ -1,30 +1,26 @@
 package com.mamisiaga.repository
 
-import com.mamisiaga.`class`.AnakEdit
-import com.mamisiaga.`class`.AnakTambah
-import com.mamisiaga.api.APIService
-import com.mamisiaga.api.AddAnakResponse
-import com.mamisiaga.api.AnakData
-import com.mamisiaga.api.GetAnakResponse
+import com.mamisiaga.api.*
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
 
-class AnakRepository private constructor(private val apiService: APIService) {
-    private val listAnakData = mutableListOf<AnakData>()
+class ImunisasiRepository private constructor(private val apiService: APIService) {
+    private val listImunisasiNotDoneData = mutableListOf<ImunisasiNotDoneData>()
+    private val listImunisasiDoneData = mutableListOf<ImunisasiDoneData>()
 
-    fun getAnakResponse(id: String) = flow {
+    fun getImunisasiNotDoneResponse(id: String) = flow {
         emit(ResultResponse.Loading)
 
         try {
-            listAnakData.add(AnakData("1", "aa", "20-01-2022"))
-            listAnakData.add(AnakData("2", "ab", "20-02-2022"))
+            listImunisasiNotDoneData.add(ImunisasiNotDoneData("1", "HIV", "20-01-2022"))
+            listImunisasiNotDoneData.add(ImunisasiNotDoneData("2", "HIV2", "20-02-2022"))
 
-            val getAnakResponse = GetAnakResponse(false, "successful", listAnakData.toList())
+            val getImunisasiResponse = GetImunisasiNotDoneResponse(false, "successful", listImunisasiNotDoneData.toList())
 
-            emit(ResultResponse.Success(getAnakResponse))
+            emit(ResultResponse.Success(getImunisasiResponse))
 
-            //emit(ResultResponse.Success(apiService.getAnakResponse(id)))
+            //emit(ResultResponse.Success(apiService.getImunisasiResponse(id)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
@@ -33,18 +29,39 @@ class AnakRepository private constructor(private val apiService: APIService) {
         }
     }
 
-    fun addAnakResponse(anakTambah: AnakTambah) = flow {
+    fun getImunisasiDoneResponse(id: String) = flow {
         emit(ResultResponse.Loading)
 
         try {
-            val addAnakResponse = AddAnakResponse(false, "Successful")
+            listImunisasiDoneData.add(ImunisasiDoneData("0", "--", "20-01-2022"))
+            listImunisasiDoneData.add(ImunisasiDoneData("0.0", "---", "20-02-2022"))
 
-            emit(ResultResponse.Success(addAnakResponse))
+            val getImunisasiResponse = GetImunisasiDoneResponse(false, "successful", listImunisasiDoneData.toList())
+
+            emit(ResultResponse.Success(getImunisasiResponse))
+
+            //emit(ResultResponse.Success(apiService.getImunisasiResponse(id)))
+        } catch (e: Exception) {
+            when (e) {
+                is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
+                else -> emit(ResultResponse.Error("Error"))
+            }
+        }
+    }
+
+    /*
+    fun addImunisasiResponse(imunisasiTambah: ImunisasiTambah) = flow {
+        emit(ResultResponse.Loading)
+
+        try {
+            val addImunisasiResponse = AddImunisasiResponse(false, "Successful")
+
+            emit(ResultResponse.Success(addImunisasiResponse))
 
             /*
             emit(
                 ResultResponse.Success(
-                    apiService.addAnakResponse(
+                    apiService.addImunisasiResponse(
                         anakTambah.name,
                         anakTambah.nik,
                         anakTambah.dateOfBirth,
@@ -65,13 +82,13 @@ class AnakRepository private constructor(private val apiService: APIService) {
         }
     }
 
-    fun editAnakResponse(anakEdit: AnakEdit) = flow {
+    fun editImunisasiResponse(anakEdit: ImunisasiEdit) = flow {
         emit(ResultResponse.Loading)
 
         try {
             emit(
                 ResultResponse.Success(
-                    apiService.editAnakResponse(
+                    apiService.editImunisasiResponse(
                         anakEdit.id,
                         anakEdit.name,
                         anakEdit.nik,
@@ -92,13 +109,13 @@ class AnakRepository private constructor(private val apiService: APIService) {
         }
     }
 
-    fun deleteAnakResponse(id: String) = flow {
+    fun deleteImunisasiResponse(id: String) = flow {
         emit(ResultResponse.Loading)
 
         try {
             emit(
                 ResultResponse.Success(
-                    apiService.deleteAnakResponse(id)
+                    apiService.deleteImunisasiResponse(id)
                 )
             )
         } catch (e: Exception) {
@@ -108,14 +125,15 @@ class AnakRepository private constructor(private val apiService: APIService) {
             }
         }
     }
+     */
 
     companion object {
         @Volatile
-        private var instance: AnakRepository? = null
+        private var instance: ImunisasiRepository? = null
 
-        fun getInstance(apiService: APIService): AnakRepository =
+        fun getInstance(apiService: APIService): ImunisasiRepository =
             instance ?: synchronized(this) {
-                instance ?: AnakRepository(apiService)
+                instance ?: ImunisasiRepository(apiService)
             }
     }
 }
