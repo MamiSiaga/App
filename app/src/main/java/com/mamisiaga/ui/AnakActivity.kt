@@ -49,6 +49,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.layoutInfoImunisasi.setOnClickListener(this)
+        binding.layoutScanPhoto.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -58,6 +59,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.layoutInfoImunisasi -> {
                 startActivity(Intent(this, InformasiImunisasiActivity::class.java))
+            }
+            R.id.layoutScanPhoto -> {
+                startActivity(Intent(this, KameraActivity::class.java))
             }
         }
     }

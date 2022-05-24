@@ -106,6 +106,7 @@
     <string name="tambah">Tambah</string>
     <string name="tanggal_hamil">Tanggal hamil</string>
     <string name="sedang_memuat">Sedang memuat...</string>
+    <string name="sertifikat_penghargaan">Sertifikat Penghargaan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat Jadwal</item>
