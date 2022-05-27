@@ -41,7 +41,7 @@
                     android:layout_height="100dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_launcher_foreground"
+                    android:src="@drawable/ic_baseline_account_circle_60"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -182,5 +182,9 @@
         <include
             android:id="@+id/layout_offline"
             layout="@layout/layout_offline" />
+
+        <include
+            android:id="@+id/layout_memuat"
+            layout="@layout/layout_memuat" />
     </LinearLayout>
 </ScrollView>

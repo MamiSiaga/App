@@ -1,5 +1,7 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -17,8 +19,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var ibuViewModel: IbuViewModel
     private lateinit var ibu: Ibu
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
 

@@ -104,10 +104,11 @@
                     android:id="@+id/edittext_tgl_lahir"
                     style="@style/EditTextStyle"
                     android:layout_marginTop="16dp"
-                    android:focusable="false"
-                    android:focusableInTouchMode="true"
                     android:hint="@string/tanggal_lahir"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:inputType="date"
+                    android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/edittext_nik" />
@@ -223,7 +224,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/edittext_tinggi_badan" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.mamisiaga.customview.CustomViewButtonForm
                     android:id="@+id/button_tambah_anak"
                     style="@style/ButtonBlueStyle"
                     android:layout_marginTop="40dp"

@@ -1,8 +1,7 @@
 package com.mamisiaga.usecase
 
 import androidx.lifecycle.LiveData
-import com.mamisiaga.`class`.AnakEdit
-import com.mamisiaga.`class`.AnakTambah
+import com.mamisiaga.`class`.Anak
 import com.mamisiaga.`class`.Ibu
 import com.mamisiaga.`class`.IbuDaftar
 import com.mamisiaga.api.*
@@ -44,9 +43,9 @@ interface KehamilanUseCase {
 interface AnakUseCase {
     fun getAnak(id: String): Flow<ResultResponse<GetAnakResponse>>
 
-    fun addAnak(anakTambah: AnakTambah): Flow<ResultResponse<AddAnakResponse>>
+    fun addAnak(anak: Anak): Flow<ResultResponse<AddAnakResponse>>
 
-    fun editAnak(anakEdit: AnakEdit): Flow<ResultResponse<EditAnakResponse>>
+    fun editAnak(anak: Anak): Flow<ResultResponse<EditAnakResponse>>
 
     fun deleteAnak(id: String): Flow<ResultResponse<DeleteAnakResponse>>
 }

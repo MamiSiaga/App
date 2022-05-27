@@ -1,7 +1,6 @@
 package com.mamisiaga.usecase
 
-import com.mamisiaga.`class`.AnakEdit
-import com.mamisiaga.`class`.AnakTambah
+import com.mamisiaga.`class`.Anak
 import com.mamisiaga.`class`.IbuDaftar
 import com.mamisiaga.api.*
 import com.mamisiaga.repository.*
@@ -55,11 +54,11 @@ class AnakInteractor(private val anakRepository: AnakRepository) :
     override fun getAnak(id: String): Flow<ResultResponse<GetAnakResponse>> =
         anakRepository.getAnakResponse(id)
 
-    override fun addAnak(anakTambah: AnakTambah): Flow<ResultResponse<AddAnakResponse>> =
-        anakRepository.addAnakResponse(anakTambah)
+    override fun addAnak(anak: Anak): Flow<ResultResponse<AddAnakResponse>> =
+        anakRepository.addAnakResponse(anak)
 
-    override fun editAnak(anakEdit: AnakEdit): Flow<ResultResponse<EditAnakResponse>> =
-        anakRepository.editAnakResponse(anakEdit)
+    override fun editAnak(anak: Anak): Flow<ResultResponse<EditAnakResponse>> =
+        anakRepository.editAnakResponse(anak)
 
     override fun deleteAnak(id: String): Flow<ResultResponse<DeleteAnakResponse>> =
         anakRepository.deleteAnakResponse(id)

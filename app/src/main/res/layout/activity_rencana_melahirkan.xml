@@ -58,23 +58,25 @@
         app:layout_constraintTop_toBottomOf="@id/textView_kehamilan_ke" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edittext_tgl_hamil"
+        android:id="@+id/edittext_tgl_melahirkan"
         style="@style/EditTextStyle"
         android:layout_marginTop="16dp"
         android:hint="@string/tanggal_melahirkan"
         android:inputType="date"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edittext_lokasi_rumah_sakit" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.mamisiaga.customview.CustomViewButtonForm
         android:id="@+id/button_simpan"
         style="@style/ButtonBlueStyle"
         android:layout_marginTop="40dp"
         android:text="@string/simpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_tgl_hamil" />
+        app:layout_constraintTop_toBottomOf="@id/edittext_tgl_melahirkan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

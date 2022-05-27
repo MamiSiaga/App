@@ -1,172 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AnakActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageButton
+            android:id="@+id/imagebutton_keluar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/blue_50"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar" />
+
+        <TextView
+            android:id="@+id/textview_nama_anak"
+            style="@style/SmallHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nama_anak"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"
+            app:layout_constraintEnd_toEndOf="@id/appBar"
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/layout_online"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/appBar"
-                style="@style/AppBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageButton
-                    android:id="@+id/imagebutton_keluar"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="16dp"
-                    android:background="@color/blue_50"
-                    android:src="@drawable/ic_baseline_arrow_back_24"
-                    app:layout_constraintBottom_toBottomOf="@id/appBar"
-                    app:layout_constraintStart_toStartOf="@id/appBar"
-                    app:layout_constraintTop_toTopOf="@id/appBar" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp">
 
                 <TextView
-                    style="@style/SmallHeader"
+                    android:id="@+id/textViewMenuAnak"
+                    style="@style/BigHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/anak"
-                    app:layout_constraintBottom_toBottomOf="@id/appBar"
-                    app:layout_constraintEnd_toEndOf="@id/appBar"
-                    app:layout_constraintStart_toStartOf="@id/appBar"
-                    app:layout_constraintTop_toTopOf="@id/appBar" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/textViewAnak"
-                style="@style/BigHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/anak"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/menu_anak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewAnak">
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layoutInfoImunisasi"
-                    style="@style/VerticalMenuStyle"
-                    app:layout_constraintEnd_toStartOf="@+id/layoutInfoGizi"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/menu_anak"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imageViewImunisasi"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:src="@drawable/ic_baseline_vaccines_24" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/menu_anak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewMenuAnak">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutInfoImunisasi"
+                        style="@style/VerticalMenuStyle"
+                        app:layout_constraintEnd_toStartOf="@+id/layoutInfoGizi"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewImunisasi"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:src="@drawable/ic_baseline_vaccines_24" />
+
+                        <TextView
+                            android:id="@+id/textViewImunisasi"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:text="@string/informasi_imunisasi" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutInfoGizi"
+                        style="@style/VerticalMenuStyle"
+                        app:layout_constraintEnd_toStartOf="@+id/layoutPemberianVitamin"
+                        app:layout_constraintStart_toEndOf="@+id/layoutInfoImunisasi"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewGizi"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:src="@drawable/ic_home_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textViewGizi"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:text="@string/gizi_anak" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutPemberianVitamin"
+                        style="@style/VerticalMenuStyle"
+                        app:layout_constraintEnd_toStartOf="@+id/layoutScanPhoto"
+                        app:layout_constraintStart_toEndOf="@+id/layoutInfoGizi"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewVitA"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:src="@drawable/ic_home_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textViewVitA"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:text="@string/vitamin" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutScanPhoto"
+                        style="@style/VerticalMenuStyle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/layoutPemberianVitamin"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewScan"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:src="@drawable/ic_baseline_document_scanner_24" />
+
+                        <TextView
+                            android:id="@+id/textScan"
+                            style="@style/InsideVerticalMenuStyle"
+                            android:text="@string/scan_kms" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/menu_grafik_pertumbuhan_anak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/menu_anak">
 
                     <TextView
-                        android:id="@+id/textViewImunisasi"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:text="@string/informasi_imunisasi" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layoutInfoGizi"
-                    style="@style/VerticalMenuStyle"
-                    app:layout_constraintEnd_toStartOf="@+id/layoutPemberianVitamin"
-                    app:layout_constraintStart_toEndOf="@+id/layoutInfoImunisasi"
-                    app:layout_constraintTop_toTopOf="parent">
+                        android:id="@+id/textViewGrafik"
+                        style="@style/BigHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/grafik_pertumbuhan"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/imageViewGizi"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:src="@drawable/ic_home_black_24dp" />
+                        android:id="@+id/imageview_opsi_grafik_pertumbuhan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_baseline_more_vert_24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/textViewGizi"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:text="@string/gizi_anak" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layoutPemberianVitamin"
-                    style="@style/VerticalMenuStyle"
-                    app:layout_constraintEnd_toStartOf="@+id/layoutScanPhoto"
-                    app:layout_constraintStart_toEndOf="@+id/layoutInfoGizi"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageViewVitA"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:src="@drawable/ic_home_black_24dp" />
-
-                    <TextView
-                        android:id="@+id/textViewVitA"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:text="@string/vitamin" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/layoutScanPhoto"
-                    style="@style/VerticalMenuStyle"
+                <com.androidplot.xy.XYPlot
+                    android:id="@+id/plot"
+                    style="@style/APDefacto.Light"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/layoutPemberianVitamin"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageViewScan"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:src="@drawable/ic_home_black_24dp" />
-
-                    <TextView
-                        android:id="@+id/textScan"
-                        style="@style/InsideVerticalMenuStyle"
-                        android:text="@string/scan_kms" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menu_grafik_pertumbuhan_anak"
+                    app:rangeTitle="sss"
+                    app:title="dbhbdh" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
-            <TextView
-                android:id="@+id/textViewGrafik"
-                style="@style/BigHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/grafik_anak"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/menu_anak" />
+    <include
+        android:id="@+id/layout_offline"
+        layout="@layout/layout_offline"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 
-            <com.androidplot.xy.XYPlot
-                android:id="@+id/plot"
-                style="@style/APDefacto.Light"
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewGrafik"
-                app:rangeTitle="sss"
-                app:title="dbhbdh" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+    <include
+        android:id="@+id/layout_memuat"
+        layout="@layout/layout_memuat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

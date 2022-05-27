@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mamisiaga">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,13 +12,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MamiSiaga">
         <activity
-            android:name=".DetailImunisasiActivity"
+            android:name=".ui.RiwayatPertumbuhanActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HasilScanKMSActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DetailImunisasiActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.TambahKehamilanActivity"
@@ -27,18 +36,23 @@
             android:exported="false" />
         <activity
             android:name=".ui.InformasiAnakActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.InformasiKontrolKehamilanActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.TambahAnakActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.HasilGambarActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.KameraActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.RencanaMelahirkanActivity"
@@ -48,9 +62,11 @@
             android:exported="false" />
         <activity
             android:name=".ui.AnakActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.InformasiIbuHamilActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.MasukActivity"
@@ -60,6 +76,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.InformasiImunisasiActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ui.HomeActivity"

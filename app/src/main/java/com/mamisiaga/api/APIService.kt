@@ -24,22 +24,27 @@ interface APIService {
         @Query("email") email: String
     ): GetIbuResponse
 
-    @GET(ANAK)
+
+    @GET("employees")
     suspend fun getAnakResponse(
-        @Query("id") id: String
+        /*@Query("id") id: String*/
     ): GetAnakResponse
 
     @FormUrlEncoded
-    //@POST(MASUK)
+    @POST("create")
     suspend fun addAnakResponse(
         @Field("name") name: String,
-        @Field("nik") nik: String,
+        @Field("salary") salary: String,
+        @Field("age") age: String
+        /*@Field("nik") nik: String,
         @Field("dateOfBirth") dateOfBirth: String,
         @Field("gender") gender: String,
         @Field("bloodType") blood: String,
         @Field("weight") weight: Double,
         @Field("height") height: Double,
-        @Field("headDiameter") headDiameter: Double,
+        @Field("headDiameter") headDiameter: Double
+
+         */
     ): AddAnakResponse
 
     @FormUrlEncoded
@@ -57,7 +62,7 @@ interface APIService {
     ): EditAnakResponse
 
     @FormUrlEncoded
-    //@DELETE(MASUK)
+    @DELETE("delete")
     suspend fun deleteAnakResponse(
         @Field("id") id: String
     ): DeleteAnakResponse

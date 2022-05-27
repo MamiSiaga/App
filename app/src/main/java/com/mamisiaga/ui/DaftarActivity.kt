@@ -1,6 +1,8 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,8 +16,11 @@ import com.mamisiaga.tools.isEmailFormat
 class DaftarActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDaftarBinding
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         binding = ActivityDaftarBinding.inflate(layoutInflater)
 
@@ -27,6 +32,7 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.buttonLanjut.setOnClickListener(this)
+        binding.textviewMasuk.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {

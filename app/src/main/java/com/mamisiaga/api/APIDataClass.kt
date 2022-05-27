@@ -106,14 +106,27 @@ data class GetKontrolKehamilanNotDoneResponse(
     val message: String
 )
 
+data class GetInformasiKontrolKehamilanResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
 data class GetAnakResponse(
+    /*
     @field:SerializedName("error")
     val error: Boolean,
 
     @field:SerializedName("message")
     val message: String,
+    */
 
-    @field:SerializedName("anakData")
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("data")
     val anakData: List<AnakData>
 )
 
@@ -121,19 +134,19 @@ data class AnakData(
     @field:SerializedName("id")
     val id: String,
 
-    @field:SerializedName("name")
-    val name: String,
+    @field:SerializedName("employee_name")
+    val name: String
 
-    @field:SerializedName("dateOfBirth")
-    val dateOfBirth: String
+    //@field:SerializedName("dateOfBirth")
+    //val dateOfBirth: String
 )
 
 data class AddAnakResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
+    //@field:SerializedName("error")
+    //val error: Boolean,
 
-    @field:SerializedName("message")
-    val message: String
+    @field:SerializedName("status")
+    val status: String
 )
 
 data class EditAnakResponse(
@@ -145,11 +158,44 @@ data class EditAnakResponse(
 )
 
 data class DeleteAnakResponse(
+    //@field:SerializedName("error")
+    //val error: Boolean,
+
+    @field:SerializedName("status")
+    val status: String
+)
+
+data class GetPertumbuhanResponse(
+    /*
     @field:SerializedName("error")
     val error: Boolean,
 
     @field:SerializedName("message")
-    val message: String
+    val message: String,
+    */
+
+    @field:SerializedName("status")
+    val status: String,
+
+    @field:SerializedName("data")
+    val pertumbuhanData: List<PertumbuhanData>
+)
+
+data class PertumbuhanData(
+    @field:SerializedName("date_of_measurement")
+    val date_of_measurement: String,
+
+    @field:SerializedName("age")
+    val age: Int,
+
+    @field:SerializedName("weight")
+    val weight: Double,
+
+    @field:SerializedName("height")
+    val height: Double,
+
+    @field:SerializedName("head_diameter")
+    val headDiameter: Double
 )
 
 data class GetImunisasiNotDoneResponse(

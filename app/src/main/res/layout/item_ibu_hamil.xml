@@ -73,7 +73,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="28dp"
             android:foregroundGravity="center_horizontal"
-            android:src="@drawable/ic_home_black_24dp"
+            android:src="@drawable/ic_baseline_more_vert_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/imunisasi_anak" />
 

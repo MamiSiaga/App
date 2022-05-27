@@ -1,34 +1,41 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityTambahKehamilanBinding
 import com.mamisiaga.tools.withDateFormat
-import com.mamisiaga.viewmodel.AnakViewModel
+import com.mamisiaga.viewmodel.KehamilanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
 
 class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener {
     private lateinit var binding: ActivityTambahKehamilanBinding
-    private lateinit var anakViewModel: AnakViewModel
+    private lateinit var kehamilanViewModel: KehamilanViewModel
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         binding = ActivityTambahKehamilanBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
-        anakViewModel = ViewModelProvider(
+        kehamilanViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.AnakViewModelFactory(applicationContext)
-        )[AnakViewModel::class.java]
+            ViewModelFactory.KehamilanViewModelFactory(applicationContext)
+        )[KehamilanViewModel::class.java]
 
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.edittextTglHamil.setOnClickListener(this)
@@ -41,6 +48,8 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
                 onBackPressed()
             }
             R.id.edittext_tgl_hamil -> {
+                closeKeyboard()
+
                 val calendar = Calendar.getInstance()
                 val year = calendar.get(Calendar.YEAR)
                 val month = calendar.get(Calendar.MONTH)
@@ -63,5 +72,20 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
         val day = datePicker.dayOfMonth
 
         binding.edittextTglHamil.setText("$day-$month-$year".withDateFormat())
+    }
+
+    private fun seeTambahKehamilanResponse() {
+
+    }
+
+    private fun closeKeyboard() {
+        val view = this.currentFocus
+
+        if (view != null) {
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 }

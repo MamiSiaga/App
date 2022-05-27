@@ -2,13 +2,15 @@ package com.mamisiaga.ui
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.AnakTambah
+import com.mamisiaga.`class`.Anak
 import com.mamisiaga.databinding.ActivityTambahAnakBinding
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.withDateFormat
@@ -43,7 +45,9 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
-            R.id.edittext_tgl_hamil -> {
+            R.id.edittext_tgl_lahir -> {
+                closeKeyboard()
+
                 val calendar = Calendar.getInstance()
                 val year = calendar.get(Calendar.YEAR)
                 val month = calendar.get(Calendar.MONTH)
@@ -69,7 +73,8 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun seeAddAnakResponse() {
-        val anakTambah = AnakTambah(
+        val anak = Anak(
+            null,
             binding.edittextNama.text.toString(),
             binding.edittextNik.text.toString(),
             binding.edittextTglLahir.text.toString(),
@@ -82,8 +87,8 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
         val dialog = Dialog(this)
 
-        anakViewModel.addAnak(anakTambah).observe(this) { resultResponse ->
-            dialog.setContentView(R.layout.custom_loading_dialog)
+        anakViewModel.addAnak(anak).observe(this) { resultResponse ->
+            dialog.setContentView(R.layout.custom_dialog_memuat)
             dialog.setCanceledOnTouchOutside(false)
             dialog.setCancelable(false)
 
@@ -94,9 +99,9 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    if (!resultResponse.data.error) {
-                        finish()
-                    }
+                    setResult(TAMBAH_ANAK_RESPONSE_CODE)
+
+                    finish()
                 }
                 is ResultResponse.Error -> {
                     dialog.dismiss()
@@ -108,5 +113,20 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
                 }
             }
         }
+    }
+
+    private fun closeKeyboard() {
+        val view = this.currentFocus
+
+        if (view != null) {
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    companion object {
+        const val TAMBAH_ANAK_RESPONSE_CODE = 101
     }
 }

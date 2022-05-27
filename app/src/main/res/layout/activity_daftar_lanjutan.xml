@@ -86,7 +86,7 @@
                 style="@style/EditTextStyle"
                 android:layout_marginTop="16dp"
                 android:focusable="false"
-                android:focusableInTouchMode="true"
+                android:focusableInTouchMode="false"
                 android:hint="@string/tanggal_lahir"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edittext_kata_sandi" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.mamisiaga.customview.CustomViewButtonForm
                 android:id="@+id/button_daftar"
                 style="@style/ButtonBlueStyle"
                 android:layout_marginTop="40dp"
@@ -154,9 +154,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edittext_ketik_ulang_kata_sandi" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-
-
 </ScrollView>

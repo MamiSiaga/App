@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityInformasiIbuHamilBinding
+import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.IbuViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
@@ -26,12 +27,16 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
             ViewModelFactory.IbuViewModelFactory(applicationContext)
         )[IbuViewModel::class.java]
 
+        binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.rencanaMelahirkan.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
+            R.id.button_muat_ulang -> {
+                drawLayout()
+            }
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
@@ -41,7 +46,68 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getIbuHamilResponse() {
-        //ibuViewModel.
+    private fun seeKehamilanResponse() {
+
+    }
+
+    private fun getKontrolKehamilanResponse() {
+        /*ibuViewModel.getKontrolKehamilanResponse("ibu1").observe(this) { resultResponse ->
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    showLoadingSign(true)
+                }
+                is ResultResponse.Success -> {
+                    showLoadingSign(false)
+
+                    anakDataAdapter.submitList(resultResponse.data.anakData)
+
+                    if (resultResponse.data.anakData.isEmpty()) {
+                        binding.recyclerViewDataAnak.visibility = View.GONE
+                        binding.textviewTidakAdaData.visibility = View.VISIBLE
+                    } else {
+                        binding.recyclerViewDataAnak.visibility = View.VISIBLE
+                        binding.textviewTidakAdaData.visibility = View.GONE
+                    }
+                }
+                is ResultResponse.Error -> {
+                    showLoadingSign(false)
+
+                    when (resultResponse.error) {
+                        "No Internet Connection" -> drawLayout()
+                        //else -> showMasukError(true)
+                    }
+                }
+            }
+
+            with(binding.recyclerViewDataAnak) {
+                layoutManager = LinearLayoutManager(context)
+
+                setHasFixedSize(true)
+
+                adapter = anakDataAdapter
+            }
+        }
+         */
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showLoadingSign(isLoading: Boolean) {
+        if (isLoading) {
+            binding.layoutMemuat.layoutMemuat.visibility = View.VISIBLE
+            binding.layoutOnline.visibility = View.GONE
+        } else {
+            binding.layoutMemuat.layoutMemuat.visibility = View.GONE
+            binding.layoutOnline.visibility = View.VISIBLE
+        }
     }
 }

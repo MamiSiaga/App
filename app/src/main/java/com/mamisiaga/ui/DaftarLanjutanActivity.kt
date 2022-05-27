@@ -1,9 +1,11 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -28,8 +30,11 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private lateinit var autentikasiViewModel: AutentikasiViewModel
     private lateinit var email: String
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         binding = ActivityDaftarLanjutanBinding.inflate(layoutInflater)
 
@@ -57,7 +62,9 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
-            R.id.edittext_tgl_hamil -> {
+            R.id.edittext_tgl_lahir -> {
+                closeKeyboard()
+
                 val calendar = Calendar.getInstance()
                 val year = calendar.get(Calendar.YEAR)
                 val month = calendar.get(Calendar.MONTH)
@@ -118,7 +125,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         val dialog = Dialog(this)
 
         autentikasiViewModel.daftar(ibuDaftar).observe(this) { resultResponse ->
-            dialog.setContentView(R.layout.custom_loading_dialog)
+            dialog.setContentView(R.layout.custom_dialog_memuat)
             dialog.setCanceledOnTouchOutside(false)
             dialog.setCancelable(false)
 
@@ -240,7 +247,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             buttonDaftar.isEnabled =
                 nama.isNotEmpty() && nik.isNotEmpty() &&
                         tglLahir.isNotEmpty() && password.isNotEmpty() &&
-                        passwordConfirm.isNotEmpty() && password.equals(passwordConfirm) &&
+                        passwordConfirm.isNotEmpty() && password == passwordConfirm &&
                         binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId != -1
         }
     }
@@ -253,6 +260,16 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         ).show()
 
         //binding.buttonDaftar.isEnabled = enableButtonDaftar()
+    }
+
+    private fun closeKeyboard() {
+        val view = this.currentFocus
+
+        if (view != null) {
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
     }
 
     companion object {

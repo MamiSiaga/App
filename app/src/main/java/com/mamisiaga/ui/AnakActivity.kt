@@ -2,15 +2,22 @@ package com.mamisiaga.ui
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.androidplot.xy.LineAndPointFormatter
 import com.androidplot.xy.PanZoom
 import com.androidplot.xy.SimpleXYSeries
 import com.androidplot.xy.XYGraphWidget
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mamisiaga.R
 import com.mamisiaga.`class`.Anak
+import com.mamisiaga.`class`.Opsi
+import com.mamisiaga.adapter.OpsiAdapter
 import com.mamisiaga.databinding.ActivityAnakBinding
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.AnakViewModel
@@ -31,12 +38,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
-        // Checking Internet connection
-        if (!isConnected(applicationContext)) {
+        anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
 
-        }
-
-        //anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
+        binding.textviewNamaAnak.text = anak.name
 
         /*
         anakViewModel = ViewModelProvider(
@@ -50,6 +54,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.layoutInfoImunisasi.setOnClickListener(this)
         binding.layoutScanPhoto.setOnClickListener(this)
+        binding.imageviewOpsiGrafikPertumbuhan.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -63,10 +68,87 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             R.id.layoutScanPhoto -> {
                 startActivity(Intent(this, KameraActivity::class.java))
             }
+            R.id.imageview_opsi_grafik_pertumbuhan -> {
+                showOpsi()
+            }
         }
     }
 
     private fun seeAnakResponse() {
+        /*anakViewModel.getPertumbuhanAnak("anak1").observe(this) { resultResponse ->
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    showLoadingSign(true)
+                }
+                is ResultResponse.Success -> {
+                    showLoadingSign(false)
+
+
+                }
+                is ResultResponse.Error -> {
+                    showLoadingSign(false)
+
+                    when (resultResponse.error) {
+                        "No Internet Connection" -> drawLayout()
+                        //else -> showMasukError(true)
+                    }
+                }
+            }
+        }
+         */
+    }
+
+    private fun showOpsi() {
+        val bottomSheetDialog = BottomSheetDialog(this)
+
+        bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog_array)
+        bottomSheetDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val list = ArrayList<Opsi>()
+        val listOpsi = ArrayList<Opsi>()
+        val recyclerViewOpsi =
+            bottomSheetDialog.findViewById<RecyclerView>(R.id.recyclerview_opsi)
+        recyclerViewOpsi!!.layoutManager = LinearLayoutManager(this)
+        val imageButtonTutup =
+            bottomSheetDialog.findViewById<ImageButton>(R.id.imageButtonTutup)
+
+        // Menu clicked in the bottom sheet dialog
+        val opsiAdapter = OpsiAdapter { opsi ->
+            if (opsi.item == "Lihat riwayat pertumbuhan") {
+                //startActivity(Intent(this@RiwayatPertumbuhanActivity, InformasiImunisasiActivity::class.java))
+
+                bottomSheetDialog.dismiss()
+            }
+        }
+
+        val array = resources.getStringArray(R.array.opsi_grafik_pertumbuhan_array)
+
+        for (i in array.indices) {
+            val opsi = Opsi(array[i])
+
+            listOpsi.add(opsi)
+        }
+
+        list.addAll(listOpsi)
+
+        opsiAdapter.submitList(list.toList())
+
+        with(recyclerViewOpsi) {
+            layoutManager = LinearLayoutManager(context)
+
+            setHasFixedSize(true)
+
+            adapter = opsiAdapter
+        }
+
+        bottomSheetDialog.show()
+
+        imageButtonTutup!!.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+    }
+
+    private fun showGrafik() {
         val domainLabels = arrayOf<Number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
         val series1Numbers = arrayOf<Number>(5, 6.7, 7.2, 7.7, 8, 8.2, 8, 8.7, 9.3, 9.2, 9, 9.5)
         val series1 = SimpleXYSeries(
@@ -90,6 +172,27 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         PanZoom.attach(binding.plot)
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
+    }
+
+    private fun showLoadingSign(isLoading: Boolean) {
+        if (isLoading) {
+            binding.layoutMemuat.layoutMemuat.visibility = View.VISIBLE
+            binding.layoutOnline.visibility = View.GONE
+        } else {
+            binding.layoutMemuat.layoutMemuat.visibility = View.GONE
+            binding.layoutOnline.visibility = View.VISIBLE
+        }
     }
 
     companion object {

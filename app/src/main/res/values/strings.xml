@@ -45,7 +45,7 @@
     <string name="informasi_imunisasi">Informasi Imunisasi</string>
     <string name="gizi_anak">Gizi Anak</string>
     <string name="scan_kms">Scan KMS</string>
-    <string name="grafik_anak">Grafik Anak</string>
+    <string name="grafik_pertumbuhan">Grafik Pertumbuhan</string>
     <string name="vitamin">Vitamin</string>
     <string name="foto_anak">Foto Anak</string>
     <string name="nama_anak">Nama Anak</string>
@@ -105,16 +105,24 @@
     <string name="tambah_data_kehamilan">Tambah Data Kehamilan</string>
     <string name="tambah">Tambah</string>
     <string name="tanggal_hamil">Tanggal hamil</string>
-    <string name="sedang_memuat">Sedang memuat...</string>
+    <string name="sedang_memuat">Sedang memuat…</string>
     <string name="sertifikat_penghargaan">Sertifikat Penghargaan</string>
+    <string name="tanggal_imunisasi">Tanggal imunisasi</string>
+    <string name="perkembangan_anak">Perkembangan Anak: MMMM</string>
+    <string name="hasil_scan_kms">Hasil Scan KMS</string>
+    <string name="bulan_ke">Bulan ke-</string>
+    <string name="tanggal_pemeriksaan">Tanggal pemeriksaan</string>
+    <string name="edit_data">Edit data</string>
+    <string name="usia_anak">Usia anak</string>
+    <string name="menu_anak">Menu Anak</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
-        <item>Buat Jadwal</item>
+        <item>Buat jadwal</item>
     </string-array>
     <string-array name="kontrol_kehamilan_sekarang_sudah_jadwal_array">
         <item>Detail kontrol kehamilan</item>
-        <item>Buat Jadwal</item>
-        <item>Hapus Jadwal</item>
+        <item>Buat jadwal</item>
+        <item>Hapus jadwal</item>
         <item>Sudah periksa?</item>
     </string-array>
     <string-array name="kontrol_kehamilan_sekarang_selesai_array">
@@ -124,8 +132,12 @@
         <item>Detail kontrol kehamilan</item>
     </string-array>
     <string-array name="opsi_anak_array">
-        <item>Edit anak</item>
-        <item>Hapus anak</item>
+        <item>Lihat data anak</item>
+        <item>Hapus data anak</item>
+    </string-array>
+    <string-array name="opsi_grafik_pertumbuhan_array">
+        <item>Tambah pertumbuhan</item>
+        <item>Lihat riwayat pertumbuhan</item>
     </string-array>
     <string-array name="imunisasi_mulai_array">
         <item>Buat jadwal</item>

@@ -19,20 +19,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/data_anak"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <!--ImageView
-                android:id="@+id/imageViewAnak"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/foto_anak"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" /-->
 
             <TextView
                 android:id="@+id/textViewNamaAnak"
@@ -60,9 +50,9 @@
             android:id="@+id/opsi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:foregroundGravity="center_horizontal"
-            android:src="@drawable/ic_home_black_24dp"
+            android:src="@drawable/ic_baseline_more_vert_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/data_anak" />
 

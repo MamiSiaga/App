@@ -50,13 +50,15 @@
         style="@style/EditTextStyle"
         android:layout_marginTop="16dp"
         android:hint="@string/tanggal_hamil"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:inputType="date"
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_kehamilan_ke" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.mamisiaga.customview.CustomViewButtonForm
         android:id="@+id/button_tambah"
         style="@style/ButtonBlueStyle"
         android:layout_marginTop="40dp"

@@ -41,7 +41,7 @@ class ViewModelFactory {
 
     class KehamilanViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AnakViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(KehamilanViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return KehamilanViewModel(Injection.provideKehamilanUseCase()) as T
             }
@@ -61,7 +61,7 @@ class ViewModelFactory {
 
     class ImunisasiViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AnakViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(ImunisasiViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return ImunisasiViewModel(Injection.provideImunisasiUseCase()) as T
             }

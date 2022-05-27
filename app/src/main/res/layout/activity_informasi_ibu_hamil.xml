@@ -35,102 +35,8 @@
             app:layout_constraintTop_toTopOf="@id/appBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tubuh_1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar">
-
-        <TextView
-            android:id="@+id/textview_belum_hamil"
-            style="@style/BigHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:text="@string/anda_belum_hamil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textview_keterangan_1"
-            style="@style/BoldDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/klik_tombol_di_bawah_apabila_anda_sudah_mulai_hamil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_belum_hamil" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_saya_sudah_mulai_hamil"
-            style="@style/ButtonBlueStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/saya_sudah_mulai_hamil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_keterangan_1" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tubuh_2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar">
-
-        <TextView
-            android:id="@+id/textview_sudah_melahirkan"
-            style="@style/BigHeader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270dp"
-            android:text="@string/anda_sudah_melahirkan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textview_keterangan_2"
-            style="@style/BoldDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/klik_tombol_di_bawah_apabila_anda_mulai_hamil_lagi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_sudah_melahirkan" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_saya_mulai_hamil_lagi"
-            style="@style/ButtonBlueStyle"
-            android:layout_marginTop="50dp"
-            android:text="@string/saya_mulai_hamil_lagi"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_keterangan_2" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/lihat_riwayat_melahirkan"
-            style="@style/ButtonWhiteStyle"
-            android:layout_marginTop="10dp"
-            android:text="@string/lihat_riwayat_melahirkan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_saya_mulai_hamil_lagi" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <ScrollView
-        android:id="@+id/tubuh_3"
+        android:id="@+id/layout_online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
@@ -140,12 +46,109 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tubuh_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textview_belum_hamil"
+                    style="@style/BigHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="300dp"
+                    android:text="@string/anda_belum_hamil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_keterangan_1"
+                    style="@style/BoldDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/klik_tombol_di_bawah_apabila_anda_sudah_mulai_hamil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_belum_hamil" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_saya_sudah_mulai_hamil"
+                    style="@style/ButtonBlueStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/saya_sudah_mulai_hamil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_keterangan_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tubuh_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/textview_sudah_melahirkan"
+                    style="@style/BigHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="270dp"
+                    android:text="@string/anda_sudah_melahirkan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_keterangan_2"
+                    style="@style/BoldDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/klik_tombol_di_bawah_apabila_anda_mulai_hamil_lagi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_sudah_melahirkan" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_saya_mulai_hamil_lagi"
+                    style="@style/ButtonBlueStyle"
+                    android:layout_marginTop="50dp"
+                    android:text="@string/saya_mulai_hamil_lagi"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_keterangan_2" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/lihat_riwayat_melahirkan"
+                    style="@style/ButtonWhiteStyle"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/lihat_riwayat_melahirkan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/button_saya_mulai_hamil_lagi" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/tubuh_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -191,7 +194,7 @@
                         <ImageView
                             android:id="@+id/imageview_panggilan_darurat"
                             style="@style/InsideVerticalMenuStyle"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/ic_baseline_local_hospital_24" />
 
                         <TextView
                             android:id="@+id/textview_panggilan_darurat"
@@ -209,7 +212,7 @@
                         <ImageView
                             android:id="@+id/imageview_rencana_melahirkan"
                             style="@style/InsideVerticalMenuStyle"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/ic_baseline_local_hospital_24" />
 
                         <TextView
                             android:id="@+id/textview_informasi_anak"
@@ -233,9 +236,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/aktivitas"
-                        app:drawableEndCompat="@drawable/ic_home_black_24dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_baseline_question_mark_24"
+                        app:layout_constraintStart_toEndOf="@id/textview_aktivitas"
+                        app:layout_constraintTop_toTopOf="@id/textview_aktivitas" />
 
                     <TextView
                         android:id="@+id/textview_aktivitas_minggu"
@@ -248,8 +259,9 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_kontrol_kehamilan"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="400dp"
                     android:layout_margin="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -258,4 +270,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
+    <include
+        android:id="@+id/layout_offline"
+        layout="@layout/layout_offline"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <include
+        android:id="@+id/layout_memuat"
+        layout="@layout/layout_memuat"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

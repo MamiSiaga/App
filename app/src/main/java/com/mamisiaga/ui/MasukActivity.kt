@@ -1,8 +1,10 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -32,8 +34,11 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var ibuPreferenceViewModel: IbuPreferenceViewModel
     private lateinit var autentikasiViewModel: AutentikasiViewModel
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         binding = ActivityMasukBinding.inflate(layoutInflater)
 
@@ -50,6 +55,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.buttonMasuk.setOnClickListener(this)
+        binding.textviewDaftar.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -93,7 +99,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
         // When the ibu logs in
         autentikasiViewModel.masuk(email, password).observe(this) { resultResponse ->
-            dialog.setContentView(R.layout.custom_loading_dialog)
+            dialog.setContentView(R.layout.custom_dialog_memuat)
             dialog.setCanceledOnTouchOutside(false)
             dialog.setCancelable(false)
 

@@ -37,7 +37,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/informasi_kontrol_kehamilan"
+        android:id="@+id/layout_online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
@@ -50,11 +50,12 @@
             android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_online"
+                android:id="@+id/informasi_kontrol_kehamilan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="20dp"
                 android:visibility="visible">
+
                 <TextView
                     android:id="@+id/textview_judul"
                     style="@style/BigHeader"
@@ -67,18 +68,31 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textview_paragraph"
+                    android:id="@+id/textview_paragraf"
                     style="@style/Paragraph"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
                     android:text="@string/status"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textview_judul" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
+
+    <include
+        android:id="@+id/layout_offline"
+        layout="@layout/layout_offline"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <include
+        android:id="@+id/layout_memuat"
+        layout="@layout/layout_memuat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

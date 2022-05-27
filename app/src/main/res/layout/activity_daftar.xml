@@ -80,7 +80,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_deskripsi" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.mamisiaga.customview.CustomViewButtonForm
             android:id="@+id/button_lanjut"
             style="@style/ButtonBlueStyle"
             android:layout_marginTop="40dp"

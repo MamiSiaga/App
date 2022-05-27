@@ -12,29 +12,36 @@ import com.mamisiaga.api.AnakData
 import com.mamisiaga.databinding.ItemAnakBinding
 import com.mamisiaga.ui.AnakActivity
 
-class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) : ListAdapter<AnakData, AnakDataAdapter.AnakDataViewHolder>(CALLBACK) {
+class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) :
+    ListAdapter<AnakData, AnakDataAdapter.AnakDataViewHolder>(CALLBACK) {
     private var listAnak = ArrayList<AnakData>()
 
     inner class AnakDataViewHolder(private val binding: ItemAnakBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anakData: AnakData) {
             binding.textViewNamaAnak.text = anakData.name
-            binding.textViewTglLahirAnak.text = anakData.dateOfBirth
+            binding.textViewTglLahirAnak.text = "anakData.dateOfBirth"
 
             binding.cardviewAnak.setOnClickListener {
                 val anak = Anak(
                     anakData.id,
                     anakData.name,
-                    anakData.dateOfBirth
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 )
                 val intent = Intent(itemView.context, AnakActivity::class.java)
 
-                //intent.putExtra(AnakActivity.EXTRA_ANAK, anakData)
+                intent.putExtra(AnakActivity.EXTRA_ANAK, anak)
 
                 itemView.context.startActivity(intent)
             }
 
-            binding.opsi.setOnClickListener{
+            binding.opsi.setOnClickListener {
                 setOpsiListener(anakData)
             }
         }
