@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RencanaMelahirkanActivity">
+    tools:context=".ui.RencanaPersalinanActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
@@ -28,7 +28,7 @@
             style="@style/SmallHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rencana_melahirkan"
+            android:text="@string/rencana_persalinan"
             app:layout_constraintBottom_toBottomOf="@id/appBar"
             app:layout_constraintEnd_toEndOf="@id/appBar"
             app:layout_constraintStart_toStartOf="@id/appBar"
@@ -36,15 +36,26 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView_kehamilan_ke"
+        android:id="@+id/textView_rencana_persalinan"
         style="@style/BigHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="@string/rencana_melahirkan"
+        android:text="@string/rencana_persalinan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <TextView
+        android:id="@+id/textView_deskripsi"
+        style="@style/SmallerHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/tanggal_ekspetasi_persalinan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_rencana_persalinan" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_lokasi_rumah_sakit"
@@ -55,13 +66,13 @@
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_kehamilan_ke" />
+        app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edittext_tgl_melahirkan"
+        android:id="@+id/edittext_tgl_persalinan"
         style="@style/EditTextStyle"
         android:layout_marginTop="16dp"
-        android:hint="@string/tanggal_melahirkan"
+        android:hint="@string/tanggal_prediksi"
         android:inputType="date"
         android:focusable="false"
         android:focusableInTouchMode="false"
@@ -77,6 +88,6 @@
         android:text="@string/simpan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edittext_tgl_melahirkan" />
+        app:layout_constraintTop_toBottomOf="@id/edittext_tgl_persalinan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

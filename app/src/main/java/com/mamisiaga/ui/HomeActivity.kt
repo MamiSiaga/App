@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityHomeBinding
 import com.mamisiaga.viewmodel.IbuViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory

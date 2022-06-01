@@ -4,19 +4,23 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Anak
+import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.databinding.ActivityTambahAnakBinding
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.withDateFormat
 import com.mamisiaga.viewmodel.AnakViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
+
 
 class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener {
@@ -29,6 +33,9 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
         binding = ActivityTambahAnakBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        editTextListener()
+        setButtonEnabled()
 
         anakViewModel = ViewModelProvider(
             this,
@@ -73,13 +80,22 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun seeAddAnakResponse() {
+        val jenisKelamin = when (binding.radiogroupJenisKelamin.checkedRadioButtonId) {
+            R.id.radiobutton_laki_laki -> "Laki-laki"
+            else -> "Perempuan"
+        }
+        val golonganDarah = when (binding.radiogroupGolonganDarah.checkedRadioButtonId) {
+            R.id.radiobutton_a -> "A"
+            R.id.radiobutton_b -> "B"
+            R.id.radiobutton_ab -> "AB"
+            else -> "O"
+        }
         val anak = Anak(
             null,
             binding.edittextNama.text.toString(),
-            binding.edittextNik.text.toString(),
             binding.edittextTglLahir.text.toString(),
-            "Perempuan",
-            "A",
+            jenisKelamin,
+            golonganDarah,
             binding.edittextBeratBadan.text.toString().toDouble(),
             binding.edittextTinggiBadan.text.toString().toDouble(),
             binding.edittextLingkarKepala.text.toString().toDouble()
@@ -106,12 +122,143 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Error -> {
                     dialog.dismiss()
 
-                    when (resultResponse.error) {
-                        //"No Internet Connection" -> showFailure()
-                        //else -> showMasukError(true)
-                    }
+                    Toast.makeText(
+                        this@TambahAnakActivity,
+                        showFailure(resultResponse.error),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+        }
+    }
+
+    private fun editTextListener() {
+        binding.apply {
+            edittextNama.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
+            edittextTglLahir.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
+            edittextBeratBadan.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
+            edittextTinggiBadan.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
+            edittextLingkarKepala.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
+            radiogroupJenisKelamin.setOnCheckedChangeListener { group, checkedId ->
+                setButtonEnabled()
+            }
+
+            radiogroupGolonganDarah.setOnCheckedChangeListener { group, checkedId ->
+                setButtonEnabled()
+            }
+        }
+    }
+
+    private fun setButtonEnabled() {
+        binding.apply {
+            val nama = edittextNama.text.toString()
+            val nik = edittextNama.text.toString()
+            val tglLahir = edittextNama.text.toString()
+            val bbAnak = edittextNama.text.toString()
+            val tbAnak = edittextNama.text.toString()
+            val lkAnak = edittextNama.text.toString()
+
+            buttonTambahAnak.isEnabled =
+                nama.isNotEmpty() && nik.isNotEmpty() &&
+                        tglLahir.isNotEmpty() && bbAnak.isNotEmpty() &&
+                        tbAnak.isNotEmpty() && lkAnak.isNotEmpty() &&
+                        binding.radiogroupJenisKelamin.checkedRadioButtonId != -1 &&
+                        binding.radiogroupGolonganDarah.checkedRadioButtonId != -1
         }
     }
 
@@ -124,6 +271,11 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
+    }
+
+    private fun showFailure(error: String) = when (error) {
+        "No Internet Connection" -> getString(R.string.gagal_merespon_permintaan)
+        else -> ""
     }
 
     companion object {

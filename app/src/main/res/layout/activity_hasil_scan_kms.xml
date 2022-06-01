@@ -1,56 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.HasilScanKMSActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/appBar"
-        style="@style/AppBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.HasilScanKMSActivity">
 
-        <ImageButton
-            android:id="@+id/imagebutton_keluar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/blue_50"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintBottom_toBottomOf="@id/appBar"
-            app:layout_constraintStart_toStartOf="@id/appBar"
-            app:layout_constraintTop_toTopOf="@id/appBar" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/appBar"
+            style="@style/AppBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            style="@style/SmallHeader"
-            android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/imagebutton_keluar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/blue_50"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintBottom_toBottomOf="@id/appBar"
+                app:layout_constraintStart_toStartOf="@id/appBar"
+                app:layout_constraintTop_toTopOf="@id/appBar" />
+
+            <TextView
+                style="@style/SmallHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hasil_scan_kms"
+                app:layout_constraintBottom_toBottomOf="@id/appBar"
+                app:layout_constraintEnd_toEndOf="@id/appBar"
+                app:layout_constraintStart_toStartOf="@id/appBar"
+                app:layout_constraintTop_toTopOf="@id/appBar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/sudah_periksa"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hasil_scan_kms"
-            app:layout_constraintBottom_toBottomOf="@id/appBar"
-            app:layout_constraintEnd_toEndOf="@id/appBar"
-            app:layout_constraintStart_toStartOf="@id/appBar"
-            app:layout_constraintTop_toTopOf="@id/appBar" />
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textview_perkembangan_anak"
+                        style="@style/BigHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/perkembangan_anak"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textview_deskripsi"
+                        style="@style/Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/mohon_mengisi_dengan_benar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textview_perkembangan_anak" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_perkembangan_anak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textview_deskripsi" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomBar"
+            style="@style/AppBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.mamisiaga.customview.CustomViewButtonForm
+                android:id="@+id/button_simpan"
+                style="@style/ButtonBlueStyle"
+                android:text="@string/simpan"
+                app:layout_constraintBottom_toBottomOf="@id/bottomBar"
+                app:layout_constraintEnd_toEndOf="@id/bottomBar"
+                app:layout_constraintStart_toStartOf="@id/bottomBar"
+                app:layout_constraintTop_toTopOf="@id/bottomBar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottomBar"
-        style="@style/AppBar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.mamisiaga.customview.CustomViewButtonForm
-            android:id="@+id/button_simpan"
-            style="@style/ButtonBlueStyle"
-            android:text="@string/simpan"
-            app:layout_constraintBottom_toBottomOf="@id/bottomBar"
-            app:layout_constraintEnd_toEndOf="@id/bottomBar"
-            app:layout_constraintStart_toStartOf="@id/bottomBar"
-            app:layout_constraintTop_toTopOf="@id/bottomBar" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

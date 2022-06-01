@@ -18,14 +18,14 @@
         android:padding="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/imunisasi_anak"
+            android:id="@+id/kontrol_kehamilan"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textview_isi_imunisasi_anak"
+                android:id="@+id/textview_pertanyaan_kontrol_kehamilan"
                 style="@style/SmallHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/meliputi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_isi_imunisasi_anak" />
+                app:layout_constraintTop_toBottomOf="@id/textview_pertanyaan_kontrol_kehamilan" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -51,9 +51,9 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:src="@drawable/ic_home_black_24dp"
-            app:layout_constraintEnd_toEndOf="parent"
             android:text=""
-            app:layout_constraintTop_toTopOf="@id/imunisasi_anak" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/kontrol_kehamilan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

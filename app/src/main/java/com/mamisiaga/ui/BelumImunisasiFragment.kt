@@ -71,13 +71,13 @@ class BelumImunisasiFragment : Fragment() {
                 }
                 is ResultResponse.Error -> {
                     when (resultResponse.error) {
-                        //"No Internet Connection" -> showFailure()
+                        //"No Internet Connection" -> drawLayout()
                         //else -> showMasukError(true)
                     }
                 }
             }
 
-            with(binding.recyclerviewImunisasiSaatIni) {
+            with(binding.recyclerviewImunisasiRekomendasi) {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
                 //adapter = imunisasiDataAdapter

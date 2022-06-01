@@ -182,9 +182,5 @@
         <include
             android:id="@+id/layout_offline"
             layout="@layout/layout_offline" />
-
-        <include
-            android:id="@+id/layout_memuat"
-            layout="@layout/layout_memuat" />
     </LinearLayout>
 </ScrollView>

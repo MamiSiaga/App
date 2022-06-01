@@ -1,6 +1,6 @@
 package com.mamisiaga.repository
 
-import com.mamisiaga.`class`.IbuDaftar
+import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.api.APIService
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.flow

@@ -89,18 +89,6 @@
                     app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir_deskripsi" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edittext_nik"
-                    style="@style/EditTextStyle"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/nik"
-                    android:inputType="number"
-                    android:maxLength="16"
-                    android:maxLines="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
-
-                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edittext_tgl_lahir"
                     style="@style/EditTextStyle"
                     android:layout_marginTop="16dp"
@@ -111,7 +99,7 @@
                     android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_nik" />
+                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
 
                 <TextView
                     android:id="@+id/textview_jenis_kelamin"

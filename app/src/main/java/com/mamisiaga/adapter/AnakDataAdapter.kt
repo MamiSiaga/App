@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mamisiaga.`class`.Anak
+import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.api.AnakData
 import com.mamisiaga.databinding.ItemAnakBinding
 import com.mamisiaga.ui.AnakActivity
@@ -26,7 +26,6 @@ class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) :
                 val anak = Anak(
                     anakData.id,
                     anakData.name,
-                    null,
                     null,
                     null,
                     null,

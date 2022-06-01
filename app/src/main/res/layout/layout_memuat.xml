@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="20dp"
-    android:visibility="gone">
+    android:visibility="visible">
 
     <ProgressBar
         android:id="@+id/progressbar"

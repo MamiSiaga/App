@@ -1,4 +1,4 @@
-package com.mamisiaga.`class`
+package com.mamisiaga.dataClass
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -7,7 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Anak(
     val id: String?,
     val name: String?,
-    val nik: String?,
     val dateOfBirth: String?,
     val gender: String?,
     val bloodType: String?,

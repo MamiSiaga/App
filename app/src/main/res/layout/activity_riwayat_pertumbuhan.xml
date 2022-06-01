@@ -46,8 +46,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:descendantFocusability="blocksDescendants">
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,51 +57,66 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textViewDaftarAnak"
-                    style="@style/BigHeader"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="@string/nama_anak"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/textViewUsiaAnak"
-                    style="@style/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/usia_anak"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak" />
+                    <TextView
+                        android:id="@+id/textViewDaftarAnak"
+                        style="@style/BigHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/nama_anak"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewDataPertumbuhan"
-                    android:layout_width="0dp"
-                    android:layout_height="400dp"
-                    android:layout_margin="16dp"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewUsiaAnak"
-                    tools:listitem="@layout/item_pertumbuhan" />
+                    <TextView
+                        android:id="@+id/textViewUsiaAnak"
+                        style="@style/Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/usia_anak"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak" />
 
-                <TextView
-                    android:id="@+id/textview_tidak_ada_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/no_data"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak"
-                    tools:visibility="visible" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewDataPertumbuhan"
+                        android:layout_width="0dp"
+                        android:layout_height="400dp"
+                        android:layout_margin="16dp"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewUsiaAnak"
+                        tools:listitem="@layout/item_pertumbuhan" />
+
+                    <TextView
+                        android:id="@+id/textview_tidak_ada_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_data"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak"
+                        tools:visibility="visible" />
+
+                    <ProgressBar
+                        android:id="@+id/progressbar"
+                        style="@style/ProgressBarStyle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textViewUsiaAnak" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -110,12 +125,4 @@
         android:id="@+id/layout_offline"
         layout="@layout/layout_offline"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-    <include
-        android:id="@+id/layout_memuat"
-        layout="@layout/layout_memuat"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

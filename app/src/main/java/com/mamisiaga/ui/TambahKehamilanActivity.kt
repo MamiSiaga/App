@@ -2,9 +2,12 @@ package com.mamisiaga.ui
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
@@ -31,6 +34,9 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
         binding = ActivityTambahKehamilanBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        editTextListener()
+        setButtonEnabled()
 
         kehamilanViewModel = ViewModelProvider(
             this,
@@ -59,7 +65,7 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
                 datePickerDialog.datePicker.maxDate = calendar.timeInMillis
                 datePickerDialog.show()
             }
-            R.id.button_daftar -> {
+            R.id.button_tambah -> {
                 //seeTambahKehamilanResponse()
             }
         }
@@ -75,7 +81,69 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun seeTambahKehamilanResponse() {
+        val dialog = Dialog(this)
 
+        /*
+        kehamilanViewModel.addKehamilan("ibu1").observe(this) { resultResponse ->
+            dialog.setContentView(R.layout.custom_dialog_memuat)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.setCancelable(false)
+
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    dialog.show()
+                }
+                is ResultResponse.Success -> {
+                    dialog.dismiss()
+
+                    setResult(TambahAnakActivity.TAMBAH_ANAK_RESPONSE_CODE)
+
+                    finish()
+                }
+                is ResultResponse.Error -> {
+                    dialog.dismiss()
+
+                    Toast.makeText(
+                        this@TambahKehamilanActivity,
+                        showFailure(resultResponse.error),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+         */
+    }
+
+    private fun editTextListener() {
+        binding.apply {
+            edittextTglHamil.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+        }
+    }
+
+    private fun setButtonEnabled() {
+        binding.apply {
+            val tgl = edittextTglHamil.text.toString()
+
+            buttonTambah.isEnabled = tgl.isNotEmpty()
+        }
     }
 
     private fun closeKeyboard() {
@@ -87,5 +155,10 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
 
             inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
+    }
+
+    private fun showFailure(error: String) = when (error) {
+        "No Internet Connection" -> getString(R.string.gagal_merespon_permintaan)
+        else -> ""
     }
 }

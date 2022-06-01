@@ -161,4 +161,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginEnd">16dp</item>
     </style>
+
+    <style name="ChipStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipStrokeWidth">1dp</item>
+    </style>
+
+    <style name="ProgressBarStyle">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
 </resources>

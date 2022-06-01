@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.FragmentHomeBinding
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.ui.InformasiAnakActivity
@@ -74,9 +74,27 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.informasi_anak -> {
-                val intent = Intent(activity, InformasiAnakActivity::class.java)
+                /*val anak = Anak(
+                    "1",
+                    "MMMM",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                )
 
-                startActivity(intent)
+                val intent = Intent(activity, AnakActivity::class.java)
+
+                startActivity(
+                    intent.putExtra(AnakActivity.EXTRA_ANAK, anak)
+                )
+
+                 */
+
+                startActivity(Intent(activity, InformasiAnakActivity::class.java))
             }
         }
     }

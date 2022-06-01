@@ -35,7 +35,7 @@
     <string name="berdasarkan_minggu_ke">Berdasarkan minggu ke</string>
     <string name="selengkapnya">Selengkapnya</string>
     <string name="panggilan_darurat">Panggilan Darurat</string>
-    <string name="rencana_melahirkan">Rencana Melahirkan</string>
+    <string name="rencana_persalinan">Rencana Persalinan</string>
     <string name="user_profile">User Profile</string>
     <string name="user_name">Mama</string>
     <string name="user_email">haimama@mail.com</string>
@@ -108,13 +108,30 @@
     <string name="sedang_memuat">Sedang memuat…</string>
     <string name="sertifikat_penghargaan">Sertifikat Penghargaan</string>
     <string name="tanggal_imunisasi">Tanggal imunisasi</string>
-    <string name="perkembangan_anak">Perkembangan Anak: MMMM</string>
+    <string name="perkembangan_anak">Perkembangan Anak:</string>
     <string name="hasil_scan_kms">Hasil Scan KMS</string>
     <string name="bulan_ke">Bulan ke-</string>
     <string name="tanggal_pemeriksaan">Tanggal pemeriksaan</string>
     <string name="edit_data">Edit data</string>
     <string name="usia_anak">Usia anak</string>
     <string name="menu_anak">Menu Anak</string>
+    <string name="deteksi_dini_penyakit">Deteksi Dini Penyakit</string>
+    <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar.</string>
+    <string name="status_usia_anak">Anak Anda sekarang telah berusia 3 bulan.</string>
+    <string name="mulai_scan_kms_anak">Mulai Scan KMS Anak!</string>
+    <string name="lewati_tahap_ini">Lewati Tahap Ini</string>
+    <string name="lakukan_scan_kms_agar_pengisian_berat_badan_anak_anda_otomatis_dilakukan">Lakukan scan KMS agar pengisian berat badan anak Anda otomatis dilakukan.</string>
+    <string name="data_anak">Data Anak</string>
+    <string name="tambah_pertumbuhan_anak">Tambah Pertumbuhan Anak</string>
+    <string name="sudah_imunisasi">Sudah diberikan pada tanggal %1$s</string>
+    <string name="usia_ke">Usia ke-</string>
+    <string name="tanggal_prediksi">Tanggal prediksi persalinan</string>
+    <string name="edit_pertumbuhan_anak">Edit Pertumbuhan Anak</string>
+    <string name="masukkan_email_anda">Masukkan E-mail Anda:</string>
+    <string name="edit_kata_sandi">Edit Kata Sandi</string>
+    <string name="silahkan_buat_kata_sandi_yang_baru">Silahkan buat kata sandi yang baru:</string>
+    <string name="tanggal_ekspetasi_persalinan">Tanggal ekspetasi persalinan:</string>
+    <string name="imunisasi_yang_telah_dilaksanakan">Imunisasi yang Telah Dilaksanakan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>
@@ -122,7 +139,6 @@
     <string-array name="kontrol_kehamilan_sekarang_sudah_jadwal_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>
-        <item>Hapus jadwal</item>
         <item>Sudah periksa?</item>
     </string-array>
     <string-array name="kontrol_kehamilan_sekarang_selesai_array">
@@ -136,7 +152,7 @@
         <item>Hapus data anak</item>
     </string-array>
     <string-array name="opsi_grafik_pertumbuhan_array">
-        <item>Tambah pertumbuhan</item>
+        <item>Tambah pertumbuhan anak</item>
         <item>Lihat riwayat pertumbuhan</item>
     </string-array>
     <string-array name="imunisasi_mulai_array">

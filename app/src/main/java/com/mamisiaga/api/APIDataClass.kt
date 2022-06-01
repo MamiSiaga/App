@@ -189,13 +189,13 @@ data class PertumbuhanData(
     val age: Int,
 
     @field:SerializedName("weight")
-    val weight: Double,
+    val weight: Int,
 
     @field:SerializedName("height")
-    val height: Double,
+    val height: Int,
 
     @field:SerializedName("head_diameter")
-    val headDiameter: Double
+    val headDiameter: Int
 )
 
 data class GetImunisasiNotDoneResponse(

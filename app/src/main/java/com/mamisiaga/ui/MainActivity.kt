@@ -10,7 +10,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityMainBinding
 import com.mamisiaga.repository.IbuPreference
 import com.mamisiaga.viewmodel.IbuPreferenceViewModel
@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         //getLoginIbu()
 
-
         val ibu = Ibu("aaaaa", "mama@mail.com", "id", true)
 
         startActivity(
@@ -45,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         finish()
+        
     }
 
     private fun getLoginIbu() {

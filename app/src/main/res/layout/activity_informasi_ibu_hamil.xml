@@ -39,7 +39,7 @@
         android:id="@+id/layout_online"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar">
@@ -53,19 +53,22 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/tubuh_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/appBar">
 
                 <TextView
                     android:id="@+id/textview_belum_hamil"
                     style="@style/BigHeader"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="300dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
                     android:text="@string/anda_belum_hamil"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -75,8 +78,11 @@
                 <TextView
                     android:id="@+id/textview_keterangan_1"
                     style="@style/BoldDescription"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
                     android:text="@string/klik_tombol_di_bawah_apabila_anda_sudah_mulai_hamil"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -99,16 +105,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appBar">
 
                 <TextView
                     android:id="@+id/textview_sudah_melahirkan"
                     style="@style/BigHeader"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="270dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
                     android:text="@string/anda_sudah_melahirkan"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -117,8 +126,11 @@
                 <TextView
                     android:id="@+id/textview_keterangan_2"
                     style="@style/BoldDescription"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
                     android:text="@string/klik_tombol_di_bawah_apabila_anda_mulai_hamil_lagi"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -151,7 +163,7 @@
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/appBar">
 
                 <TextView
                     android:id="@+id/textview_status_kehamilan"
@@ -187,7 +199,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/panggilan_darurat"
                         style="@style/VerticalMenuStyle"
-                        app:layout_constraintEnd_toStartOf="@+id/rencana_melahirkan"
+                        app:layout_constraintEnd_toStartOf="@+id/rencana_persalinan"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -203,70 +215,86 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/rencana_melahirkan"
+                        android:id="@+id/rencana_persalinan"
                         style="@style/VerticalMenuStyle"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/panggilan_darurat"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:id="@+id/imageview_rencana_melahirkan"
+                            android:id="@+id/imageview_rencana_persalinan"
                             style="@style/InsideVerticalMenuStyle"
                             android:src="@drawable/ic_baseline_local_hospital_24" />
 
                         <TextView
                             android:id="@+id/textview_informasi_anak"
                             style="@style/InsideVerticalMenuStyle"
-                            android:text="@string/rencana_melahirkan" />
+                            android:text="@string/rencana_persalinan" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/aktivitas"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/menu_ibu_hamil">
 
-                    <TextView
-                        android:id="@+id/textview_aktivitas"
-                        style="@style/BigHeader"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/aktivitas"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/aktivitas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/ic_baseline_question_mark_24"
-                        app:layout_constraintStart_toEndOf="@id/textview_aktivitas"
-                        app:layout_constraintTop_toTopOf="@id/textview_aktivitas" />
-
-                    <TextView
-                        android:id="@+id/textview_aktivitas_minggu"
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/berdasarkan_minggu_ke"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textview_aktivitas" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_kontrol_kehamilan"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:layout_margin="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/aktivitas"
-                    tools:listitem="@layout/item_ibu_hamil" />
+                        <TextView
+                            android:id="@+id/textview_aktivitas"
+                            style="@style/BigHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aktivitas"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/ic_baseline_question_mark_24"
+                            app:layout_constraintStart_toEndOf="@id/textview_aktivitas"
+                            app:layout_constraintTop_toTopOf="@id/textview_aktivitas" />
+
+                        <TextView
+                            android:id="@+id/textview_aktivitas_minggu"
+                            style="@style/Description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/berdasarkan_minggu_ke"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/textview_aktivitas" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_kontrol_kehamilan"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:layout_margin="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/aktivitas"
+                        tools:listitem="@layout/item_ibu_hamil" />
+
+                    <ProgressBar
+                        android:id="@+id/layout_memuat"
+                        style="@style/ProgressBarStyle"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/aktivitas" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
@@ -275,12 +303,4 @@
         android:id="@+id/layout_offline"
         layout="@layout/layout_offline"
         app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-    <include
-        android:id="@+id/layout_memuat"
-        layout="@layout/layout_memuat"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

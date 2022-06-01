@@ -2,7 +2,7 @@ package com.mamisiaga.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.mamisiaga.`class`.IbuDaftar
+import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.usecase.AutentikasiUseCase
 
 class AutentikasiViewModel(private val autentikasiUseCase: AutentikasiUseCase) :

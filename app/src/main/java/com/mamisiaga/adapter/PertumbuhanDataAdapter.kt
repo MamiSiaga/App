@@ -1,16 +1,13 @@
 package com.mamisiaga.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mamisiaga.`class`.Pertumbuhan
 import com.mamisiaga.api.PertumbuhanData
 import com.mamisiaga.databinding.ItemPertumbuhanBinding
-import com.mamisiaga.ui.AnakActivity
 
 class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> Unit) :
     ListAdapter<PertumbuhanData, PertumbuhanDataAdapter.PertumbuhanDataViewHolder>(CALLBACK) {
@@ -18,11 +15,13 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
 
     inner class PertumbuhanDataViewHolder(private val binding: ItemPertumbuhanBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(pertumbuhanData: PertumbuhanData) {
             binding.textViewBulan.text = pertumbuhanData.age.toString()
             binding.textViewTglPemeriksaan.text =
                 "${binding.textViewTglPemeriksaan.text}: ${pertumbuhanData.date_of_measurement}"
 
+            /*
             binding.cardviewPertumbuhan.setOnClickListener {
                 val pertumbuhan = Pertumbuhan(
                     pertumbuhanData.date_of_measurement,
@@ -37,6 +36,7 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
 
                 itemView.context.startActivity(intent)
             }
+             */
 
             binding.textViewEditData.setOnClickListener {
                 editDataListener(pertumbuhanData)

@@ -2,7 +2,7 @@ package com.mamisiaga.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import com.mamisiaga.`class`.Anak
+import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.usecase.AnakUseCase
 
 class AnakViewModel(private val anakUseCase: AnakUseCase) :

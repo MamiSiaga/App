@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.repository.IbuPreference
 import kotlinx.coroutines.launch
 

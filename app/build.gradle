@@ -33,6 +33,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -75,9 +76,11 @@ dependencies {
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'com.androidplot:androidplot-core:1.5.9'
+    //implementation 'com.androidplot:androidplot-core:1.5.9'
 
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
     // CameraX
     def camerax_version = "1.2.0-alpha01"
@@ -87,5 +90,8 @@ dependencies {
 
     implementation "com.github.barteksc:android-pdf-viewer:2.8.2"
 
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT'
+
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
 }

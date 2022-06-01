@@ -12,7 +12,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.FragmentProfilBinding
 import com.mamisiaga.repository.IbuPreference
 import com.mamisiaga.tools.isConnected

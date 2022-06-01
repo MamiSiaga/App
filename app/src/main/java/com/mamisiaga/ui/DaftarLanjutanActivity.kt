@@ -16,7 +16,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.IbuDaftar
+import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.databinding.ActivityDaftarLanjutanBinding
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.withDateFormat
@@ -233,6 +233,10 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
 
                 }
             })
+
+            radiogroupPertanyaanPosyandu.setOnCheckedChangeListener { group, checkedId ->
+                setButtonEnabled()
+            }
         }
     }
 

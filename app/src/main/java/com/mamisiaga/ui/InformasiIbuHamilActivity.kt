@@ -29,7 +29,7 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
-        binding.rencanaMelahirkan.setOnClickListener(this)
+        binding.rencanaPersalinan.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -40,8 +40,8 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
-            R.id.rencana_melahirkan -> {
-                startActivity(Intent(this, RencanaMelahirkanActivity::class.java))
+            R.id.rencana_persalinan -> {
+                startActivity(Intent(this, RencanaPersalinanActivity::class.java))
             }
         }
     }
@@ -72,9 +72,16 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Error -> {
                     showLoadingSign(false)
 
+                    binding.recyclerViewDataAnak.visibility = View.GONE
+                    binding.textviewTidakAdaData.visibility = View.GONE
+
                     when (resultResponse.error) {
                         "No Internet Connection" -> drawLayout()
-                        //else -> showMasukError(true)
+                        else -> Toast.makeText(
+                                this@InformasiAnakActivity,
+                                "Gagal menampilkan data. Silahkan dicoba ulang.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                     }
                 }
             }
@@ -103,11 +110,9 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showLoadingSign(isLoading: Boolean) {
         if (isLoading) {
-            binding.layoutMemuat.layoutMemuat.visibility = View.VISIBLE
-            binding.layoutOnline.visibility = View.GONE
+            binding.layoutMemuat.visibility = View.VISIBLE
         } else {
-            binding.layoutMemuat.layoutMemuat.visibility = View.GONE
-            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutMemuat.visibility = View.GONE
         }
     }
 }

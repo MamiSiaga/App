@@ -17,7 +17,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Ibu
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityMasukBinding
 import com.mamisiaga.repository.IbuPreference
 import com.mamisiaga.tools.ResultResponse
@@ -54,6 +54,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
         )[AutentikasiViewModel::class.java]
 
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
+        binding.textviewLupaKataSandi.setOnClickListener(this)
         binding.buttonMasuk.setOnClickListener(this)
         binding.textviewDaftar.setOnClickListener(this)
     }
@@ -62,6 +63,9 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
         when (view.id) {
             R.id.button_muat_ulang -> {
                 drawLayout()
+            }
+            R.id.textview_lupa_kata_sandi -> {
+                startActivity(Intent(this@MasukActivity, LupaKataSandiActivity::class.java))
             }
             R.id.button_masuk -> {
                 val inputMethodManager =
@@ -75,17 +79,6 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
                 finish()
             }
-        }
-    }
-
-    private fun drawLayout() {
-        // Checking Internet connection
-        if (isConnected(applicationContext)) {
-            binding.layoutOnline.visibility = View.VISIBLE
-            binding.layoutOffline.layoutOffline.visibility = View.GONE
-        } else {
-            binding.layoutOnline.visibility = View.GONE
-            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
         }
     }
 
@@ -143,12 +136,24 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Error -> {
                     dialog.dismiss()
 
-                    when (resultResponse.error) {
-                        "No Internet Connection" -> showFailure()
-                        //else -> showMasukError(true)
-                    }
+                    Toast.makeText(
+                        this@MasukActivity,
+                        showFailure(resultResponse.error),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+        }
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
         }
     }
 
@@ -195,20 +200,10 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                     && password.isNotEmpty()
     }
 
-    /*
-    private fun showMasukError(isError: Boolean) {
-        if (isError) binding.textviewMasukError.visibility = View.VISIBLE
-        else binding.textviewMasukError.visibility = View.GONE
+    private fun showFailure(error: String) = when (error) {
+        "No Internet Connection" -> getString(R.string.gagal_merespon_permintaan)
+        else -> ""
     }
-     */
 
-    private fun showFailure() {
-        Toast.makeText(
-            this@MasukActivity,
-            getString(R.string.gagal_merespon_permintaan),
-            Toast.LENGTH_SHORT
-        ).show()
-
-        //binding.buttonMasuk.isEnabled = enableButtonMasuk()
-    }
+    //binding.buttonMasuk.isEnabled = enableButtonMasuk()
 }

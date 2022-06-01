@@ -19,7 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/imunisasi_anak"
-            android:layout_width="wrap_content"
+            android:layout_width="320dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -39,19 +39,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/diberikan_sebelum_dosis_ke_berikutnya"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_isi_imunisasi_anak" />
 
 
-            <TextView
-                android:id="@+id/textView_status"
-                style="@style/Description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/status"
-                android:textStyle="bold"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_status_imunisasi"
+                style="@style/ChipStyle"
+                android:text="Belum imunisasi"
+                app:chipBackgroundColor="@color/red_50"
+                app:chipStrokeColor="@color/red_100"
+                android:textColor="@color/red_100"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
 
@@ -60,10 +60,10 @@
                 style="@style/Description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
                 android:text="@string/tanggal"
-                app:layout_constraintStart_toEndOf="@id/textView_status"
+                app:layout_constraintStart_toEndOf="@id/chip_status_imunisasi"
                 app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -72,7 +72,7 @@
             android:id="@+id/opsi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="36dp"
             android:foregroundGravity="center_horizontal"
             android:src="@drawable/ic_baseline_more_vert_24"
             app:layout_constraintEnd_toEndOf="parent"

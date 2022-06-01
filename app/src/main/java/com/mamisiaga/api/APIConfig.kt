@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APIConfig {
-    private const val baseUrl = "https://dummy.restapiexample.com/api/v1/"
+    private const val baseUrl = "http://34.124.227.17/"
 
     fun getAPIService(): APIService {
         val loggingInterceptor = if (BuildConfig.DEBUG) {

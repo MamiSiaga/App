@@ -1,8 +1,6 @@
 package com.mamisiaga.ui
 
-import android.app.Dialog
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -16,11 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Anak
-import com.mamisiaga.`class`.Opsi
 import com.mamisiaga.adapter.AnakDataAdapter
 import com.mamisiaga.adapter.OpsiAdapter
 import com.mamisiaga.api.AnakData
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Opsi
 import com.mamisiaga.databinding.ActivityInformasiAnakBinding
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
@@ -75,28 +73,28 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
 
             // Menu clicked in the bottom sheet dialog
             val opsiAdapter = OpsiAdapter { opsi ->
+                val anak = Anak(
+                    anakData.id,
+                    anakData.name,
+                    "23 May 2018",
+                    "Perempuan",
+                    "A",
+                    2.2,
+                    2.2,
+                    5.5
+                )
+
                 if (opsi.item == "Lihat data anak") {
                     startActivity(
                         Intent(
                             this@InformasiAnakActivity,
-                            InformasiImunisasiActivity::class.java
-                        )
+                            LihatAnakActivity::class.java
+                        ).putExtra(LihatAnakActivity.EXTRA_ANAK, anak)
                     )
 
                     bottomSheetDialog.dismiss()
                 } else if (opsi.item == "Hapus data anak") {
-                    val anak = Anak(
-                        null,
-                        "AAAA",
-                        "111",
-                        "23 May 2018",
-                        "Perempuan",
-                        "A",
-                        2.2,
-                        2.2,
-                        5.5
-                    )
-
+                    /*
                     val dialog = Dialog(this)
 
                     anakViewModel.addAnak(anak).observe(this) { resultResponse ->
@@ -123,6 +121,7 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
                             }
                         }
                     }
+                     */
 
                     bottomSheetDialog.dismiss()
                 }
@@ -204,7 +203,16 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
 
                     when (resultResponse.error) {
                         "No Internet Connection" -> drawLayout()
-                        //else -> showMasukError(true)
+                        else -> {
+                            binding.recyclerViewDataAnak.visibility = View.GONE
+                            binding.textviewTidakAdaData.visibility = View.GONE
+
+                            Toast.makeText(
+                                this@InformasiAnakActivity,
+                                "Gagal menampilkan data. Silahkan dicoba ulang.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             }
@@ -231,12 +239,12 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showLoadingSign(isLoading: Boolean) {
+        binding.textviewTidakAdaData.visibility = View.GONE
+
         if (isLoading) {
-            binding.layoutMemuat.layoutMemuat.visibility = View.VISIBLE
-            binding.layoutOnline.visibility = View.GONE
+            binding.progressbar.visibility = View.VISIBLE
         } else {
-            binding.layoutMemuat.layoutMemuat.visibility = View.GONE
-            binding.layoutOnline.visibility = View.VISIBLE
+            binding.progressbar.visibility = View.GONE
         }
     }
 }

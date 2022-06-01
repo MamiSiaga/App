@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable-mdpi/button_light_blue.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_menu.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/background_title_1.xml" value="0.1" />
@@ -34,36 +35,43 @@
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1545" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.155" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/drawable/spinner.xml" value="0.138" />
-        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_anak.xml" value="0.18" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_anak.xml" value="0.12" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_child.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_daftar.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_daftar_lanjutan.xml" value="0.16" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_detail_imunisasi.xml" value="0.33" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_edit_kata_sandi.xml" value="0.33" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_hasil_gambar.xml" value="0.1609375" />
-        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_hasil_scan_kms.xml" value="0.2" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_hasil_scan_kms.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_informasi_anak.xml" value="0.15" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_informasi_ibu_hamil.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_informasi_imunisasi.xml" value="0.1609375" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_informasi_kontrol_kehamilan.xml" value="0.12" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_kamera.xml" value="0.18" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_lihat_anak.xml" value="0.33" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_login.xml" value="0.16" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_lupa_kata_sandi.xml" value="0.14" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_masuk.xml" value="0.13" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_rencana_melahirkan.xml" value="0.20416666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_rencana_persalinan.xml" value="0.11927083333333334" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_riwayat_pertumbuhan.xml" value="0.14270833333333333" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_sudah_periksa.xml" value="0.19010416666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_tambah_anak.xml" value="0.22" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_tambah_edit_pertumbuhan_anak.xml" value="0.11510416666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_tambah_kehamilan.xml" value="0.25" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_tambah_pertumbuhan_anak.xml" value="0.18" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/activity_view_pager.xml" value="0.18" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/bottom_sheet_dialog_anak.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/bottom_sheet_dialog_array.xml" value="0.1421875" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/bottom_sheet_dialog_kontrol_kehamilan.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_dialog.xml" value="0.33" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_dialog_confirmation.xml" value="0.1421875" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_dialog_konfirmasi.xml" value="0.16927083333333334" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_dialog_memuat.xml" value="0.14322916666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/custom_loading_dialog.xml" value="0.5" />
-        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_belum_imunisasi.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_belum_imunisasi.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_child_info.xml" value="0.22" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_home.xml" value="0.2" />
@@ -75,6 +83,7 @@
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/fragment_view_pager2.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_anak.xml" value="0.18" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_array.xml" value="0.13541666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_belum_imunisasi.xml" value="0.16" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_ibu_hamil.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_imunisasi_anak.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_opsi.xml" value="0.22" />
@@ -82,6 +91,8 @@
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_pertanyaan_kontrol_kehamilan.xml" value="0.25" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_pertumbuhan.xml" value="0.2" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_riwayat_pertumbuhan.xml" value="0.14166666666666666" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_scan_kms.xml" value="0.22" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/item_sudah_imunisasi.xml" value="0.16" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/layout_memuat.xml" value="0.1421875" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/layout_offline.xml" value="0.20416666666666666" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/App/MamiSiaga/app/src/main/res/layout/page_no_internet.xml" value="0.1" />

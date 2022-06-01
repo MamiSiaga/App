@@ -30,6 +30,18 @@ object Injection {
         return IbuInteractor(repository)
     }
 
+    private fun provideKehamilanRepository(): KehamilanRepository {
+        val apiService = APIConfig.getAPIService()
+
+        return KehamilanRepository.getInstance(apiService)
+    }
+
+    fun provideKehamilanUseCase(): KehamilanUseCase {
+        val repository = provideKehamilanRepository()
+
+        return KehamilanInteractor(repository)
+    }
+
     private fun provideAnakRepository(): AnakRepository {
         val apiService = APIConfig.getAPIService()
 
@@ -42,16 +54,16 @@ object Injection {
         return AnakInteractor(repository)
     }
 
-    private fun provideKehamilanRepository(): KehamilanRepository {
+    private fun providePertumbuhanRepository(): PertumbuhanRepository {
         val apiService = APIConfig.getAPIService()
 
-        return KehamilanRepository.getInstance(apiService)
+        return PertumbuhanRepository.getInstance(apiService)
     }
 
-    fun provideKehamilanUseCase(): KehamilanUseCase {
-        val repository = provideKehamilanRepository()
+    fun providePertumbuhanUseCase(): PertumbuhanUseCase {
+        val repository = providePertumbuhanRepository()
 
-        return KehamilanInteractor(repository)
+        return PertumbuhanInteractor(repository)
     }
 
     private fun provideImunisasiRepository(): ImunisasiRepository {

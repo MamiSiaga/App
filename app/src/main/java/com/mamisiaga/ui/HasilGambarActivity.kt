@@ -40,8 +40,8 @@ class HasilGambarActivity : AppCompatActivity(), View.OnClickListener {
 
                 finish()
             }
-            R.id.button_tambah -> {
-                //...
+            R.id.button_lanjut -> {
+
 
                 finish()
             }

@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url "https://jitpack.io" }
         gradlePluginPortal()
+        jcenter()
     }
 }
 rootProject.name = "MamiSiaga"

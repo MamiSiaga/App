@@ -5,31 +5,49 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.androidplot.xy.LineAndPointFormatter
-import com.androidplot.xy.PanZoom
-import com.androidplot.xy.SimpleXYSeries
-import com.androidplot.xy.XYGraphWidget
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mamisiaga.R
-import com.mamisiaga.`class`.Anak
-import com.mamisiaga.`class`.Opsi
 import com.mamisiaga.adapter.OpsiAdapter
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Opsi
+import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityAnakBinding
+import com.mamisiaga.tools.arrayBeratBadanLakilaki
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.AnakViewModel
-import java.text.FieldPosition
-import java.text.Format
-import java.text.ParsePosition
-import kotlin.math.roundToInt
+import com.mamisiaga.viewmodelfactory.ViewModelFactory
+import lecho.lib.hellocharts.model.*
+
 
 class AnakActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityAnakBinding
     private lateinit var anakViewModel: AnakViewModel
     private lateinit var anak: Anak
+    private val responseCode =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            when (result.resultCode) {
+                TambahEditPertumbuhanAnakActivity.TAMBAH_PERTUMBUHAN_ANAK_RESPONSE_CODE -> {
+                    //anakViewModel.getPertumbuhanAnak("1").removeObservers(this)
+
+                    //seeAnakResponse()
+
+                    Toast.makeText(
+                        this,
+                        "Berhasil menambahkan data pertumbuhan anak baru.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,18 +60,16 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.textviewNamaAnak.text = anak.name
 
-        /*
         anakViewModel = ViewModelProvider(
             this,
             ViewModelFactory.AnakViewModelFactory(applicationContext)
         )[AnakViewModel::class.java]
-         */
 
         seeAnakResponse()
+        showGrafikKMS()
 
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.layoutInfoImunisasi.setOnClickListener(this)
-        binding.layoutScanPhoto.setOnClickListener(this)
         binding.imageviewOpsiGrafikPertumbuhan.setOnClickListener(this)
     }
 
@@ -64,9 +80,6 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.layoutInfoImunisasi -> {
                 startActivity(Intent(this, InformasiImunisasiActivity::class.java))
-            }
-            R.id.layoutScanPhoto -> {
-                startActivity(Intent(this, KameraActivity::class.java))
             }
             R.id.imageview_opsi_grafik_pertumbuhan -> {
                 showOpsi()
@@ -98,6 +111,83 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
          */
     }
 
+    private fun showGrafikKMS() {
+        val yGrafikKMS = arrayOf<Number>(
+            5,
+            6.7,
+            7.2,
+            7.7,
+            8,
+            8.2,
+            8,
+            8.7,
+            9.3,
+            9.2,
+            9,
+            9.5,
+            9.8,
+            9,
+            9,
+            9,
+            10,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+        )
+
+        val lines = arrayListOf<Line>()
+        val data = LineChartData()
+        val axisValues = arrayListOf<AxisValue>()
+
+        val yGrafikKMSValues = arrayListOf<PointValue>()
+
+        val lineGrafikKMS = Line(yGrafikKMSValues).setColor(Color.parseColor("#0986DF"))
+
+        for (i in arrayBeratBadanLakilaki) {
+            val yBeratBadanLakilaki = arrayListOf<PointValue>()
+
+            for (j in i.indices) {
+                yBeratBadanLakilaki.add(PointValue(j.toFloat(), i[j].toFloat()))
+            }
+
+            val lineBeratBadan = Line(yBeratBadanLakilaki)
+            lineBeratBadan.setHasPoints(false)
+
+            lines.add(lineBeratBadan)
+        }
+
+        for (i in 0..60) {
+            axisValues.add(i, AxisValue(i.toFloat()).setLabel(i.toString()))
+        }
+
+        for (i in yGrafikKMS.indices) {
+            yGrafikKMSValues.add(PointValue(i.toFloat(), yGrafikKMS[i].toFloat()))
+        }
+
+        /*
+        for (i in plus3SD.indices) {
+            yPlus3SDValues.add(PointValue(i.toFloat(), plus3SD[i].toFloat()))
+        }
+        */
+
+        lines.add(lineGrafikKMS)
+
+        data.lines = lines
+
+        binding.plot.lineChartData = data
+        binding.plot.maxZoom = 1f
+
+        val axis = Axis().setName("Usia (bulan)")
+        axis.values = axisValues
+        data.axisXBottom = axis
+
+        val yAxis = Axis().setName("Berat badan (kg)")
+        data.axisYLeft = yAxis
+    }
+
     private fun showOpsi() {
         val bottomSheetDialog = BottomSheetDialog(this)
 
@@ -114,8 +204,19 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         // Menu clicked in the bottom sheet dialog
         val opsiAdapter = OpsiAdapter { opsi ->
-            if (opsi.item == "Lihat riwayat pertumbuhan") {
-                //startActivity(Intent(this@RiwayatPertumbuhanActivity, InformasiImunisasiActivity::class.java))
+            if (opsi.item == "Tambah pertumbuhan anak") {
+                val pertumbuhan = Pertumbuhan(null,22, null, null, null)
+
+                responseCode.launch(
+                    Intent(
+                        this,
+                        TambahEditPertumbuhanAnakActivity::class.java
+                    ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
+                )
+
+                bottomSheetDialog.dismiss()
+            } else if (opsi.item == "Lihat riwayat pertumbuhan") {
+                startActivity(Intent(this, RiwayatPertumbuhanActivity::class.java))
 
                 bottomSheetDialog.dismiss()
             }
@@ -148,30 +249,27 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun showGrafik() {
-        val domainLabels = arrayOf<Number>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-        val series1Numbers = arrayOf<Number>(5, 6.7, 7.2, 7.7, 8, 8.2, 8, 8.7, 9.3, 9.2, 9, 9.5)
-        val series1 = SimpleXYSeries(
-            listOf(* series1Numbers),
-            SimpleXYSeries.ArrayFormat.Y_VALS_ONLY,
-            "Series 1"
-        )
-        val series1Format = LineAndPointFormatter(Color.BLUE, Color.BLACK, null, null)
+    private fun showKonfirmasi() {
+        val alert = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.custom_dialog, null)
+        val buttonOK = view.findViewById<Button>(R.id.button_ok)
+        val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
 
-        binding.plot.addSeries(series1, series1Format)
-        binding.plot.graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = object : Format() {
-            override fun format(p0: Any, p1: StringBuffer, p2: FieldPosition): StringBuffer {
-                val i = (p0 as Number).toFloat().roundToInt()
+        alert.setView(view)
 
-                return p1.append(domainLabels[i])
-            }
+        val alertDialog: AlertDialog = alert.create()
 
-            override fun parseObject(p0: String?, p1: ParsePosition?): Any? {
-                return null
-            }
+        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        buttonOK.setOnClickListener {
+            alertDialog.dismiss()
         }
 
-        PanZoom.attach(binding.plot)
+        buttonCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
     }
 
     private fun drawLayout() {
@@ -187,11 +285,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showLoadingSign(isLoading: Boolean) {
         if (isLoading) {
-            binding.layoutMemuat.layoutMemuat.visibility = View.VISIBLE
-            binding.layoutOnline.visibility = View.GONE
+            binding.layoutMemuat.visibility = View.VISIBLE
         } else {
-            binding.layoutMemuat.layoutMemuat.visibility = View.GONE
-            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutMemuat.visibility = View.GONE
         }
     }
 

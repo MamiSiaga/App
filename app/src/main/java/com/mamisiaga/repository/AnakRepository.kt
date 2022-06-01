@@ -1,6 +1,6 @@
 package com.mamisiaga.repository
 
-import com.mamisiaga.`class`.Anak
+import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.api.APIService
 import com.mamisiaga.api.AnakData
 import com.mamisiaga.tools.ResultResponse
@@ -73,7 +73,6 @@ class AnakRepository private constructor(private val apiService: APIService) {
                     apiService.editAnakResponse(
                         anak.id!!,
                         anak.name!!,
-                        anak.nik!!,
                         anak.dateOfBirth!!,
                         anak.gender!!,
                         anak.bloodType!!,

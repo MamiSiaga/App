@@ -1,10 +1,10 @@
 package com.mamisiaga.usecase
 
 import androidx.lifecycle.LiveData
-import com.mamisiaga.`class`.Anak
-import com.mamisiaga.`class`.Ibu
-import com.mamisiaga.`class`.IbuDaftar
 import com.mamisiaga.api.*
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
+import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.Flow
 
@@ -48,6 +48,10 @@ interface AnakUseCase {
     fun editAnak(anak: Anak): Flow<ResultResponse<EditAnakResponse>>
 
     fun deleteAnak(id: String): Flow<ResultResponse<DeleteAnakResponse>>
+}
+
+interface PertumbuhanUseCase {
+
 }
 
 interface ImunisasiUseCase {

@@ -1,4 +1,4 @@
-package com.mamisiaga.`class`
+package com.mamisiaga.dataClass
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

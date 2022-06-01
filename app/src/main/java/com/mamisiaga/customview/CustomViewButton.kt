@@ -43,6 +43,6 @@ class CustomViewButtonForm : androidx.appcompat.widget.AppCompatButton {
         textColorObject = ContextCompat.getColor(context, android.R.color.background_light)
 
         enabledBackground = ContextCompat.getDrawable(context, R.drawable.button_blue)
-        disabledBackground = ContextCompat.getDrawable(context, R.drawable.button_gray)
+        disabledBackground = ContextCompat.getDrawable(context, R.drawable.button_light_blue)
     }
 }

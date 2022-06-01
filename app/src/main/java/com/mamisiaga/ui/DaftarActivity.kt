@@ -8,13 +8,17 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityDaftarBinding
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.tools.isEmailFormat
+import com.mamisiaga.viewmodel.AutentikasiViewModel
+import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class DaftarActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDaftarBinding
+    private lateinit var autentikasiViewModel: AutentikasiViewModel
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +29,11 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDaftarBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        autentikasiViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.AutentikasiViewModelFactory()
+        )[AutentikasiViewModel::class.java]
 
         drawLayout()
         editTextListener()
@@ -56,17 +65,6 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun drawLayout() {
-        // Checking Internet connection
-        if (isConnected(applicationContext)) {
-            binding.layoutOnline.visibility = View.VISIBLE
-            binding.layoutOffline.layoutOffline.visibility = View.GONE
-        } else {
-            binding.layoutOnline.visibility = View.GONE
-            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
-        }
-    }
-
     private fun editTextListener() {
         binding.apply {
             edittextEmail.addTextChangedListener(object : TextWatcher {
@@ -91,5 +89,16 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonLanjut.isEnabled =
             email.isNotEmpty() && isEmailFormat(email)
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
     }
 }

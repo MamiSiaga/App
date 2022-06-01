@@ -15,7 +15,7 @@ class ViewModelFactory {
             modelClass.isAssignableFrom(IbuPreferenceViewModel::class.java) -> IbuPreferenceViewModel(
                 ibuPreference
             ) as T
-            else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
+            else -> throw IllegalArgumentException("Unknown ViewModel dataClass: " + modelClass.name)
         }
     }
 
@@ -25,7 +25,7 @@ class ViewModelFactory {
                 @Suppress("UNCHECKED_CAST")
                 return AutentikasiViewModel(Injection.provideAutentikasiUseCase()) as T
             }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
         }
     }
 
@@ -35,7 +35,7 @@ class ViewModelFactory {
                 @Suppress("UNCHECKED_CAST")
                 return IbuViewModel(Injection.provideIbuUseCase(context)) as T
             }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
         }
     }
 
@@ -45,7 +45,7 @@ class ViewModelFactory {
                 @Suppress("UNCHECKED_CAST")
                 return KehamilanViewModel(Injection.provideKehamilanUseCase()) as T
             }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
         }
     }
 
@@ -55,7 +55,17 @@ class ViewModelFactory {
                 @Suppress("UNCHECKED_CAST")
                 return AnakViewModel(Injection.provideAnakUseCase()) as T
             }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
+        }
+    }
+
+    class PertumbuhanViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(PertumbuhanViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return PertumbuhanViewModel(Injection.providePertumbuhanUseCase()) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
         }
     }
 
@@ -65,23 +75,7 @@ class ViewModelFactory {
                 @Suppress("UNCHECKED_CAST")
                 return ImunisasiViewModel(Injection.provideImunisasiUseCase()) as T
             }
-            throw IllegalArgumentException("Unknown ViewModel class")
+            throw IllegalArgumentException("Unknown ViewModel dataClass")
         }
     }
-
-    /*
-    class StoryViewModelFactory(
-        private val context: Context,
-        private val token: String,
-        private val location: Int
-    ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(StoryViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return StoryViewModel(Injection.provideRepository(context, token, location)) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-    }
-    */
 }

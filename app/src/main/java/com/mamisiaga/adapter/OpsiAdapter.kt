@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mamisiaga.`class`.Opsi
+import com.mamisiaga.dataClass.Opsi
 import com.mamisiaga.databinding.ItemOpsiBinding
 
 /*
-class OpsiAdapter(private val arrayOpsi: ArrayList<Opsi>, private val opsi: Opsi) :
+dataClass OpsiAdapter(private val arrayOpsi: ArrayList<Opsi>, private val opsi: Opsi) :
     RecyclerView.Adapter<OpsiAdapter.OpsiViewHolder>() {
     private lateinit var binding: ItemOpsiBinding
 
-    class OpsiViewHolder(private var binding: ItemOpsiBinding) :
+    dataClass OpsiViewHolder(private var binding: ItemOpsiBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): OpsiViewHolder {
@@ -38,7 +38,7 @@ class OpsiAdapter(private val arrayOpsi: ArrayList<Opsi>, private val opsi: Opsi
                 /*viewHolder.itemView.context.startActivity(
                     Intent(
                         viewHolder.itemView.context,
-                        TambahJadwalImunisasiActivity::class.java
+                        TambahJadwalImunisasiActivity::dataClass.java
                     )
                 )
                  */

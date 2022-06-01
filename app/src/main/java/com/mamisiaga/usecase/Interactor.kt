@@ -1,14 +1,14 @@
 package com.mamisiaga.usecase
 
-import com.mamisiaga.`class`.Anak
-import com.mamisiaga.`class`.IbuDaftar
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.api.*
 import com.mamisiaga.repository.*
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.Flow
 
 /*
-class IbuInteractor(private val ibuRepository: IbuRepository) : IbuUseCase {
+dataClass IbuInteractor(private val ibuRepository: IbuRepository) : IbuUseCase {
     override fun getAllIbu() = ibuRepository.getIbu()
 }
  */
@@ -62,6 +62,11 @@ class AnakInteractor(private val anakRepository: AnakRepository) :
 
     override fun deleteAnak(id: String): Flow<ResultResponse<DeleteAnakResponse>> =
         anakRepository.deleteAnakResponse(id)
+}
+
+class PertumbuhanInteractor(private val pertumbuhanRepository: PertumbuhanRepository) :
+    PertumbuhanUseCase {
+
 }
 
 class ImunisasiInteractor(private val imunisasiRepository: ImunisasiRepository) :
