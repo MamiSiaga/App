@@ -76,12 +76,9 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
                 val anak = Anak(
                     anakData.id,
                     anakData.name,
-                    "23 May 2018",
-                    "Perempuan",
-                    "A",
-                    2.2,
-                    2.2,
-                    5.5
+                    anakData.dateOfBirth,
+                    anakData.placeOfBirth,
+                    anakData.bloodType
                 )
 
                 if (opsi.item == "Lihat data anak") {

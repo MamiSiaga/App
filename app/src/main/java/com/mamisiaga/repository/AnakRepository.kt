@@ -1,8 +1,8 @@
 package com.mamisiaga.repository
 
-import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.api.APIService
 import com.mamisiaga.api.AnakData
+import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
@@ -11,19 +11,8 @@ class AnakRepository private constructor(private val apiService: APIService) {
     private val listAnakData = mutableListOf<AnakData>()
 
     fun getAnakResponse(id: String) = flow {
-        emit(ResultResponse.Loading)
-
         try {
-            /*listAnakData.add(AnakData("1", "aa", "20-01-2022"))
-            listAnakData.add(AnakData("2", "ab", "20-02-2022"))
-
-            val getAnakResponse = GetAnakResponse(false, "successful", listAnakData.toList())
-
-            emit(ResultResponse.Success(getAnakResponse))
-
-             */
-
-            emit(ResultResponse.Success(apiService.getAnakResponse(/*id*/)))
+            //emit(ResultResponse.Success(apiService.getAnakResponse(/*motherId, id*/)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
@@ -36,23 +25,13 @@ class AnakRepository private constructor(private val apiService: APIService) {
         emit(ResultResponse.Loading)
 
         try {
-            //val addAnakResponse = AddAnakResponse(false, "Successful")
-
-            //emit(ResultResponse.Success(addAnakResponse))
-
             emit(
                 ResultResponse.Success(
                     apiService.addAnakResponse(
                         anak.name!!,
-                        /*
-                        anak.nik!!,
                         anak.dateOfBirth!!,
-                        anak.gender!!,
-                        anak.bloodType!!,
-                        anak.weight!!,
-                        anak.height!!,
-                        anak.headDiameter!!*/
-                        "1234", "22"
+                        anak.placeOfBirth!!,
+                        anak.bloodType!!
                     )
                 )
             )
@@ -72,13 +51,9 @@ class AnakRepository private constructor(private val apiService: APIService) {
                 ResultResponse.Success(
                     apiService.editAnakResponse(
                         anak.id!!,
-                        anak.name!!,
                         anak.dateOfBirth!!,
-                        anak.gender!!,
-                        anak.bloodType!!,
-                        anak.weight!!,
-                        anak.height!!,
-                        anak.headDiameter!!
+                        anak.placeOfBirth!!,
+                        anak.bloodType!!
                     )
                 )
             )

@@ -19,7 +19,7 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
         fun bind(pertumbuhanData: PertumbuhanData) {
             binding.textViewBulan.text = pertumbuhanData.age.toString()
             binding.textViewTglPemeriksaan.text =
-                "${binding.textViewTglPemeriksaan.text}: ${pertumbuhanData.date_of_measurement}"
+                "Date of measurement"
 
             /*
             binding.cardviewPertumbuhan.setOnClickListener {
@@ -66,7 +66,7 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
         val CALLBACK: DiffUtil.ItemCallback<PertumbuhanData> =
             object : DiffUtil.ItemCallback<PertumbuhanData>() {
                 override fun areItemsTheSame(oldItem: PertumbuhanData, newItem: PertumbuhanData) =
-                    oldItem.date_of_measurement == newItem.date_of_measurement
+                    oldItem.age == newItem.age
 
                 @SuppressLint("DiffUtilEquals")
                 override fun areContentsTheSame(

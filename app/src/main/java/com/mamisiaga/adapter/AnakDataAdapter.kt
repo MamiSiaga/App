@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.api.AnakData
 import com.mamisiaga.databinding.ItemAnakBinding
+import com.mamisiaga.tools.withDateFormat
 import com.mamisiaga.ui.AnakActivity
 
 class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) :
@@ -20,15 +21,12 @@ class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anakData: AnakData) {
             binding.textViewNamaAnak.text = anakData.name
-            binding.textViewTglLahirAnak.text = "anakData.dateOfBirth"
+            binding.textViewTglLahirAnak.text = anakData.dateOfBirth.toString().withDateFormat()
 
             binding.cardviewAnak.setOnClickListener {
                 val anak = Anak(
                     anakData.id,
                     anakData.name,
-                    null,
-                    null,
-                    null,
                     null,
                     null,
                     null

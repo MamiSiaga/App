@@ -132,6 +132,7 @@
     <string name="silahkan_buat_kata_sandi_yang_baru">Silahkan buat kata sandi yang baru:</string>
     <string name="tanggal_ekspetasi_persalinan">Tanggal ekspetasi persalinan:</string>
     <string name="imunisasi_yang_telah_dilaksanakan">Imunisasi yang Telah Dilaksanakan</string>
+    <string name="tempat_lahir">Tempat lahir</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

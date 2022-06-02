@@ -16,6 +16,7 @@ import com.mamisiaga.R
 import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.databinding.ActivityTambahAnakBinding
 import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.tools.convertToDate
 import com.mamisiaga.tools.withDateFormat
 import com.mamisiaga.viewmodel.AnakViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
@@ -80,10 +81,6 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun seeAddAnakResponse() {
-        val jenisKelamin = when (binding.radiogroupJenisKelamin.checkedRadioButtonId) {
-            R.id.radiobutton_laki_laki -> "Laki-laki"
-            else -> "Perempuan"
-        }
         val golonganDarah = when (binding.radiogroupGolonganDarah.checkedRadioButtonId) {
             R.id.radiobutton_a -> "A"
             R.id.radiobutton_b -> "B"
@@ -93,12 +90,9 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
         val anak = Anak(
             null,
             binding.edittextNama.text.toString(),
-            binding.edittextTglLahir.text.toString(),
-            jenisKelamin,
-            golonganDarah,
-            binding.edittextBeratBadan.text.toString().toDouble(),
-            binding.edittextTinggiBadan.text.toString().toDouble(),
-            binding.edittextLingkarKepala.text.toString().toDouble()
+            convertToDate(binding.edittextTglLahir.text.toString()),
+            binding.edittextTempatLahir.text.toString(),
+            golonganDarah
         )
 
         val dialog = Dialog(this)
@@ -154,6 +148,26 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
             })
 
+            edittextTempatLahir.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+            })
+
             edittextTglLahir.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
@@ -174,70 +188,6 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
             })
 
-            edittextBeratBadan.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setButtonEnabled()
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-
-            })
-
-            edittextTinggiBadan.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setButtonEnabled()
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-
-            })
-
-            edittextLingkarKepala.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setButtonEnabled()
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-
-            })
-
-            radiogroupJenisKelamin.setOnCheckedChangeListener { group, checkedId ->
-                setButtonEnabled()
-            }
-
             radiogroupGolonganDarah.setOnCheckedChangeListener { group, checkedId ->
                 setButtonEnabled()
             }
@@ -247,17 +197,14 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     private fun setButtonEnabled() {
         binding.apply {
             val nama = edittextNama.text.toString()
-            val nik = edittextNama.text.toString()
+            val tempatLahir = edittextTempatLahir.text.toString()
             val tglLahir = edittextNama.text.toString()
             val bbAnak = edittextNama.text.toString()
             val tbAnak = edittextNama.text.toString()
             val lkAnak = edittextNama.text.toString()
 
             buttonTambahAnak.isEnabled =
-                nama.isNotEmpty() && nik.isNotEmpty() &&
-                        tglLahir.isNotEmpty() && bbAnak.isNotEmpty() &&
-                        tbAnak.isNotEmpty() && lkAnak.isNotEmpty() &&
-                        binding.radiogroupJenisKelamin.checkedRadioButtonId != -1 &&
+                nama.isNotEmpty() && tempatLahir.isNotEmpty() && tglLahir.isNotEmpty() &&
                         binding.radiogroupGolonganDarah.checkedRadioButtonId != -1
         }
     }

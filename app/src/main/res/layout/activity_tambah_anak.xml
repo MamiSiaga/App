@@ -51,7 +51,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="90sp"
+                android:paddingBottom="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -89,6 +89,19 @@
                     app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir_deskripsi" />
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_tempat_lahir"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/tempat_lahir"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
+
+                <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/edittext_tgl_lahir"
                     style="@style/EditTextStyle"
                     android:layout_marginTop="16dp"
@@ -99,37 +112,7 @@
                     android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
-
-                <TextView
-                    android:id="@+id/textview_jenis_kelamin"
-                    style="@style/SmallHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/jenis_kelamin"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
-
-                <RadioGroup
-                    android:id="@+id/radiogroup_jenis_kelamin"
-                    style="@style/RadioGroupStyle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textview_jenis_kelamin">
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/radiobutton_laki_laki"
-                        style="@style/RadioButtonStyle"
-                        android:text="@string/laki_laki" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:id="@+id/radiobutton_perempuan"
-                        style="@style/RadioButtonStyle"
-                        android:text="@string/perempuan" />
-                </RadioGroup>
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tempat_lahir" />
 
                 <TextView
                     android:id="@+id/textview_golongan_darah"
@@ -142,7 +125,7 @@
                     android:text="@string/golongan_darah"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radiogroup_jenis_kelamin" />
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
 
                 <RadioGroup
                     android:id="@+id/radiogroup_golongan_darah"
@@ -179,39 +162,6 @@
                         app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
                 </RadioGroup>
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edittext_berat_badan"
-                    style="@style/EditTextStyle"
-                    android:layout_marginTop="24dp"
-                    android:hint="@string/berat_badan"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/radiogroup_golongan_darah" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edittext_tinggi_badan"
-                    style="@style/EditTextStyle"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/tinggi_badan"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_berat_badan" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/edittext_lingkar_kepala"
-                    style="@style/EditTextStyle"
-                    android:layout_marginTop="16dp"
-                    android:hint="@string/lingkar_kepala"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_tinggi_badan" />
-
                 <com.mamisiaga.customview.CustomViewButtonForm
                     android:id="@+id/button_tambah_anak"
                     style="@style/ButtonBlueStyle"
@@ -219,7 +169,7 @@
                     android:text="@string/tambah_anak"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_lingkar_kepala" />
+                    app:layout_constraintTop_toBottomOf="@id/radiogroup_golongan_darah" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

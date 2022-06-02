@@ -8,11 +8,11 @@ import java.net.UnknownHostException
 class KehamilanRepository private constructor(private val apiService: APIService) {
     private val listKontrolKehamilanData = mutableListOf<KontrolKehamilanData>()
 
-    fun addRencanaKehamilanResponse() = flow {
+    fun getKehamilanResponse(id: String) = flow {
         emit(ResultResponse.Loading)
 
         try {
-            //emit(ResultResponse.Success(apiService.getKehamilanResponse(id)))
+            emit(ResultResponse.Success(apiService.getKehamilanResponse(id)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
@@ -55,11 +55,11 @@ class KehamilanRepository private constructor(private val apiService: APIService
         }
     }
 
-    fun addRencanaMelahirkanResponse(id: String) = flow {
+    fun addRencanaPersalinanResponse(id: String) = flow {
         emit(ResultResponse.Loading)
 
         try {
-            //emit(ResultResponse.Success(apiService.addRencanaMelahirkanResponse(id)))
+            //emit(ResultResponse.Success(apiService.addRencanaPersalinanResponse(id)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))

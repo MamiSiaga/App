@@ -11,7 +11,7 @@ class PertumbuhanRepository private constructor(private val apiService: APIServi
         emit(ResultResponse.Loading)
 
         try {
-            emit(ResultResponse.Success(apiService.getPertumbuhanResponse(/*id*/)))
+            emit(ResultResponse.Success(apiService.getPertumbuhanResponse(id)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
@@ -31,6 +31,7 @@ class PertumbuhanRepository private constructor(private val apiService: APIServi
             emit(
                 ResultResponse.Success(
                     apiService.addPertumbuhanResponse(
+                        1,
                         pertumbuhan.age!!,
                         pertumbuhan.weight!!,
                         pertumbuhan.height!!,

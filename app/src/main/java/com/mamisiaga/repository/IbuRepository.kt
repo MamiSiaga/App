@@ -10,7 +10,7 @@ class IbuRepository private constructor(private val apiService: APIService) {
         emit(ResultResponse.Loading)
 
         try {
-            emit(ResultResponse.Success(apiService.getIbuResponse(id, email)))
+            emit(ResultResponse.Success(apiService.getIbuResponse(id)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))

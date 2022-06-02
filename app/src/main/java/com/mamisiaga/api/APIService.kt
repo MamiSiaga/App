@@ -1,6 +1,7 @@
 package com.mamisiaga.api
 
 import retrofit2.http.*
+import java.util.*
 
 interface APIService {
     @FormUrlEncoded
@@ -23,54 +24,58 @@ interface APIService {
         @Path("id") id: String
     ): GetIbuResponse
 
-    @GET("employees")
+    @GET("$IBU/{mother_id}/$KEHAMILAN")
+    suspend fun getKehamilanResponse(
+        @Path("mother_id") motherId: String
+    ): GetKehamilanResponse
+
+    @GET("$IBU/{mother_id}/$KEHAMILAN/{id}")
+    suspend fun getKehamilanByIdResponse(
+        @Path("mother_id") motherId: String,
+        @Path("id") id: String
+    ): GetKehamilanResponse
+
+    //KontrolKehamilan
+
+    @GET("$IBU/{mother_id}/$ANAK/{id}")
     suspend fun getAnakResponse(
-        /*@Query("id") id: String*/
+        @Path("mother_id") motherId: String,
+        @Path("id") childrenId: String
     ): GetAnakResponse
 
     @FormUrlEncoded
-    @POST("create")
+    @POST(ANAK)
     suspend fun addAnakResponse(
         @Field("name") name: String,
-        @Field("salary") salary: String,
-        @Field("age") age: String
-        /*@Field("nik") nik: String,
-        @Field("dateOfBirth") dateOfBirth: String,
-        @Field("gender") gender: String,
-        @Field("bloodType") blood: String,
-        @Field("weight") weight: Double,
-        @Field("height") height: Double,
-        @Field("headDiameter") headDiameter: Double
-         */
+        @Field("date_of_birth") dateOfBirth: Date,
+        @Field("place_of_birth") placeOfBirth: String,
+        @Field("blood_type") bloodType: String,
     ): AddAnakResponse
 
     @FormUrlEncoded
-    //@PUT(MASUK) // not sure
+    @PUT("$ANAK/{id}")
     suspend fun editAnakResponse(
-        @Field("id") id: String,
-        @Field("name") name: String,
-        @Field("dateOfBirth") dateOfBirth: String,
-        @Field("gender") gender: String,
-        @Field("bloodType") blood: String,
-        @Field("weight") weight: Double,
-        @Field("height") height: Double,
-        @Field("headDiameter") headDiameter: Double
+        @Path("id") id: String,
+        @Field("date_of_birth") dateOfBirth: Date,
+        @Field("place_of_birth") placeOfBirth: String,
+        @Field("blood_type") bloodType: String
     ): EditAnakResponse
 
     @FormUrlEncoded
-    @DELETE("delete")
+    @DELETE("$ANAK/{id}")
     suspend fun deleteAnakResponse(
-        @Field("id") id: String
+        @Path("id") id: String
     ): DeleteAnakResponse
 
-    @GET("$PERTUMBUHAN/")
+    @GET("$ANAK/{children_id}/$PERTUMBUHAN")
     suspend fun getPertumbuhanResponse(
-        /*@Query("id") id: String*/
+        @Path("children_id") childrenId: String
     ): GetAnakResponse
 
     @FormUrlEncoded
-    @POST("create")
+    @POST("$ANAK/{children_id}/$PERTUMBUHAN")
     suspend fun addPertumbuhanResponse(
+        @Path("children_id") childrenId: Int,
         @Field("age_in_months") age: Int,
         @Field("height_in_cm") height: Int,
         @Field("weight_in_kg") weight: Int,
@@ -78,23 +83,20 @@ interface APIService {
     ): AddAnakResponse
 
     @FormUrlEncoded
-    //@PUT(MASUK) // not sure
+    @PUT("$ANAK/{children_id}/$PERTUMBUHAN/{id}")
     suspend fun editPertumbuhanResponse(
-        @Field("id") id: String,
-        @Field("name") name: String,
-        @Field("nik") nik: String,
-        @Field("dateOfBirth") dateOfBirth: String,
-        @Field("gender") gender: String,
-        @Field("bloodType") blood: String,
-        @Field("weight") weight: Double,
-        @Field("height") height: Double,
-        @Field("headDiameter") headDiameter: Double
-    ): EditAnakResponse
+        @Path("children_id") childrenId: Int,
+        @Path("id") id: Int,
+        @Field("age_in_months") age: Int,
+        @Field("height_in_cm") height: Int,
+        @Field("weight_in_kg") weight: Int,
+        @Field("head_circumference_in_cm") headDiameter: Int
+    ): EditPertumbuhanResponse
 
     @FormUrlEncoded
     @DELETE("delete")
     suspend fun deletePertumbuhanResponse(
-        @Field("id") id: String
+        @Field("$ANAK/{children_id}/$PERTUMBUHAN/{id}") id: String
     ): DeleteAnakResponse
 
     companion object {

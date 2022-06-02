@@ -103,7 +103,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    if (!resultResponse.data.error) {
+//                    if (!resultResponse.data.error) {
                         ibuPreferenceViewModel = ViewModelProvider(
                             this,
                             ViewModelFactory.IbuPreferenceViewModelFactory(
@@ -114,9 +114,9 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                         )[IbuPreferenceViewModel::class.java]
 
                         val ibu = Ibu(
-                            resultResponse.data.masukResult.name,
-                            resultResponse.data.masukResult.email,
-                            resultResponse.data.masukResult.id,
+                            resultResponse.data.masukData.token,
+                            "mmmm@mail.com",
+                            "1",
                             true
                         )
 
@@ -131,7 +131,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                         startActivity(intent)
 
                         finish()
-                    }
+//                    }
                 }
                 is ResultResponse.Error -> {
                     dialog.dismiss()

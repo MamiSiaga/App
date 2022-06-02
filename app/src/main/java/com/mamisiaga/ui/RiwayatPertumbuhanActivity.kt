@@ -49,7 +49,7 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
 
         pertumbuhanDataAdapter = PertumbuhanDataAdapter { pertumbuhanData ->
             val pertumbuhan = Pertumbuhan(
-                pertumbuhanData.date_of_measurement,
+                "dateOfMeasurement",
                 22,
                 pertumbuhanData.weight,
                 pertumbuhanData.height,
