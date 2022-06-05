@@ -29,7 +29,6 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class HomeFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentHomeBinding? = null
-    private lateinit var ibu: Ibu
     private val binding get() = _binding!!
     private lateinit var userViewModel : UserViewModel
     private lateinit var loginPrefViewModel : LoginPreferenceViewModel
