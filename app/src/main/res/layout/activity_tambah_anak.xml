@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TambahAnakActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        style="@style/AppBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imagebutton_keluar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/blue_50"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar" />
+
+        <TextView
+            style="@style/SmallHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tambah_anak"
+            app:layout_constraintBottom_toBottomOf="@id/appBar"
+            app:layout_constraintEnd_toEndOf="@id/appBar"
+            app:layout_constraintStart_toStartOf="@id/appBar"
+            app:layout_constraintTop_toTopOf="@id/appBar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/tambah_anak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textview_data_anak_baru_lahir"
+                    style="@style/BigHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/data_anak_baru_lahir"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_data_anak_baru_lahir_deskripsi"
+                    style="@style/Description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/silahkan_mengisi_form_dengan_benar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_nama"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/nama"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_data_anak_baru_lahir_deskripsi" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_tempat_lahir"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/tempat_lahir"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_tgl_lahir"
+                    style="@style/EditTextStyle"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/tanggal_lahir"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tempat_lahir" />
+
+                <TextView
+                    android:id="@+id/textview_golongan_darah"
+                    style="@style/SmallHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/golongan_darah"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroup_golongan_darah"
+                    style="@style/RadioGroupStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_a"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/a"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_b"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/b"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_a"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_ab"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/ab"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_b"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_o"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/o"
+                        app:layout_constraintStart_toEndOf="@id/radiobutton_ab"
+                        app:layout_constraintTop_toBottomOf="@id/textview_golongan_darah" />
+                </RadioGroup>
+
+                <com.mamisiaga.customview.CustomViewButtonForm
+                    android:id="@+id/button_tambah_anak"
+                    style="@style/ButtonBlueStyle"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/tambah_anak"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radiogroup_golongan_darah" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

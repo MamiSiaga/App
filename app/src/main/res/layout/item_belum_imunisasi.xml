@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview_kontrol_kehamilan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    card_view:cardElevation="0dp"
+    tools:keep="@layout/item_imunisasi_anak">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imunisasi_anak"
+            android:layout_width="320dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textview_isi_imunisasi_anak"
+                style="@style/SmallHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_imunisasi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_deskripsi"
+                style="@style/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/diberikan_sebelum_dosis_ke_berikutnya"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_isi_imunisasi_anak" />
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_status_imunisasi"
+                style="@style/ChipStyle"
+                android:text="Belum imunisasi"
+                app:chipBackgroundColor="@color/red_50"
+                app:chipStrokeColor="@color/red_100"
+                android:textColor="@color/red_100"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
+
+            <TextView
+                android:id="@+id/textView_tanggal_kontrol_kehamilan"
+                style="@style/Description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
+                android:text="@string/tanggal"
+                app:layout_constraintStart_toEndOf="@id/chip_status_imunisasi"
+                app:layout_constraintTop_toBottomOf="@id/textView_deskripsi" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/opsi"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="36dp"
+            android:foregroundGravity="center_horizontal"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imunisasi_anak" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
