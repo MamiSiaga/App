@@ -135,6 +135,7 @@
     <string name="status">Status</string>
     <string name="ambil_gambar">Ambil gambar</string>
     <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
+    <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/MamiSiaga/app/src/main/res/drawable/ic_icon_blue_200.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/MamiSiaga/app/src/main/res/layout/activity_daftar.xml" value="0.1" />
         <entry key="..\:/Paulina/College no. 2/6. Capstone Project/MamiSiaga/app/src/main/res/layout/activity_daftar_lanjutan.xml" value="0.1852355072463768" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/MamiSiaga/app/src/main/res/layout/activity_masuk.xml" value="0.1" />
+        <entry key="..\:/Paulina/College no. 2/6. Capstone Project/MamiSiaga/app/src/main/res/layout/activity_tambah_anak.xml" value="0.18" />
       </map>
     </option>
   </component>

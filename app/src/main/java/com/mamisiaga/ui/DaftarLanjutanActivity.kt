@@ -142,18 +142,23 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    Toast.makeText(
-                        this@DaftarLanjutanActivity,
-                        getString(R.string.pendaftaran_berhasil),
-                        Toast.LENGTH_SHORT
+                    if (resultResponse.data.error == null) {
+                        Toast.makeText(
+                            this@DaftarLanjutanActivity,
+                            getString(R.string.pendaftaran_berhasil),
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        val intent = Intent(this, MasukActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+
+                        finish()
+                    } else Toast.makeText(
+                        this,
+                        resultResponse.data.message, Toast.LENGTH_SHORT
                     ).show()
-
-                    val intent = Intent(this, MasukActivity::class.java)
-                    intent.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-
-                    finish()
                 }
                 is ResultResponse.Error -> {
                     dialog.dismiss()
@@ -162,10 +167,10 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                         "DaftarLanjutanActivity",
                         "daftar lanjutan activity: ${resultResponse.error}"
                     )
-                    Toast.makeText(this, resultResponse.error, Toast.LENGTH_SHORT).show()
-                    when (resultResponse.error) {
-                        "No Internet Connection" -> showFailure()
-                    }
+                    Toast.makeText(
+                        this,
+                        showFailure(resultResponse.error), Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -252,13 +257,11 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         }
     }
 
-    private fun showFailure() {
-        Toast.makeText(
-            this@DaftarLanjutanActivity,
-            getString(R.string.gagal_merespon_permintaan),
-            Toast.LENGTH_SHORT
-        ).show()
-    }
+    private fun showFailure(text: String) =
+        when (text) {
+            "No Internet Connection" -> getString(R.string.gagal_merespon_permintaan)
+            else -> "Pendaftaran gagal."
+        }
 
     private fun closeKeyboard() {
         val view = this.currentFocus

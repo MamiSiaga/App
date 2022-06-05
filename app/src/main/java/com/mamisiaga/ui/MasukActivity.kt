@@ -197,6 +197,6 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showFailure(error: String) = when (error) {
         "No Internet Connection" -> getString(R.string.gagal_merespon_permintaan)
-        else -> "Email atau kata sandi salah."
+        else -> getString(R.string.email_atau_kata_sandi_salah)
     }
 }
