@@ -7,7 +7,7 @@
     <string name="tab_text_1">Belum Imunisasi</string>
     <string name="tab_text_2">Sudah Imunisasi</string>
     <string name="incorrect_email_format">Format e-mail salah.</string>
-    <string name="e_mail">E-mail</string>
+    <string name="e_mail">%1s</string>
     <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
     <string name="lanjut">Lanjut</string>
     <string name="silahkan_masuk">Silahkan masuk!</string>
@@ -15,7 +15,7 @@
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
     <string name="daftar">Daftar</string>
     <string name="masuk">Masuk</string>
-    <string name="hai">Hai %1s</string>
+    <string name="hai">Hai, %1s!</string>
     <string name="bergabung_dengan_mamisiaga_sekarang">Bergabung dengan MamiSiaga sekarang!</string>
     <string name="selamat_datang">Selamat datang</string>
     <string name="informasi_ibu_hamil">Informasi Ibu Hamil</string>
@@ -36,8 +36,8 @@
     <string name="panggilan_darurat">Panggilan Darurat</string>
     <string name="rencana_persalinan">Rencana Persalinan</string>
     <string name="user_profile">User Profile</string>
-    <string name="user_name">Mama</string>
-    <string name="user_email">haimama@mail.com</string>
+    <string name="user_name">%1s</string>
+    <string name="user_email">%1s</string>
     <string name="keluar">Keluar</string>
     <string name="lupa_kata_sandi">Lupa kata sandi?</string>
     <string name="anak">Anak</string>
@@ -136,6 +136,8 @@
     <string name="ambil_gambar">Ambil gambar</string>
     <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
     <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
+    <string name="gambar_tabel_kms">Gambar Tabel KMS</string>
+    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

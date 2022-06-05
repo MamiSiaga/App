@@ -54,6 +54,7 @@ class ProfilFragment : Fragment(), View.OnClickListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
+
         _binding = null
         _loginViewModel = null
         _userViewModel = null
@@ -93,8 +94,8 @@ class ProfilFragment : Fragment(), View.OnClickListener {
                     }
                     is ResultResponse.Success -> {
                         val user = resultResponse.data.userData
-                        binding.textViewName.text = user.name
-                        binding.textviewEmail.text = user.email
+                        binding.textViewName.text = getString(R.string.user_name, user.name)
+                        binding.textviewEmail.text = getString(R.string.e_mail, user.email)
                     }
                     is ResultResponse.Error -> {
 

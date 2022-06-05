@@ -28,8 +28,10 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var userViewModel: UserViewModel
-    private lateinit var loginPrefViewModel: LoginPreferenceViewModel
+    private var _loginViewModel: LoginPreferenceViewModel? = null
+    private val loginViewModel get() = _loginViewModel!!
+    private var _userViewModel: UserViewModel? = null
+    private val userViewModel get() = _userViewModel!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +60,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         super.onDestroyView()
 
         _binding = null
+        _loginViewModel = null
+        _userViewModel = null
     }
 
     override fun onClick(view: View) {
@@ -79,12 +83,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setupViewModel() {
-        userViewModel = ViewModelProvider(
+        _userViewModel = ViewModelProvider(
             this,
             ViewModelFactory.UserViewModelFactory()
         )[UserViewModel::class.java]
 
-        loginPrefViewModel = ViewModelProvider(
+        _loginViewModel = ViewModelProvider(
             this,
             ViewModelFactory.LoginPreferenceViewModelFactory(
                 LoginPreference.getInstance(requireActivity().dataStore)
@@ -93,7 +97,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun seeIbuResponse() {
-        loginPrefViewModel.getLogin().observe(viewLifecycleOwner) {
+        loginViewModel.getLogin().observe(viewLifecycleOwner) {
             userViewModel.getUser(it.token).observe(viewLifecycleOwner) { resultResponse ->
                 when (resultResponse) {
                     is ResultResponse.Loading -> {

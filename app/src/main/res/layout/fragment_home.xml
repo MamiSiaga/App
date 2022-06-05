@@ -30,15 +30,15 @@
                     android:id="@+id/view_judul"
                     style="@style/ViewTitle2"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="180dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageview_gambar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/ic_baseline_account_circle_60"

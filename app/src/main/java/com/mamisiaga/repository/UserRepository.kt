@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
 
 class UserRepository (private val apiService: APIService) {
-
     fun getUser(token: String) = flow {
         emit(ResultResponse.Loading)
 

@@ -34,6 +34,28 @@
             app:layout_constraintTop_toTopOf="@id/appBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/textview_gambar_scan_kms"
+        style="@style/BigHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/gambar_tabel_kms"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <TextView
+        android:id="@+id/textview_gambar_scan_kms_deskripsi"
+        style="@style/Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms" />
+
     <ImageView
         android:id="@+id/imageview_gambar"
         android:layout_width="match_parent"
@@ -43,7 +65,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar"
+        app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms_deskripsi"
         app:srcCompat="@color/gray_200" />
 
     <androidx.appcompat.widget.AppCompatButton

@@ -23,6 +23,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
 
+    <style name="WhiteBackground">
+        <item name="android:background">@color/white</item>
+    </style>
 
     <style name="ViewTitle1">
         <item name="android:background">@drawable/background_title_1</item>

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.Nullable
@@ -14,11 +15,17 @@ import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityScanKmsBinding
+import com.mamisiaga.tools.Classifier
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 
+
 class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityScanKmsBinding
+    private lateinit var classifier: Classifier
+    private val mModelPath = "kms_validation_model.tflite"
+    private val mLabelPath = "label.txt"
+    private val mInputSize = 150
     private lateinit var cameraPermission: Array<String>
     private lateinit var storagePermission: Array<String>
     private var photo: Uri? = null
@@ -37,7 +44,6 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         cameraPermission =
             arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
         storagePermission = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-
 
         binding.buttonAmbilGambar.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
@@ -58,9 +64,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.button_lanjut -> {
-                //
-
-                finish()
+                validateKMS()
             }
         }
     }
@@ -119,17 +123,52 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    // Here we will pick image from gallery or camera
+    private fun validateKMS() {
+        classifier = Classifier(assets, mModelPath, mLabelPath, mInputSize)
+
+        val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, photo)
+        val result = classifier.recognizeImage(bitmap)
+        val validity = result[0].title
+
+        if (validity == "kms") {
+            runOnUiThread {
+                Toast.makeText(
+                    this,
+                    "KMS",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } else {
+            runOnUiThread {
+                Toast.makeText(
+                    this,
+                    "Gambar bukan KMS. Silahkan ambil ulang.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun recognizeText() {
+
+    }
+
+    // Pick image from gallery or camera
     private fun pickFromGallery() {
         CropImage.activity().start(this@ScanKMSActivity)
     }
 
-    // Requesting  gallery permission
+    // Request camera permission
+    private fun requestCameraPermission() {
+        ActivityCompat.requestPermissions(this@ScanKMSActivity, cameraPermission, CAMERA_REQUEST)
+    }
+
+    // Request gallery permission
     private fun requestStoragePermission() {
         ActivityCompat.requestPermissions(this@ScanKMSActivity, storagePermission, STORAGE_REQUEST)
     }
 
-    // checking camera permissions
+    // Check camera permissions
     private fun checkCameraPermission(): Boolean {
         val result = ContextCompat.checkSelfPermission(
             this,
@@ -140,11 +179,6 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
         return result && result1
-    }
-
-    // Requesting camera permission
-    private fun requestCameraPermission() {
-        ActivityCompat.requestPermissions(this@ScanKMSActivity, cameraPermission, CAMERA_REQUEST)
     }
 
     private fun setButtonEnabled() {
