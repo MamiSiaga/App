@@ -1,6 +1,5 @@
 package com.mamisiaga.ui.home
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,13 +12,13 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
-import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.FragmentHomeBinding
 import com.mamisiaga.repository.LoginPreference
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.ui.*
-import com.mamisiaga.viewmodel.IbuViewModel
+import com.mamisiaga.ui.InformasiAnakActivity
+import com.mamisiaga.ui.InformasiIbuHamilActivity
+import com.mamisiaga.ui.ScanKMSActivity
 import com.mamisiaga.viewmodel.LoginPreferenceViewModel
 import com.mamisiaga.viewmodel.UserViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
@@ -29,8 +28,8 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 class HomeFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var userViewModel : UserViewModel
-    private lateinit var loginPrefViewModel : LoginPreferenceViewModel
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var loginPrefViewModel: LoginPreferenceViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,7 +78,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun setupViewModel(){
+    private fun setupViewModel() {
         userViewModel = ViewModelProvider(
             this,
             ViewModelFactory.UserViewModelFactory()
@@ -96,7 +95,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun seeIbuResponse() {
         loginPrefViewModel.getLogin().observe(viewLifecycleOwner) {
             userViewModel.getUser(it.token).observe(viewLifecycleOwner) { resultResponse ->
-                when(resultResponse) {
+                when (resultResponse) {
                     is ResultResponse.Loading -> {
 
                     }

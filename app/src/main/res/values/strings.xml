@@ -134,6 +134,7 @@
     <string name="tempat_lahir">Tempat lahir</string>
     <string name="status">Status</string>
     <string name="ambil_gambar">Ambil gambar</string>
+    <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

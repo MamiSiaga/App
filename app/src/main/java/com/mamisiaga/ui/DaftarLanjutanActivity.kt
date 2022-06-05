@@ -142,10 +142,12 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    Log.e(
-                        "DaftarLanjutanActivity",
-                        "daftar lanjutan activity: ${resultResponse.data.message}"
-                    )
+                    Toast.makeText(
+                        this@DaftarLanjutanActivity,
+                        getString(R.string.pendaftaran_berhasil),
+                        Toast.LENGTH_SHORT
+                    ).show()
+
                     val intent = Intent(this, MasukActivity::class.java)
                     intent.flags =
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -163,7 +165,6 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                     Toast.makeText(this, resultResponse.error, Toast.LENGTH_SHORT).show()
                     when (resultResponse.error) {
                         "No Internet Connection" -> showFailure()
-                        //else -> showEmailTakenSign(true)
                     }
                 }
             }
@@ -173,21 +174,6 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private fun editTextListener() {
         binding.apply {
             edittextNama.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-                }
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    setButtonEnabled()
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-
-                }
-
-            })
-
-            edittextNik.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 }
@@ -246,7 +232,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 }
             })
 
-            radiogroupPertanyaanPosyandu.setOnCheckedChangeListener { group, checkedId ->
+            radiogroupPertanyaanPosyandu.setOnCheckedChangeListener { _, _ ->
                 setButtonEnabled()
             }
         }
@@ -255,14 +241,12 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private fun setButtonEnabled() {
         binding.apply {
             val nama = edittextNama.text.toString()
-            val nik = edittextNik.text.toString()
             val tglLahir = edittextTglLahir.text.toString()
             val password = edittextKataSandi.text.toString()
             val passwordConfirm = edittextKetikUlangKataSandi.text.toString()
 
             buttonDaftar.isEnabled =
-                nama.isNotEmpty() && nik.isNotEmpty() &&
-                        tglLahir.isNotEmpty() && password.isNotEmpty() &&
+                nama.isNotEmpty() && tglLahir.isNotEmpty() && password.isNotEmpty() &&
                         passwordConfirm.isNotEmpty() && password == passwordConfirm &&
                         binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId != -1
         }
@@ -274,8 +258,6 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             getString(R.string.gagal_merespon_permintaan),
             Toast.LENGTH_SHORT
         ).show()
-
-        //binding.buttonDaftar.isEnabled = enableButtonDaftar()
     }
 
     private fun closeKeyboard() {
