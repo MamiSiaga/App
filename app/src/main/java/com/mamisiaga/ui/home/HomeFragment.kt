@@ -27,7 +27,6 @@ import com.mamisiaga.viewmodelfactory.ViewModelFactory
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class HomeFragment : Fragment(), View.OnClickListener {
-
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var userViewModel : UserViewModel
