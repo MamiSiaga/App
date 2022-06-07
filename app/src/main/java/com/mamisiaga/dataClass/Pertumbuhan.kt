@@ -5,9 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Pertumbuhan(
-    val dateOfMeasurement: String? = null,
-    val age: Int? = null,
-    val weight: Int? = null,
-    val height: Int? = null,
-    val headDiameter: Int? = null
+    val id: Int?,
+    val childrenId: Int?,
+    val dateOfMeasurement: String?,
+    val age: Int?,
+    val weight: Int?,
+    val height: Int?,
+    val headDiameter: Int?
 ) : Parcelable

@@ -31,6 +31,7 @@ class AnakRepository private constructor(private val apiService: APIService) {
                         anak.name!!,
                         anak.dateOfBirth!!,
                         anak.placeOfBirth!!,
+                        anak.sex!!,
                         anak.bloodType!!
                     )
                 )
@@ -53,6 +54,7 @@ class AnakRepository private constructor(private val apiService: APIService) {
                         anak.id!!,
                         anak.dateOfBirth!!,
                         anak.placeOfBirth!!,
+                        anak.sex!!,
                         anak.bloodType!!
                     )
                 )

@@ -21,7 +21,8 @@ import com.mamisiaga.R
 import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.databinding.ActivityDaftarLanjutanBinding
 import com.mamisiaga.tools.ResultResponse
-import com.mamisiaga.tools.withDateFormat
+import com.mamisiaga.tools.convertToDateString
+import com.mamisiaga.tools.withDateFormatID
 import com.mamisiaga.viewmodel.AutentikasiViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
@@ -69,7 +70,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 val day = calendar.get(Calendar.DAY_OF_MONTH)
                 val datePickerDialog = DatePickerDialog(this, this, year, month, day)
 
-                datePickerDialog.datePicker.maxDate = calendar.timeInMillis
+                datePickerDialog.datePicker.maxDate = calendar.timeInMillis - 600000000000
                 datePickerDialog.show()
             }
             R.id.button_daftar -> {
@@ -103,7 +104,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
 
-        binding.edittextTglLahir.setText("$day-$month-$year".withDateFormat())
+        binding.edittextTglLahir.setText("$day-$month-$year".withDateFormatID())
     }
 
     private fun setupViewModel() {
@@ -117,8 +118,9 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         val name = binding.edittextNama.text.toString()
         val password = binding.edittextKataSandi.text.toString()
         val passwordConfirm = binding.edittextKetikUlangKataSandi.text.toString()
-        val dateOfBirth = binding.edittextTglLahir.text.toString()
-        val type = "Mother"
+        val placeOfBirth = binding.edittextTempatLahir.text.toString()
+        val dateOfBirth = convertToDateString(binding.edittextTglLahir.text.toString())
+        val profileType = "MOTHER"
         val isParticipatingPosyandu =
             when (binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId) {
                 R.id.radiobutton_ya -> true
@@ -126,7 +128,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             }
 
         val ibuDaftar =
-            IbuDaftar(name, email, password, passwordConfirm, dateOfBirth, type)
+            IbuDaftar(name, email, password, passwordConfirm, placeOfBirth, dateOfBirth, profileType)
 
         val dialog = Dialog(this)
 
@@ -142,7 +144,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    if (resultResponse.data.error == null) {
+                    if (resultResponse.data.message == null) {
                         Toast.makeText(
                             this@DaftarLanjutanActivity,
                             getString(R.string.pendaftaran_berhasil),
@@ -152,9 +154,8 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                         val intent = Intent(this, MasukActivity::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
 
-                        finish()
+                        startActivity(intent)
                     } else Toast.makeText(
                         this,
                         resultResponse.data.message, Toast.LENGTH_SHORT
@@ -179,6 +180,21 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private fun editTextListener() {
         binding.apply {
             edittextNama.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    setButtonEnabled()
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+
+            })
+
+            edittextTempatLahir.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 }
@@ -246,13 +262,15 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private fun setButtonEnabled() {
         binding.apply {
             val nama = edittextNama.text.toString()
+            val tempatLahir = edittextTempatLahir.text.toString()
             val tglLahir = edittextTglLahir.text.toString()
             val password = edittextKataSandi.text.toString()
             val passwordConfirm = edittextKetikUlangKataSandi.text.toString()
 
             buttonDaftar.isEnabled =
-                nama.isNotEmpty() && tglLahir.isNotEmpty() && password.isNotEmpty() &&
-                        passwordConfirm.isNotEmpty() && password == passwordConfirm &&
+                nama.isNotEmpty() && tglLahir.isNotEmpty()
+                        && password.isNotEmpty() && passwordConfirm.isNotEmpty() &&
+                        password.length >= 8 && password == passwordConfirm &&
                         binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId != -1
         }
     }

@@ -113,6 +113,36 @@
                     app:layout_constraintTop_toBottomOf="@id/edittext_tempat_lahir" />
 
                 <TextView
+                    android:id="@+id/textview_jenis_kelamin"
+                    style="@style/SmallHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/jenis_kelamin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
+
+                <RadioGroup
+                    android:id="@+id/radiogroup_jenis_kelamin"
+                    style="@style/RadioGroupStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_jenis_kelamin">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_laki_laki"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/laki_laki" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radiobutton_perempuan"
+                        style="@style/RadioButtonStyle"
+                        android:text="@string/perempuan" />
+                </RadioGroup>
+
+                <TextView
                     android:id="@+id/textview_golongan_darah"
                     style="@style/SmallHeader"
                     android:layout_width="match_parent"
@@ -123,7 +153,7 @@
                     android:text="@string/golongan_darah"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
+                    app:layout_constraintTop_toBottomOf="@id/radiogroup_jenis_kelamin" />
 
                 <RadioGroup
                     android:id="@+id/radiogroup_golongan_darah"

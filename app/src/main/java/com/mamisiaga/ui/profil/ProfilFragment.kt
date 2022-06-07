@@ -63,7 +63,7 @@ class ProfilFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.button_muat_ulang -> {
-                drawLayout()
+                requireActivity().recreate()
             }
             R.id.ButtonKeluar -> {
                 logout()
@@ -94,8 +94,8 @@ class ProfilFragment : Fragment(), View.OnClickListener {
                     }
                     is ResultResponse.Success -> {
                         val user = resultResponse.data.userData
-                        binding.textViewName.text = getString(R.string.user_name, user.name)
-                        binding.textviewEmail.text = getString(R.string.e_mail, user.email)
+                        binding.textViewName.text = getString(R.string.user_name, user.profileData.name)
+                        binding.textviewEmail.text = getString(R.string.user_email, user.email)
                     }
                     is ResultResponse.Error -> {
 

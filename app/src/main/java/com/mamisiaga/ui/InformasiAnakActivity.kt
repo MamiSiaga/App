@@ -1,6 +1,5 @@
 package com.mamisiaga.ui
 
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,9 +10,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,28 +24,27 @@ import com.mamisiaga.dataClass.Opsi
 import com.mamisiaga.databinding.ActivityInformasiAnakBinding
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.viewmodel.AnakViewModel
+import com.mamisiaga.viewmodel.UserViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
-
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+import java.util.*
+import kotlin.collections.ArrayList
 
 class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityInformasiAnakBinding
-    private lateinit var anakViewModel: AnakViewModel
+    private lateinit var userViewModel: UserViewModel
     private lateinit var anakDataAdapter: AnakDataAdapter
     private var anakDataList = mutableListOf<AnakData>()
-    private lateinit var anak: Anak
     private lateinit var ibu: Ibu
     private val responseCode =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == TambahAnakActivity.TAMBAH_ANAK_RESPONSE_CODE) {
-                anakViewModel.getAnak(ibu.id).removeObservers(this)
+                userViewModel.getUser(ibu.token!!).removeObservers(this)
 
-//                seeDaftarAnakResponse()
+                seeDaftarAnakResponse()
 
                 Toast.makeText(
                     this,
-                    "Berhasil menambahkan data anak baru.",
+                    "Penambahan data anak baru berhasil.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -64,14 +59,37 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
-//        ibu = intent.getParcelableExtra<Ibu>(HomeActivity.EXTRA_IBU) as Ibu
+        Locale.setDefault(Locale("id", "ID"))
 
-//        anakViewModel = ViewModelProvider(
-//            this,
-//            ViewModelFactory.AnakViewModelFactory(ibu.token)
-//        )[AnakViewModel::class.java]
+        drawLayout()
 
-        anakDataAdapter = AnakDataAdapter { anakData ->
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
+
+        userViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.UserViewModelFactory()
+        )[UserViewModel::class.java]
+
+        anakDataAdapter = AnakDataAdapter()
+
+        anakDataAdapter.setCardViewListener = { anakData ->
+            val anak = Anak(
+                anakData.id,
+                anakData.motherId,
+                anakData.name,
+                anakData.dateOfBirth,
+                anakData.placeOfBirth,
+                anakData.sex,
+                anakData.bloodType
+            )
+            val intent = Intent(this@InformasiAnakActivity, AnakActivity::class.java)
+
+            intent.putExtra(AnakActivity.EXTRA_IBU, ibu).putExtra(AnakActivity.EXTRA_ANAK, anak)
+
+            startActivity(intent)
+        }
+
+        anakDataAdapter.setOpsiListener = { anakData ->
             val bottomSheetDialog = BottomSheetDialog(this)
 
             bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog_array)
@@ -89,9 +107,11 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
             val opsiAdapter = OpsiAdapter { opsi ->
                 val anak = Anak(
                     anakData.id,
+                    anakData.motherId,
                     anakData.name,
                     anakData.dateOfBirth,
                     anakData.placeOfBirth,
+                    anakData.sex,
                     anakData.bloodType
                 )
 
@@ -105,6 +125,7 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
 
                     bottomSheetDialog.dismiss()
                 } else if (opsi.item == "Hapus data anak") {
+
                     bottomSheetDialog.dismiss()
                 }
             }
@@ -136,19 +157,17 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
+        seeDaftarAnakResponse()
+
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.tambahDataAnak.setOnClickListener(this)
-
-//        lifecycleScope.launchWhenStarted {
-//        seeDaftarAnakResponse()
-//        }
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.button_muat_ulang -> {
-                drawLayout()
+                recreate()
             }
             R.id.imagebutton_keluar -> {
                 onBackPressed()
@@ -164,7 +183,7 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun seeDaftarAnakResponse() {
-        anakViewModel.getAnak(ibu.id).observe(this) { resultResponse ->
+        userViewModel.getUser(ibu.token!!).observe(this) { resultResponse ->
             when (resultResponse) {
                 is ResultResponse.Loading -> {
                     showLoadingSign(true)
@@ -172,11 +191,12 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
-                    anakDataList = resultResponse.data.anakData.toMutableList()
+                    anakDataList =
+                        resultResponse.data.userData.profileData.childrens.toMutableList()
 
                     anakDataAdapter.submitList(anakDataList)
 
-                    if (resultResponse.data.anakData.isEmpty()) {
+                    if (resultResponse.data.userData.profileData.childrens.isEmpty()) {
                         binding.recyclerViewDataAnak.visibility = View.INVISIBLE
                         binding.textviewTidakAdaData.visibility = View.VISIBLE
                     } else {

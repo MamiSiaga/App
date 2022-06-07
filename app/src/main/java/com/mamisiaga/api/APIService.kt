@@ -8,9 +8,12 @@ interface APIService {
     suspend fun daftarResponse(
         @Field("name") name: String,
         @Field("email") email: String,
+        @Field("place_of_birth") placeOfBirth: String,
+        @Field("date_of_birth") dateOfBirth: String,
+        @Field("profile_type") profileType: String,
         @Field("password") password: String,
         @Field("password_confirmation") password_confirm: String,
-        @Field("device_name") device_name : String
+        @Field("device_name") device_name: String
     ): DaftarResponse
 
     @GET("user")
@@ -36,7 +39,7 @@ interface APIService {
 
     @GET("$IBU/{mother_id}/$KEHAMILAN")
     suspend fun getKehamilanResponse(
-        @Path("mother_id") motherId: String
+        @Path("mother_id") motherId: Int
     ): GetKehamilanResponse
 
     @GET("$IBU/{mother_id}/$KEHAMILAN/{id}")
@@ -45,9 +48,14 @@ interface APIService {
         @Path("id") id: String
     ): GetKehamilanResponse
 
-    //KontrolKehamilan
+    @GET(KEHAMILAN)
+    suspend fun addKehamilanResponse(
+        @Field("date") date: String
+    ): AddKehamilanResponse
 
-    @GET("$ANAK")
+    //Kontrol Kehamilan
+
+    @GET(ANAK)
     suspend fun getAnakResponse(
 
     ): GetAnakResponse
@@ -64,15 +72,17 @@ interface APIService {
         @Field("name") name: String,
         @Field("date_of_birth") dateOfBirth: String,
         @Field("place_of_birth") placeOfBirth: String,
+        @Field("sex") sex: Int,
         @Field("blood_type") bloodType: String,
     ): AddAnakResponse
 
     @FormUrlEncoded
     @PUT("$ANAK/{id}")
     suspend fun editAnakResponse(
-        @Path("id") id: String,
+        @Path("id") id: Int,
         @Field("date_of_birth") dateOfBirth: String,
         @Field("place_of_birth") placeOfBirth: String,
+        @Field("sex") sex: Int,
         @Field("blood_type") bloodType: String
     ): EditAnakResponse
 
@@ -84,8 +94,8 @@ interface APIService {
 
     @GET("$ANAK/{children_id}/$PERTUMBUHAN")
     suspend fun getPertumbuhanResponse(
-        @Path("children_id") childrenId: String
-    ): GetAnakResponse
+        @Path("children_id") childrenId: Int
+    ): GetPertumbuhanResponse
 
     @FormUrlEncoded
     @POST("$ANAK/{children_id}/$PERTUMBUHAN")
@@ -95,7 +105,7 @@ interface APIService {
         @Field("height_in_cm") height: Int,
         @Field("weight_in_kg") weight: Int,
         @Field("head_circumference_in_cm") headDiameter: Int
-    ): AddAnakResponse
+    ): AddPertumbuhanResponse
 
     @FormUrlEncoded
     @PUT("$ANAK/{children_id}/$PERTUMBUHAN/{id}")
@@ -113,6 +123,8 @@ interface APIService {
     suspend fun deletePertumbuhanResponse(
         @Field("$ANAK/{children_id}/$PERTUMBUHAN/{id}") id: String
     ): DeleteAnakResponse
+
+
 
     companion object {
         private const val DAFTAR = "register"

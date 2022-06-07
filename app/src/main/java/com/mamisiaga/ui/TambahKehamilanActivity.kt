@@ -11,12 +11,17 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Ibu
+import com.mamisiaga.dataClass.Kehamilan
 import com.mamisiaga.databinding.ActivityTambahKehamilanBinding
-import com.mamisiaga.tools.withDateFormat
+import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.tools.convertToDateString
+import com.mamisiaga.tools.withDateFormatID
 import com.mamisiaga.viewmodel.KehamilanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
@@ -25,6 +30,7 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener {
     private lateinit var binding: ActivityTambahKehamilanBinding
     private lateinit var kehamilanViewModel: KehamilanViewModel
+    private lateinit var ibu: Ibu
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +38,15 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
 
         super.onCreate(savedInstanceState)
 
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-
         binding = ActivityTambahKehamilanBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        Locale.setDefault(Locale("id", "ID"))
+
+        ibu = intent.getParcelableExtra<Ibu>(InformasiAnakActivity.EXTRA_IBU) as Ibu
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         editTextListener()
         setButtonEnabled()
@@ -69,7 +79,7 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
                 datePickerDialog.show()
             }
             R.id.button_tambah -> {
-                //seeTambahKehamilanResponse()
+                seeTambahKehamilanResponse()
             }
         }
     }
@@ -80,14 +90,15 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
         val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
 
-        binding.edittextTglHamil.setText("$day-$month-$year".withDateFormat())
+        binding.edittextTglHamil.setText("$day-$month-$year".withDateFormatID())
     }
 
     private fun seeTambahKehamilanResponse() {
+        val tanggalHamil = convertToDateString(binding.edittextTglHamil.text.toString())
+        val kehamilan = Kehamilan(null, ibu.id, tanggalHamil, null)
         val dialog = Dialog(this)
 
-        /*
-        kehamilanViewModel.addKehamilan("ibu1").observe(this) { resultResponse ->
+        kehamilanViewModel.addKehamilan(kehamilan).observe(this) { resultResponse ->
             dialog.setContentView(R.layout.custom_dialog_memuat)
             dialog.setCanceledOnTouchOutside(false)
             dialog.setCancelable(false)
@@ -99,7 +110,7 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    setResult(TambahAnakActivity.TAMBAH_ANAK_RESPONSE_CODE)
+                    //setResult(TambahKehamilanActivity.TAMBAH_KEHAMILAN_RESPONSE_CODE)
 
                     finish()
                 }
@@ -114,7 +125,6 @@ class TambahKehamilanActivity : AppCompatActivity(), View.OnClickListener,
                 }
             }
         }
-         */
     }
 
     private fun editTextListener() {

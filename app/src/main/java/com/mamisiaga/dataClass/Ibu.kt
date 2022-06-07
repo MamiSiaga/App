@@ -7,9 +7,9 @@ import kotlinx.parcelize.Parcelize
 data class Ibu(
     //val name: String,
     //val email: String,
-    val id: Int,
-    val token: String,
-    val isMasuk: Boolean
+    val id: Int? = null,
+    val token: String? = null,
+    val isMasuk: Boolean? = null
 ) : Parcelable
 
 @Parcelize
@@ -18,6 +18,7 @@ data class IbuDaftar(
     val email: String,
     val password: String,
     val password_confirm: String,
+    val placeOfBirth: String,
     val dateOfBirth: String,
-    val type: String,
+    val profileType: String,
 ) : Parcelable

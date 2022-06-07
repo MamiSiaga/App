@@ -58,16 +58,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edittext_tgl_pemeriksaan"
-            style="@style/EditTextStyle"
-            android:layout_marginTop="16dp"
-            android:hint="@string/tanggal_pemeriksaan"
-            android:maxLines="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_usia_anak" />
-
-        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_berat_badan"
             style="@style/EditTextStyle"
             android:layout_marginTop="16dp"
@@ -76,7 +66,7 @@
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edittext_tgl_pemeriksaan" />
+            app:layout_constraintTop_toBottomOf="@id/textview_usia_anak" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_tinggi_badan"

@@ -11,10 +11,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityMainBinding
-import com.mamisiaga.repository.IbuPreference
 import com.mamisiaga.repository.LoginPreference
-import com.mamisiaga.viewmodel.IbuPreferenceViewModel
 import com.mamisiaga.viewmodel.LoginPreferenceViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
@@ -22,9 +21,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var ibuPreferenceViewModel: IbuPreferenceViewModel
-    private lateinit var login: LoginPreferenceViewModel
-//    private lateinit var login
+    private lateinit var loginViewModel: LoginPreferenceViewModel
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,23 +52,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getLoginIbu() {
-
-        login = ViewModelProvider(
+        loginViewModel = ViewModelProvider(
             this,
             ViewModelFactory.LoginPreferenceViewModelFactory(LoginPreference.getInstance(dataStore))
         )[LoginPreferenceViewModel::class.java]
 
-        login.getLogin().observe(this) {
-            if(it.isMasuk){
+        loginViewModel.getLogin().observe(this) {
+            if (it.isMasuk) {
                 startActivity(
                     Intent(
                         this@MainActivity,
                         HomeActivity::class.java
-                    )
+                    ).putExtra(HomeActivity.EXTRA_IBU, Ibu(null, it.token, it.isMasuk))
                 )
+
                 finish()
             } else {
                 startActivity(Intent(this, DaftarActivity::class.java))
+
                 finish()
             }
         }

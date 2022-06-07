@@ -49,14 +49,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/tubuh_1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="20dp"
-                android:visibility="visible"
+                android:paddingBottom="40dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="220dp"
+                    android:layout_marginTop="200dp"
                     android:layout_marginEnd="16dp"
                     android:gravity="center"
                     android:text="@string/status_usia_anak"
@@ -235,6 +236,16 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <TextView
+                        android:id="@+id/textView_jenis_kelamin"
+                        style="@style/Description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/jenis_kelamin"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/menu_grafik_pertumbuhan_anak" />
+
                     <lecho.lib.hellocharts.view.LineChartView
                         android:id="@+id/plot"
                         android:layout_width="match_parent"
@@ -244,7 +255,7 @@
                         android:layout_marginRight="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/menu_grafik_pertumbuhan_anak" />
+                        app:layout_constraintTop_toBottomOf="@id/textView_jenis_kelamin" />
 
                     <ProgressBar
                         android:id="@+id/layout_memuat"
@@ -253,7 +264,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/menu_grafik_pertumbuhan_anak" />
+                        app:layout_constraintTop_toBottomOf="@id/textView_jenis_kelamin" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

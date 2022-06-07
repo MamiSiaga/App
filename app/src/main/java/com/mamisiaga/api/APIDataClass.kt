@@ -5,7 +5,7 @@ import java.util.*
 
 data class DaftarResponse(
     @field:SerializedName("errors")
-    val error: Errors? = null,
+    val error: Errors,
 
     @field:SerializedName("message")
     val message: String
@@ -25,7 +25,6 @@ data class MasukResponse(
 )
 
 data class MasukData(
-
     @field:SerializedName("token")
     val token: String
 )
@@ -51,7 +50,6 @@ data class CekEmailResponse(
     val status: String
 )
 
-
 data class GetUserResponse(
     @field:SerializedName("data")
     val userData: User
@@ -59,16 +57,36 @@ data class GetUserResponse(
 
 data class User(
     @field:SerializedName("id")
-    val id: String,
-
-    @field:SerializedName("name")
-    val name: String,
+    val id: Int,
 
     @field:SerializedName("email")
     val email: String,
 
+    @field:SerializedName("profile_type")
+    val profileType: String,
+
+    @field:SerializedName("profile")
+    val profileData: ProfileData
+)
+
+data class ProfileData(
+    @field:SerializedName("id")
+    val id: Int,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("place_of_birth")
+    val placeOfBirth: String,
+
     @field:SerializedName("date_of_birth")
-    val dateOfBirth: Date
+    val dateOfBirth: String,
+
+    @field:SerializedName("pregnancies")
+    val pregnancies: List<KehamilanData>,
+
+    @field:SerializedName("childrens")
+    val childrens: List<AnakData>
 )
 
 data class GetIbuResponse(
@@ -91,8 +109,16 @@ data class IbuData(
 )
 
 data class GetKehamilanResponse(
+    @field:SerializedName("data")
+    val date: List<KehamilanData>
+)
+
+data class KehamilanData(
     @field:SerializedName("id")
     val id: String,
+
+    @field:SerializedName("mother_id")
+    val motherId: String,
 
     @field:SerializedName("date")
     val date: String
@@ -174,13 +200,8 @@ data class GetInformasiKontrolKehamilanResponse(
 )
 
 data class GetAnakResponse(
-    /*
-    @field:SerializedName("error")
-    val error: Boolean,
-
     @field:SerializedName("message")
     val message: String,
-    */
 
     @field:SerializedName("data")
     val anakData: List<AnakData>
@@ -188,7 +209,10 @@ data class GetAnakResponse(
 
 data class AnakData(
     @field:SerializedName("id")
-    val id: String,
+    val id: Int,
+
+    @field:SerializedName("mother_id")
+    val motherId: Int,
 
     @field:SerializedName("name")
     val name: String,
@@ -199,22 +223,19 @@ data class AnakData(
     @field:SerializedName("place_of_birth")
     val placeOfBirth: String,
 
+    @field:SerializedName("sex")
+    val sex: Int,
+
     @field:SerializedName("blood_type")
     val bloodType: String
 )
 
 data class AddAnakResponse(
-    //@field:SerializedName("error")
-    //val error: Boolean,
-
-    @field:SerializedName("status")
+    @field:SerializedName("message")
     val status: String
 )
 
 data class EditAnakResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-
     @field:SerializedName("message")
     val message: String
 )
@@ -230,6 +251,12 @@ data class GetPertumbuhanResponse(
 )
 
 data class PertumbuhanData(
+    @field:SerializedName("id")
+    val id: Int,
+
+    @field:SerializedName("children_id")
+    val childrenId: Int,
+
     @field:SerializedName("age_in_months")
     val age: Int,
 
@@ -244,25 +271,16 @@ data class PertumbuhanData(
 )
 
 data class AddPertumbuhanResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-
     @field:SerializedName("message")
     val message: String
 )
 
 data class EditPertumbuhanResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-
     @field:SerializedName("message")
     val message: String
 )
 
 data class DeletePertumbuhanResponse(
-    @field:SerializedName("error")
-    val error: Boolean,
-
     @field:SerializedName("message")
     val message: String
 )

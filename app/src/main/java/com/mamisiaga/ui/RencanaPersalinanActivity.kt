@@ -10,14 +10,12 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityRencanaPersalinanBinding
-import com.mamisiaga.tools.ResultResponse
-import com.mamisiaga.tools.withDateFormat
+import com.mamisiaga.tools.withDateFormatID
 import com.mamisiaga.viewmodel.KehamilanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
@@ -80,7 +78,7 @@ class RencanaPersalinanActivity : AppCompatActivity(), View.OnClickListener,
         val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
 
-        binding.edittextTglPersalinan.setText("$day-$month-$year".withDateFormat())
+        binding.edittextTglPersalinan.setText("$day-$month-$year".withDateFormatID())
     }
 
     private fun seeAddRencanaPersalinanResponse() {

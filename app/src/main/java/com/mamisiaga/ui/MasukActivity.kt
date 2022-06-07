@@ -18,6 +18,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.LoginModel
 import com.mamisiaga.databinding.ActivityMasukBinding
 import com.mamisiaga.repository.LoginPreference
@@ -93,7 +94,6 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                 LoginPreference.getInstance(dataStore)
             )
         )[LoginPreferenceViewModel::class.java]
-
     }
 
     private fun seeMasukResponse() {
@@ -123,9 +123,9 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                         )
                     )
                     val intent = Intent(this, HomeActivity::class.java)
-                    intent.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    startActivity(intent.putExtra(HomeActivity.EXTRA_IBU, Ibu(null, token, true)))
                     finish()
                 }
                 is ResultResponse.Error -> {

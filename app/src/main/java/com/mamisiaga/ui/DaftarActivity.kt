@@ -9,13 +9,10 @@ import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
 import com.mamisiaga.databinding.ActivityDaftarBinding
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.tools.isEmailFormat
-import com.mamisiaga.viewmodel.AutentikasiViewModel
-import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class DaftarActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -55,6 +52,7 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.textview_masuk -> {
                 startActivity(Intent(this, MasukActivity::class.java))
+
                 finish()
             }
         }

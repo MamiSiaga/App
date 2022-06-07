@@ -12,6 +12,7 @@ android {
         applicationId "com.mamisiaga"
         minSdk 21
         targetSdk 32
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +26,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -38,12 +40,12 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.material:material:1.6.1'
 
     implementation "androidx.activity:activity-ktx:1.4.0"
 
@@ -93,4 +95,14 @@ dependencies {
     implementation "androidx.core:core-splashscreen:1.0.0-beta02"
 
     implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-select-tf-ops:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
+
+    implementation 'com.quickbirdstudios:opencv:4.5.3.0'
+
+    implementation 'com.google.guava:guava:28.2-android'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 }

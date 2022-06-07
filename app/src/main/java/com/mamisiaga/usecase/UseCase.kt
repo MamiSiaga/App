@@ -2,9 +2,7 @@ package com.mamisiaga.usecase
 
 import androidx.lifecycle.LiveData
 import com.mamisiaga.api.*
-import com.mamisiaga.dataClass.Anak
-import com.mamisiaga.dataClass.Ibu
-import com.mamisiaga.dataClass.IbuDaftar
+import com.mamisiaga.dataClass.*
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.Flow
 
@@ -33,13 +31,15 @@ interface IbuUseCase {
 }
 
 interface KehamilanUseCase {
-    //fun getKehamilan(id: String): Flow<ResultResponse<GetKehamilanResponse>>
+    fun getKehamilan(id: Int): Flow<ResultResponse<GetKehamilanResponse>>
+
+    fun addKehamilan(kehamilan: Kehamilan): Flow<ResultResponse<AddKehamilanResponse>>
 
     fun getKontrolKehamilan(id: Int): Flow<ResultResponse<GetKontrolKehamilanResponse>>
 
     //fun addJadwalKontrolKehamilan(): Flow<ResultResponse<AddKontrolKehamilanResponse>>
 
-    //fun editJadwalKontrolKehamilan(): Flow<ResultResponse<AddKontrolKehamilanResponse>>
+    //fun editJadwalKontrolKehamilan(): Flow<ResultResponse<EditKontrolKehamilanResponse>>
 
     //fun getInformasiKontrolKehamilan(): Flow<ResultResponse<AddKontrolKehamilanResponse>>
 }
@@ -55,7 +55,11 @@ interface AnakUseCase {
 }
 
 interface PertumbuhanUseCase {
+    fun getPertumbuhan(id: Int): Flow<ResultResponse<GetPertumbuhanResponse>>
 
+    fun addPertumbuhan(pertumbuhan: Pertumbuhan): Flow<ResultResponse<AddPertumbuhanResponse>>
+
+    fun editPertumbuhan(pertumbuhan: Pertumbuhan): Flow<ResultResponse<EditPertumbuhanResponse>>
 }
 
 interface ImunisasiUseCase {

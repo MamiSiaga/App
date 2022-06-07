@@ -12,6 +12,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.FragmentHomeBinding
 import com.mamisiaga.repository.LoginPreference
 import com.mamisiaga.tools.ResultResponse
@@ -23,6 +24,7 @@ import com.mamisiaga.viewmodel.LoginPreferenceViewModel
 import com.mamisiaga.viewmodel.UserViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
+
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class HomeFragment : Fragment(), View.OnClickListener {
@@ -32,6 +34,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private val loginViewModel get() = _loginViewModel!!
     private var _userViewModel: UserViewModel? = null
     private val userViewModel get() = _userViewModel!!
+    private var _ibu: Ibu? = null
+    private val ibu: Ibu get() = _ibu!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,6 +54,8 @@ class HomeFragment : Fragment(), View.OnClickListener {
         drawLayout()
         seeIbuResponse()
 
+        _ibu = requireActivity().intent.getParcelableExtra<Ibu>("extraIbu") as Ibu
+
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.informasiIbuHamil.setOnClickListener(this)
         binding.informasiAnak.setOnClickListener(this)
@@ -62,19 +68,25 @@ class HomeFragment : Fragment(), View.OnClickListener {
         _binding = null
         _loginViewModel = null
         _userViewModel = null
+        _ibu = null
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.button_muat_ulang -> {
-                drawLayout()
+                requireActivity().recreate()
             }
             R.id.informasi_ibu_hamil -> {
                 val intent = Intent(activity, InformasiIbuHamilActivity::class.java)
                 startActivity(intent)
             }
             R.id.informasi_anak -> {
-                startActivity(Intent(activity, InformasiAnakActivity::class.java))
+                startActivity(
+                    Intent(activity, InformasiAnakActivity::class.java).putExtra(
+                        InformasiAnakActivity.EXTRA_IBU,
+                        ibu
+                    )
+                )
             }
             R.id.konten -> {
                 startActivity(Intent(activity, ScanKMSActivity::class.java))
@@ -104,8 +116,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
                     }
                     is ResultResponse.Success -> {
+                        _ibu = Ibu(resultResponse.data.userData.id, ibu.token, ibu.isMasuk)
                         val user = resultResponse.data.userData
-                        binding.textviewNama.text = getString(R.string.hai, user.name)
+                        binding.textviewNama.text = getString(R.string.hai, user.profileData.name)
                     }
                     is ResultResponse.Error -> {
 

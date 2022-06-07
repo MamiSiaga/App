@@ -1,39 +1,46 @@
 package com.mamisiaga.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mamisiaga.R
 import com.mamisiaga.adapter.PertumbuhanDataAdapter
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityRiwayatPertumbuhanBinding
+import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.viewmodel.AnakViewModel
+import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityRiwayatPertumbuhanBinding
-    private lateinit var anakViewModel: AnakViewModel
+    private lateinit var pertumbuhanViewModel: PertumbuhanViewModel
+    private lateinit var ibu: Ibu
+    private lateinit var anak: Anak
     private lateinit var pertumbuhanDataAdapter: PertumbuhanDataAdapter
-    /* private val responseCode =
-         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-             if (result.resultCode == TambahEditPertumbuhanAnakActivity.EDIT_PERTUMBUHAN_ANAK_RESPONSE_CODE) {
-                 anakViewModel.getAnak(token, id).removeObservers(this)
+    private val responseCode =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == TambahEditPertumbuhanAnakActivity.EDIT_PERTUMBUHAN_ANAK_RESPONSE_CODE) {
+                pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
 
-                 seeRiwayatPertumbuhanAnakResponse()
+                seeRiwayatPertumbuhanAnakResponse()
 
-                 Toast.makeText(
-                     this,
-                     "Berhasil mengubah data pertumbuhan anak.",
-                     Toast.LENGTH_SHORT
-                 ).show()
-             }
-         }
-
-     */
+                Toast.makeText(
+                    this,
+                    "Pengubahan data pertumbuhan anak pada berhasil.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -44,27 +51,32 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
-        anakViewModel = ViewModelProvider(
+        ibu = intent.getParcelableExtra<Ibu>(AnakActivity.EXTRA_IBU) as Ibu
+        anak = intent.getParcelableExtra<Anak>(AnakActivity.EXTRA_ANAK) as Anak
+
+        pertumbuhanViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.AnakViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
-        )[AnakViewModel::class.java]
+            ViewModelFactory.PertumbuhanViewModelFactory(ibu.token!!)
+        )[PertumbuhanViewModel::class.java]
 
         pertumbuhanDataAdapter = PertumbuhanDataAdapter { pertumbuhanData ->
             val pertumbuhan = Pertumbuhan(
-                "dateOfMeasurement",
-                22,
+                pertumbuhanData.id,
+                pertumbuhanData.childrenId,
+                null,
+                pertumbuhanData.age,
                 pertumbuhanData.weight,
                 pertumbuhanData.height,
                 pertumbuhanData.headDiameter
             )
 
-            /*responseCode.launch(
+            responseCode.launch(
                 Intent(
                     this,
                     TambahEditPertumbuhanAnakActivity::class.java
-                ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
+                ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_IBU, ibu)
+                    .putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
             )
-             */
         }
 
         binding.imagebuttonKeluar.setOnClickListener(this)
@@ -87,44 +99,48 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun seeRiwayatPertumbuhanAnakResponse() {
-        /* anakViewModel.getRiwayatPertumbuhanAnak("ibu1").observe(this) { resultResponse ->
-             when (resultResponse) {
-                 is ResultResponse.Loading -> {
-                     showLoadingSign(true)
-                 }
-                 is ResultResponse.Success -> {
-                     showLoadingSign(false)
+        pertumbuhanViewModel.getPertumbuhan(1).observe(this) { resultResponse ->
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    showLoadingSign(true)
+                }
+                is ResultResponse.Success -> {
+                    showLoadingSign(false)
 
-                     /*pertumbuhanDataAdapter.submitList(resultResponse.data.pertumbuhanData)
+                    binding.apply {
+                        textViewNamaAnak.text = anak.name
+                        textViewUsiaAnak.text =
+                            "Usia anak saat ini: ${resultResponse.data.pertumbuhanData.size.toString()} bulan"
+                    }
 
-                     if (resultResponse.data.pertumbuhanData.isEmpty()) {
-                         binding.recyclerViewDataPertumbuhan.visibility = View.GONE
-                         binding.textviewTidakAdaData.visibility = View.VISIBLE
-                     } else {
-                         binding.recyclerViewDataPertumbuhan.visibility = View.VISIBLE
-                         binding.textviewTidakAdaData.visibility = View.GONE
-                     }
-                      */
-                 }
-                 is ResultResponse.Error -> {
-                     showLoadingSign(false)
+                    pertumbuhanDataAdapter.submitList(resultResponse.data.pertumbuhanData)
 
-                     when (resultResponse.error) {
-                         "No Internet Connection" -> drawLayout()
-                         //else -> showMasukError(true)
-                     }
-                 }
-             }
+                    if (resultResponse.data.pertumbuhanData.isEmpty()) {
+                        binding.recyclerViewDataPertumbuhan.visibility = View.GONE
+                        binding.textviewTidakAdaData.visibility = View.VISIBLE
+                    } else {
+                        binding.recyclerViewDataPertumbuhan.visibility = View.VISIBLE
+                        binding.textviewTidakAdaData.visibility = View.GONE
+                    }
+                }
+                is ResultResponse.Error -> {
+                    showLoadingSign(false)
 
-             with(binding.recyclerViewDataPertumbuhan) {
-                 layoutManager = LinearLayoutManager(context)
+                    when (resultResponse.error) {
+                        "No Internet Connection" -> drawLayout()
+                        //else -> showMasukError(true)
+                    }
+                }
+            }
 
-                 setHasFixedSize(true)
+            with(binding.recyclerViewDataPertumbuhan) {
+                layoutManager = LinearLayoutManager(context)
 
-                 adapter = pertumbuhanDataAdapter
-             }
-         }
-         */
+                setHasFixedSize(true)
+
+                adapter = pertumbuhanDataAdapter
+            }
+        }
     }
 
     private fun drawLayout() {
@@ -146,5 +162,10 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             binding.progressbar.visibility = View.GONE
         }
+    }
+
+    companion object {
+        const val EXTRA_IBU = "extraIbu"
+        const val EXTRA_ANAK = "extraAnak"
     }
 }

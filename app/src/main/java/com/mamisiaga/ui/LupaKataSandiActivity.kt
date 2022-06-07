@@ -80,7 +80,7 @@ class LupaKataSandiActivity : AppCompatActivity(), View.OnClickListener {
                             Intent(
                                 this@LupaKataSandiActivity,
                                 EditKataSandiActivity::class.java
-                            ).putExtra(DaftarLanjutanActivity.EXTRA_IBU_EMAIL, email)
+                            ).putExtra(EditKataSandiActivity.EXTRA_IBU_EMAIL, email)
                         )
                     }
                 }

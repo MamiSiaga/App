@@ -1,8 +1,10 @@
 package com.mamisiaga.usecase
 
+import com.mamisiaga.api.*
 import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.dataClass.IbuDaftar
-import com.mamisiaga.api.*
+import com.mamisiaga.dataClass.Kehamilan
+import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.repository.*
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.Flow
@@ -32,12 +34,20 @@ class AutentikasiInteractor(private val autentikasiRepository: AutentikasiReposi
 class IbuInteractor(private val ibuRepository: IbuRepository) :
     IbuUseCase {
 
-    override fun getIbuById(id: Int): Flow<ResultResponse<GetIbuResponse>> = ibuRepository.getIbuByIdResponse(id)
+    override fun getIbuById(id: Int): Flow<ResultResponse<GetIbuResponse>> =
+        ibuRepository.getIbuByIdResponse(id)
 
-    override fun getIbuByToken(): Flow<ResultResponse<GetIbuResponse>> = ibuRepository.getIbuByTokenResponse()
+    override fun getIbuByToken(): Flow<ResultResponse<GetIbuResponse>> =
+        ibuRepository.getIbuByTokenResponse()
 }
 
 class KehamilanInteractor(private val kehamilanRepository: KehamilanRepository) : KehamilanUseCase {
+    override fun getKehamilan(id: Int): Flow<ResultResponse<GetKehamilanResponse>> =
+        kehamilanRepository.getKehamilanResponse(id)
+
+    override fun addKehamilan(kehamilan: Kehamilan): Flow<ResultResponse<AddKehamilanResponse>> =
+        kehamilanRepository.addKehamilanResponse(kehamilan)
+
     override fun getKontrolKehamilan(id: Int): Flow<ResultResponse<GetKontrolKehamilanResponse>> {
         TODO("Not yet implemented")
     }
@@ -68,6 +78,14 @@ class AnakInteractor(private val anakRepository: AnakRepository) :
 
 class PertumbuhanInteractor(private val pertumbuhanRepository: PertumbuhanRepository) :
     PertumbuhanUseCase {
+    override fun getPertumbuhan(id: Int): Flow<ResultResponse<GetPertumbuhanResponse>> =
+        pertumbuhanRepository.getPertumbuhanResponse(id)
+
+    override fun addPertumbuhan(pertumbuhan: Pertumbuhan): Flow<ResultResponse<AddPertumbuhanResponse>> =
+        pertumbuhanRepository.addPertumbuhanResponse(pertumbuhan)
+
+    override fun editPertumbuhan(pertumbuhan: Pertumbuhan): Flow<ResultResponse<EditPertumbuhanResponse>> =
+        pertumbuhanRepository.editPertumbuhanResponse(pertumbuhan)
 
 }
 

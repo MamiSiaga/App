@@ -1,6 +1,9 @@
 package com.mamisiaga.repository
 
-import com.mamisiaga.api.*
+import com.mamisiaga.api.APIService
+import com.mamisiaga.api.GetKontrolKehamilanResponse
+import com.mamisiaga.api.KontrolKehamilanData
+import com.mamisiaga.dataClass.Kehamilan
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
@@ -8,11 +11,24 @@ import java.net.UnknownHostException
 class KehamilanRepository private constructor(private val apiService: APIService) {
     private val listKontrolKehamilanData = mutableListOf<KontrolKehamilanData>()
 
-    fun getKehamilanResponse(id: String) = flow {
+    fun getKehamilanResponse(id: Int) = flow {
         emit(ResultResponse.Loading)
 
         try {
             emit(ResultResponse.Success(apiService.getKehamilanResponse(id)))
+        } catch (e: Exception) {
+            when (e) {
+                is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
+                else -> emit(ResultResponse.Error("Error"))
+            }
+        }
+    }
+
+    fun addKehamilanResponse(kehamilan: Kehamilan) = flow {
+        emit(ResultResponse.Loading)
+
+        try {
+            emit(ResultResponse.Success(apiService.addKehamilanResponse(kehamilan.dateOfPregnancy!!)))
         } catch (e: Exception) {
             when (e) {
                 is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))

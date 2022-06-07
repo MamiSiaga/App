@@ -19,9 +19,9 @@ class IbuPreference private constructor(private val dataStore: DataStore<Prefere
 
     suspend fun masuk(ibu: Ibu) {
         dataStore.edit { preferences ->
-            preferences[ID_KEY] = ibu.id
-            preferences[TOKEN_KEY] = ibu.token
-            preferences[STATE_KEY] = ibu.isMasuk
+            preferences[ID_KEY] = ibu.id!!
+            preferences[TOKEN_KEY] = ibu.token!!
+            preferences[STATE_KEY] = ibu.isMasuk!!
         }
     }
 

@@ -7,14 +7,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityInformasiIbuHamilBinding
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.viewmodel.IbuViewModel
+import com.mamisiaga.viewmodel.KehamilanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityInformasiIbuHamilBinding
-    private lateinit var ibuViewModel: IbuViewModel
+    private lateinit var kehamilanViewModel: KehamilanViewModel
+    private lateinit var ibu: Ibu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -25,10 +27,14 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
-        ibuViewModel = ViewModelProvider(
+        ibu = intent.getParcelableExtra<Ibu>(InformasiAnakActivity.EXTRA_IBU) as Ibu
+
+        kehamilanViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.IbuViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
-        )[IbuViewModel::class.java]
+            ViewModelFactory.KehamilanViewModelFactory(ibu.token!!)
+        )[KehamilanViewModel::class.java]
+
+        seeKehamilanResponse()
 
         binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
@@ -54,7 +60,7 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getKontrolKehamilanResponse() {
-        /*ibuViewModel.getKontrolKehamilanResponse("ibu1").observe(this) { resultResponse ->
+        /*kehamilanViewModel.getKontrolKehamilanResponse("ibu1").observe(this) { resultResponse ->
             when (resultResponse) {
                 is ResultResponse.Loading -> {
                     showLoadingSign(true)

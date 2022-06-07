@@ -18,32 +18,38 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mamisiaga.R
 import com.mamisiaga.adapter.OpsiAdapter
+import com.mamisiaga.api.PertumbuhanData
 import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Opsi
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityAnakBinding
+import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.arrayBeratBadanLakilaki
+import com.mamisiaga.tools.arrayBeratBadanPerempuan
 import com.mamisiaga.tools.isConnected
-import com.mamisiaga.viewmodel.AnakViewModel
+import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import lecho.lib.hellocharts.model.*
 
 
 class AnakActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityAnakBinding
-    private lateinit var anakViewModel: AnakViewModel
+    private lateinit var pertumbuhanViewModel: PertumbuhanViewModel
+    private lateinit var ibu: Ibu
     private lateinit var anak: Anak
+    private var age = 0
     private val responseCode =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
                 TambahEditPertumbuhanAnakActivity.TAMBAH_PERTUMBUHAN_ANAK_RESPONSE_CODE -> {
-                    //anakViewModel.getPertumbuhanAnak("1").removeObservers(this)
+                    pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
 
-                    //seeAnakResponse()
+                    seePertumbuhanResponse()
 
                     Toast.makeText(
                         this,
-                        "Berhasil menambahkan data pertumbuhan anak baru.",
+                        "Penambahan data pertumbuhan anak berhasil.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -59,15 +65,18 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
+        anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
+
         binding.textviewNamaAnak.text = anak.name
 
-        anakViewModel = ViewModelProvider(
+        pertumbuhanViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.AnakViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
-        )[AnakViewModel::class.java]
+            ViewModelFactory.PertumbuhanViewModelFactory(ibu.token!!)
+        )[PertumbuhanViewModel::class.java]
 
-        seeAnakResponse()
-        showGrafikKMS()
+        seePertumbuhanResponse()
+        //showGrafikKMS()
 
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.layoutInfoImunisasi.setOnClickListener(this)
@@ -92,12 +101,8 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun getLoginIbu() {
-
-    }
-
-    private fun seeAnakResponse() {
-        /*anakViewModel.getPertumbuhanAnak("anak1").observe(this) { resultResponse ->
+    private fun seePertumbuhanResponse() {
+        pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {
                 is ResultResponse.Loading -> {
                     showLoadingSign(true)
@@ -105,7 +110,18 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
+                    if (resultResponse.data.pertumbuhanData.isEmpty()) {
+                        binding.tubuh2.visibility = View.GONE
+                        binding.tubuh1.visibility = View.VISIBLE
+                    } else {
+                        binding.tubuh1.visibility = View.GONE
+                        binding.tubuh2.visibility = View.VISIBLE
+                        binding.plot.visibility = View.VISIBLE
 
+                        age = resultResponse.data.pertumbuhanData.size
+
+                        showGrafikKMS(resultResponse.data.pertumbuhanData)
+                    }
                 }
                 is ResultResponse.Error -> {
                     showLoadingSign(false)
@@ -117,9 +133,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-         */
     }
 
+    /*
     private fun showGrafikKMS() {
         val yGrafikKMS = arrayOf<Number>(
             5,
@@ -197,6 +213,70 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         data.axisYLeft = yAxis
     }
 
+     */
+
+    private fun showGrafikKMS(listPertumbuhanData: List<PertumbuhanData>) {
+        val lines = arrayListOf<Line>()
+        val data = LineChartData()
+        val axisValues = arrayListOf<AxisValue>()
+
+        val yGrafikKMSValues = arrayListOf<PointValue>()
+
+        val lineGrafikKMS = Line(yGrafikKMSValues).setColor(Color.parseColor("#0986DF"))
+
+        val arrayBeratBadan = when (anak.sex) {
+            1 -> arrayBeratBadanLakilaki
+            else -> arrayBeratBadanPerempuan
+        }
+
+        binding.textViewJenisKelamin.text = when (anak.sex) {
+            1 -> getString(R.string.laki_laki)
+            else -> getString(R.string.perempuan)
+        }
+
+        val start = when (listPertumbuhanData.size) {
+            in 1..12 -> 0
+            else -> listPertumbuhanData.size - 12
+        }
+
+        val end = listPertumbuhanData.size
+
+        for (i in arrayBeratBadan) {
+            val yBeratBadan = arrayListOf<PointValue>()
+
+            for (j in start until end) {
+                yBeratBadan.add(PointValue(j.toFloat(), i[j].toFloat()))
+            }
+
+            val lineBeratBadan = Line(yBeratBadan)
+            lineBeratBadan.setHasPoints(false)
+
+            lines.add(lineBeratBadan)
+        }
+
+        for (i in start until end) {
+            axisValues.add(i, AxisValue(i.toFloat()).setLabel(i.toString()))
+        }
+
+        for (i in start until end) {
+            yGrafikKMSValues.add(PointValue(i.toFloat(), listPertumbuhanData[i].weight.toFloat()))
+        }
+
+        lines.add(lineGrafikKMS)
+
+        data.lines = lines
+
+        binding.plot.lineChartData = data
+        binding.plot.maxZoom = 1f
+
+        val axis = Axis().setName("Usia (bulan)")
+        axis.values = axisValues
+        data.axisXBottom = axis
+
+        val yAxis = Axis().setName("Berat badan (kg)")
+        data.axisYLeft = yAxis
+    }
+
     private fun showOpsi() {
         val bottomSheetDialog = BottomSheetDialog(this)
 
@@ -214,18 +294,26 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         // Menu clicked in the bottom sheet dialog
         val opsiAdapter = OpsiAdapter { opsi ->
             if (opsi.item == "Tambah pertumbuhan anak") {
-                val pertumbuhan = Pertumbuhan(null, 22, null, null, null)
+                val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
 
                 responseCode.launch(
                     Intent(
                         this,
                         TambahEditPertumbuhanAnakActivity::class.java
+                    ).putExtra(
+                        RiwayatPertumbuhanActivity.EXTRA_IBU,
+                        ibu
                     ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
                 )
 
                 bottomSheetDialog.dismiss()
             } else if (opsi.item == "Lihat riwayat pertumbuhan") {
-                startActivity(Intent(this, RiwayatPertumbuhanActivity::class.java))
+                startActivity(
+                    Intent(this, RiwayatPertumbuhanActivity::class.java).putExtra(
+                        RiwayatPertumbuhanActivity.EXTRA_IBU,
+                        ibu
+                    ).putExtra(RiwayatPertumbuhanActivity.EXTRA_ANAK, anak)
+                )
 
                 bottomSheetDialog.dismiss()
             }
@@ -294,13 +382,18 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showLoadingSign(isLoading: Boolean) {
         if (isLoading) {
+            binding.tubuh1.visibility = View.GONE
+            binding.tubuh2.visibility = View.GONE
+            binding.plot.visibility = View.INVISIBLE
             binding.layoutMemuat.visibility = View.VISIBLE
         } else {
             binding.layoutMemuat.visibility = View.GONE
+            binding.plot.visibility = View.INVISIBLE
         }
     }
 
     companion object {
+        const val EXTRA_IBU = "extraIbu"
         const val EXTRA_ANAK = "extraAnak"
     }
 }

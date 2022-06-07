@@ -3,6 +3,7 @@ package com.mamisiaga.repository
 import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.api.APIService
 import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.tools.withDateFormatID
 import kotlinx.coroutines.flow.flow
 import java.net.UnknownHostException
 
@@ -16,6 +17,9 @@ class AutentikasiRepository private constructor(private val apiService: APIServi
                     apiService.daftarResponse(
                         ibuDaftar.name,
                         ibuDaftar.email,
+                        ibuDaftar.placeOfBirth,
+                        ibuDaftar.dateOfBirth,
+                        ibuDaftar.profileType,
                         ibuDaftar.password,
                         ibuDaftar.password_confirm,
                         "Android"

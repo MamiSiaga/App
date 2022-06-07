@@ -4,7 +4,6 @@ import com.mamisiaga.api.APIConfig
 import com.mamisiaga.repository.*
 
 object Injection {
-
     private fun provideUserRepository() : UserRepository {
         val apiService = APIConfig.getAPIService()
         return UserRepository.getInstance(apiService)

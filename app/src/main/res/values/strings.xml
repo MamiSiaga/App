@@ -7,17 +7,17 @@
     <string name="tab_text_1">Belum Imunisasi</string>
     <string name="tab_text_2">Sudah Imunisasi</string>
     <string name="incorrect_email_format">Format e-mail salah.</string>
-    <string name="e_mail">%1s</string>
+    <string name="e_mail">Email</string>
     <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
     <string name="lanjut">Lanjut</string>
-    <string name="silahkan_masuk">Silahkan masuk!</string>
+    <string name="silahkan_masuk">Silahkan Masuk!</string>
     <string name="kata_sandi">Kata sandi</string>
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
     <string name="daftar">Daftar</string>
     <string name="masuk">Masuk</string>
     <string name="hai">Hai, %1s!</string>
     <string name="bergabung_dengan_mamisiaga_sekarang">Bergabung dengan MamiSiaga sekarang!</string>
-    <string name="selamat_datang">Selamat datang</string>
+    <string name="selamat_datang">Selamat Datang!</string>
     <string name="informasi_ibu_hamil">Informasi Ibu Hamil</string>
     <string name="informasi_anak">Informasi Anak</string>
     <string name="konten">Konten</string>
@@ -68,6 +68,7 @@
     <string name="ambil_ulang">Ambil ulang</string>
     <string name="tambah_anak">Tambah Anak</string>
     <string name="jenis_kelamin">Jenis kelamin</string>
+    <string name="jenis_kelamin_anak">Jenis kelamin</string>
     <string name="laki_laki">Laki-laki</string>
     <string name="perempuan">Perempuan</string>
     <string name="golongan_darah">Golongan darah</string>
@@ -75,9 +76,9 @@
     <string name="b">B</string>
     <string name="ab">AB</string>
     <string name="o">O</string>
-    <string name="berat_badan">Berat badan</string>
-    <string name="tinggi_badan">Tinggi badan</string>
-    <string name="lingkar_kepala">Lingkar kepala</string>
+    <string name="berat_badan">Berat badan (kg)</string>
+    <string name="tinggi_badan">Tinggi badan (cm)</string>
+    <string name="lingkar_kepala">Lingkar kepala (cm)</string>
     <string name="data_anak_baru_lahir">Data Anak Baru Lahir</string>
     <string name="silahkan_mengisi_form_dengan_benar">Silahkan mengisi form dengan benar.</string>
     <string name="gagal_merespon_permintaan">Gagal merespon permintaan</string>
@@ -138,6 +139,7 @@
     <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
     <string name="gambar_tabel_kms">Gambar Tabel KMS</string>
     <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
+    <string name="silahkan_masuk_ke_mamisiaga">Silahkan Masuk ke MamiSiaga!</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

@@ -18,12 +18,11 @@ import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityTambahAnakBinding
 import com.mamisiaga.tools.ResultResponse
-import com.mamisiaga.tools.convertToDate
-import com.mamisiaga.tools.withDateFormat
+import com.mamisiaga.tools.convertToDateString
+import com.mamisiaga.tools.withDateFormatID
 import com.mamisiaga.viewmodel.AnakViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import java.util.*
-
 
 class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
     DatePickerDialog.OnDateSetListener {
@@ -42,14 +41,14 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
         Locale.setDefault(Locale("id", "ID"))
 
-        ibu = intent.getParcelableExtra<Ibu>(HomeActivity.EXTRA_IBU) as Ibu
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
 
         editTextListener()
         setButtonEnabled()
 
         anakViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.AnakViewModelFactory(ibu.token)
+            ViewModelFactory.AnakViewModelFactory(ibu.token!!)
         )[AnakViewModel::class.java]
 
         binding.imagebuttonKeluar.setOnClickListener(this)
@@ -86,10 +85,14 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
         val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
 
-        binding.edittextTglLahir.setText("$day-$month-$year".withDateFormat())
+        binding.edittextTglLahir.setText("$day-$month-$year".withDateFormatID())
     }
 
     private fun seeAddAnakResponse() {
+        val jenisKelamin = when (binding.radiogroupJenisKelamin.checkedRadioButtonId) {
+            R.id.radiobutton_laki_laki -> 1
+            else -> 2
+        }
         val golonganDarah = when (binding.radiogroupGolonganDarah.checkedRadioButtonId) {
             R.id.radiobutton_a -> "A"
             R.id.radiobutton_b -> "B"
@@ -98,9 +101,11 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
         }
         val anak = Anak(
             null,
+            ibu.id,
             binding.edittextNama.text.toString(),
-            binding.edittextTglLahir.text.toString(),
+            convertToDateString(binding.edittextTglLahir.text.toString()),
             binding.edittextTempatLahir.text.toString(),
+            jenisKelamin,
             golonganDarah
         )
 
@@ -115,7 +120,7 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Loading -> {
                     dialog.show()
                 }
-                 is ResultResponse.Success -> {
+                is ResultResponse.Success -> {
                     dialog.dismiss()
 
                     setResult(TAMBAH_ANAK_RESPONSE_CODE)
@@ -197,7 +202,11 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
             })
 
-            radiogroupGolonganDarah.setOnCheckedChangeListener { group, checkedId ->
+            radiogroupJenisKelamin.setOnCheckedChangeListener { _, _ ->
+                setButtonEnabled()
+            }
+
+            radiogroupGolonganDarah.setOnCheckedChangeListener { _, _ ->
                 setButtonEnabled()
             }
         }
@@ -214,6 +223,7 @@ class TambahAnakActivity : AppCompatActivity(), View.OnClickListener,
 
             buttonTambahAnak.isEnabled =
                 nama.isNotEmpty() && tempatLahir.isNotEmpty() && tglLahir.isNotEmpty() &&
+                        binding.radiogroupJenisKelamin.checkedRadioButtonId != -1 &&
                         binding.radiogroupGolonganDarah.checkedRadioButtonId != -1
         }
     }

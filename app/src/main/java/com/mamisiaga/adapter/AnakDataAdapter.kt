@@ -1,45 +1,34 @@
 package com.mamisiaga.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.api.AnakData
 import com.mamisiaga.databinding.ItemAnakBinding
-import com.mamisiaga.tools.withDateFormat
-import com.mamisiaga.ui.AnakActivity
+import com.mamisiaga.tools.withDateFormatID
+import com.mamisiaga.tools.withDateFormatID2
 
-class AnakDataAdapter(private val setOpsiListener: (AnakData) -> Unit) :
+class AnakDataAdapter :
     ListAdapter<AnakData, AnakDataAdapter.AnakDataViewHolder>(CALLBACK) {
-    private var listAnak = ArrayList<AnakData>()
+
+    var setCardViewListener: ((AnakData) -> Unit?)? = null
+    var setOpsiListener: ((AnakData) -> Unit?)? = null
 
     inner class AnakDataViewHolder(private val binding: ItemAnakBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(anakData: AnakData) {
             binding.textViewNamaAnak.text = anakData.name
-            binding.textViewTglLahirAnak.text = anakData.dateOfBirth.toString().withDateFormat()
+            binding.textViewTglLahirAnak.text = anakData.dateOfBirth.withDateFormatID2()
 
             binding.cardviewAnak.setOnClickListener {
-                val anak = Anak(
-                    anakData.id,
-                    anakData.name,
-                    null,
-                    null,
-                    null
-                )
-                val intent = Intent(itemView.context, AnakActivity::class.java)
-
-                intent.putExtra(AnakActivity.EXTRA_ANAK, anak)
-
-                itemView.context.startActivity(intent)
+                setCardViewListener?.invoke(anakData)
             }
 
             binding.opsi.setOnClickListener {
-                setOpsiListener(anakData)
+                setOpsiListener?.invoke(anakData)
             }
         }
     }
