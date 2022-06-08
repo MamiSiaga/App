@@ -87,7 +87,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                     } else {
                         Toast.makeText(
                             this,
-                            "Please Enable Camera and Storage Permissions",
+                            getString(R.string.ijin_akses_kamera_dan_penyimpanan),
                             Toast.LENGTH_LONG
                         ).show()
                     }
@@ -99,7 +99,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                     if (writeStorageaccepted) {
                         pickFromGallery()
                     } else {
-                        Toast.makeText(this, "Please Enable Storage Permissions", Toast.LENGTH_LONG)
+                        Toast.makeText(this, getString(R.string.ijin_akses_penyimpanan), Toast.LENGTH_LONG)
                             .show()
                     }
                 }
@@ -142,7 +142,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
             runOnUiThread {
                 Toast.makeText(
                     this,
-                    "Gambar bukan KMS. Silahkan ambil ulang.",
+                    getString(R.string.gambar_bukan_kms),
                     Toast.LENGTH_SHORT
                 ).show()
             }

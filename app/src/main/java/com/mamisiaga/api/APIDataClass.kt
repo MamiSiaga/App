@@ -329,6 +329,28 @@ data class ImunisasiDoneData(
     val date: String
 )
 
+data class GetImunisasiResponse(
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String,
+
+    @field:SerializedName("data")
+    val imunisasiData: List<ImunisasiData>
+)
+
+data class ImunisasiData(
+    @field:SerializedName("id")
+    val id: Int,
+
+    @field:SerializedName("name")
+    val name: String,
+
+    @field:SerializedName("date")
+    val imunisasiData: List<ImunisasiData>
+)
+
 data class GetImunisasiByJenisResponse(
     @field:SerializedName("error")
     val error: Boolean,

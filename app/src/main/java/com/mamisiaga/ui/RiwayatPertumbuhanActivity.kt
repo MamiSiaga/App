@@ -1,5 +1,6 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,7 @@ import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityRiwayatPertumbuhanBinding
 import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.tools.getComparisonWithCurrentDate
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
@@ -30,8 +32,6 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
     private val responseCode =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == TambahEditPertumbuhanAnakActivity.EDIT_PERTUMBUHAN_ANAK_RESPONSE_CODE) {
-                pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
-
                 seeRiwayatPertumbuhanAnakResponse()
 
                 Toast.makeText(
@@ -90,7 +90,7 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         when (view.id) {
             R.id.button_muat_ulang -> {
-                drawLayout()
+                recreate()
             }
             R.id.imagebutton_keluar -> {
                 onBackPressed()
@@ -98,6 +98,7 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun seeRiwayatPertumbuhanAnakResponse() {
         pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {
@@ -107,16 +108,18 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
+                    val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!)
+
                     binding.apply {
                         textViewNamaAnak.text = anak.name
                         textViewUsiaAnak.text =
-                            "Usia anak saat ini: ${resultResponse.data.pertumbuhanData.size.toString()} bulan"
+                            "Usia anak saat ini: $comparison bulan"
                     }
 
                     pertumbuhanDataAdapter.submitList(resultResponse.data.pertumbuhanData)
 
                     if (resultResponse.data.pertumbuhanData.isEmpty()) {
-                        binding.recyclerViewDataPertumbuhan.visibility = View.GONE
+                        binding.recyclerViewDataPertumbuhan.visibility = View.INVISIBLE
                         binding.textviewTidakAdaData.visibility = View.VISIBLE
                     } else {
                         binding.recyclerViewDataPertumbuhan.visibility = View.VISIBLE
@@ -141,6 +144,8 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
                 adapter = pertumbuhanDataAdapter
             }
         }
+
+        pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
     }
 
     private fun drawLayout() {

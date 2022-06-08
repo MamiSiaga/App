@@ -17,12 +17,11 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(pertumbuhanData: PertumbuhanData) {
-            binding.textViewBulan.text = "Usia: ${pertumbuhanData.age.toString()} bulan"
-            binding.textViewTglPemeriksaan.text =
-                "Date of measurement"
+            binding.textViewBulan.text = "Bulan ke-${pertumbuhanData.age}"
             binding.textViewBeratBadan.text = "Berat badan: ${pertumbuhanData.weight} kg"
             binding.textViewTinggiBadan.text = "Tinggi badan: ${pertumbuhanData.height} cm"
-            binding.textViewLingkarKepala.text = "Lingkar kepala: ${pertumbuhanData.headDiameter} cm"
+            binding.textViewLingkarKepala.text =
+                "Lingkar kepala: ${pertumbuhanData.headDiameter} cm"
 
             /*
             binding.cardviewPertumbuhan.setOnClickListener {

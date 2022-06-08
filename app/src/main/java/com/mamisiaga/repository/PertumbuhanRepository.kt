@@ -29,8 +29,8 @@ class PertumbuhanRepository private constructor(private val apiService: APIServi
                     apiService.addPertumbuhanResponse(
                         pertumbuhan.childrenId!!,
                         pertumbuhan.age!!,
-                        pertumbuhan.weight!!,
                         pertumbuhan.height!!,
+                        pertumbuhan.weight!!,
                         pertumbuhan.headDiameter!!
                     )
                 )

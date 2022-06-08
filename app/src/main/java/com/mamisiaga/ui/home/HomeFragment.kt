@@ -77,8 +77,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 requireActivity().recreate()
             }
             R.id.informasi_ibu_hamil -> {
-                val intent = Intent(activity, InformasiIbuHamilActivity::class.java)
-                startActivity(intent)
+                startActivity(
+                    Intent(activity, InformasiIbuHamilActivity::class.java).putExtra(
+                        InformasiAnakActivity.EXTRA_IBU,
+                        ibu
+                    )
+                )
             }
             R.id.informasi_anak -> {
                 startActivity(

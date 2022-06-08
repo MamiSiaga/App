@@ -75,8 +75,8 @@ class TambahEditPertumbuhanAnakActivity : AppCompatActivity(), View.OnClickListe
                     pertumbuhan = Pertumbuhan(
                         pertumbuhan!!.id, pertumbuhan!!.childrenId,
                         null, pertumbuhan!!.age,
-                        binding.edittextBeratBadan.text.toString().toInt(),
                         binding.edittextTinggiBadan.text.toString().toInt(),
+                        binding.edittextBeratBadan.text.toString().toInt(),
                         binding.edittextLingkarKepala.text.toString().toInt()
                     )
 

@@ -82,7 +82,7 @@
                             <ImageView
                                 android:id="@+id/imageview_informasi_ibu_hamil"
                                 style="@style/InsideVerticalMenuStyle"
-                                android:src="@drawable/ic_home_black_24dp" />
+                                android:src="@drawable/ic_baseline_pregnant_woman_24" />
 
                             <TextView
                                 android:id="@+id/textview_informasi_ibu_hamil"
@@ -100,7 +100,7 @@
                             <ImageView
                                 android:id="@+id/imageview_informasi_anak"
                                 style="@style/InsideVerticalMenuStyle"
-                                android:src="@drawable/ic_home_black_24dp" />
+                                android:src="@drawable/ic_baseline_child_care_24" />
 
                             <TextView
                                 android:id="@+id/textview_informasi_anak"
@@ -118,7 +118,7 @@
                             <ImageView
                                 android:id="@+id/imageview_konten"
                                 style="@style/InsideVerticalMenuStyle"
-                                android:src="@drawable/ic_home_black_24dp" />
+                                android:src="@drawable/ic_baseline_article_24" />
 
                             <TextView
                                 android:id="@+id/textview_konten"
@@ -136,7 +136,7 @@
                             <ImageView
                                 android:id="@+id/imageview_panduan_penggunaan"
                                 style="@style/InsideVerticalMenuStyle"
-                                android:src="@drawable/ic_home_black_24dp" />
+                                android:src="@drawable/ic_baseline_description_24" />
 
                             <TextView
                                 android:id="@+id/textview_panduan_penggunaan"

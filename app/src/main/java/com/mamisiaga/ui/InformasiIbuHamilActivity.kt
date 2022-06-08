@@ -3,18 +3,23 @@ package com.mamisiaga.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mamisiaga.R
 import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.ActivityInformasiIbuHamilBinding
+import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.KehamilanViewModel
+import com.mamisiaga.viewmodel.UserViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityInformasiIbuHamilBinding
+    private lateinit var userViewModel: UserViewModel
     private lateinit var kehamilanViewModel: KehamilanViewModel
     private lateinit var ibu: Ibu
 
@@ -27,7 +32,12 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
-        ibu = intent.getParcelableExtra<Ibu>(InformasiAnakActivity.EXTRA_IBU) as Ibu
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
+
+        userViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.UserViewModelFactory()
+        )[UserViewModel::class.java]
 
         kehamilanViewModel = ViewModelProvider(
             this,
@@ -56,7 +66,50 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun seeKehamilanResponse() {
+        userViewModel.getUser(ibu.token!!).observe(this) { resultResponse ->
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    showLoadingSign(true)
+                }
+                is ResultResponse.Success -> {
+                    showLoadingSign(false)
 
+                    if (resultResponse.data.userData.profileData.pregnancies.isEmpty()) {
+                        binding.tubuh1.visibility = View.VISIBLE
+                        binding.tubuh2.visibility = View.GONE
+                        binding.tubuh3.visibility = View.GONE
+                    } else {
+                        binding.tubuh1.visibility = View.GONE
+                        binding.tubuh2.visibility = View.GONE
+                        binding.tubuh3.visibility = View.VISIBLE
+                    }
+                }
+                is ResultResponse.Error -> {
+                    showLoadingSign(false)
+
+                    when (resultResponse.error) {
+                        "No Internet Connection" -> drawLayout()
+                        else -> {
+                            binding.recyclerviewKontrolKehamilan.visibility = View.GONE
+
+                            Toast.makeText(
+                                this@InformasiIbuHamilActivity,
+                                "Gagal menampilkan data. Silahkan dicoba ulang.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+            }
+
+            with(binding.recyclerviewKontrolKehamilan) {
+                layoutManager = LinearLayoutManager(context)
+
+                setHasFixedSize(true)
+
+                //adapter =
+            }
+        }
     }
 
     private fun getKontrolKehamilanResponse() {
@@ -123,5 +176,9 @@ class InformasiIbuHamilActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             binding.layoutMemuat.visibility = View.GONE
         }
+    }
+
+    companion object {
+        const val EXTRA_IBU = "extraIbu"
     }
 }

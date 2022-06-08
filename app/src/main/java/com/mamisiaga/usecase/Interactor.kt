@@ -9,17 +9,9 @@ import com.mamisiaga.repository.*
 import com.mamisiaga.tools.ResultResponse
 import kotlinx.coroutines.flow.Flow
 
-/*
-dataClass IbuInteractor(private val ibuRepository: IbuRepository) : IbuUseCase {
-    override fun getAllIbu() = ibuRepository.getIbuById()
-}
- */
-
 class UserInteractor(private val repo: UserRepository) : UserUseCase {
-
     override fun getUser(token: String): Flow<ResultResponse<GetUserResponse>> =
         repo.getUser(token)
-
 }
 
 class AutentikasiInteractor(private val autentikasiRepository: AutentikasiRepository) :

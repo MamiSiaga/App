@@ -38,8 +38,6 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
     private val responseCode =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == TambahAnakActivity.TAMBAH_ANAK_RESPONSE_CODE) {
-                userViewModel.getUser(ibu.token!!).removeObservers(this)
-
                 seeDaftarAnakResponse()
 
                 Toast.makeText(
@@ -231,6 +229,8 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
                 adapter = anakDataAdapter
             }
         }
+
+        userViewModel.getUser(ibu.token!!).removeObservers(this)
     }
 
     private fun drawLayout() {

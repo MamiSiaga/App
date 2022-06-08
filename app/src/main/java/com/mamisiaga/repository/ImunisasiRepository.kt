@@ -49,6 +49,19 @@ class ImunisasiRepository private constructor(private val apiService: APIService
         }
     }
 
+    fun getImunisasiResponse(id: Int) = flow {
+        emit(ResultResponse.Loading)
+
+        try {
+            emit(ResultResponse.Success(apiService.getImunisasiResponse(id)))
+        } catch (e: Exception) {
+            when (e) {
+                is UnknownHostException -> emit(ResultResponse.Error("No Internet Connection"))
+                else -> emit(ResultResponse.Error("Error"))
+            }
+        }
+    }
+
     /*
     fun addImunisasiResponse(imunisasiTambah: ImunisasiTambah) = flow {
         emit(ResultResponse.Loading)

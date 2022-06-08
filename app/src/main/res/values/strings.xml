@@ -145,6 +145,9 @@
     <string name="anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual">Anda akan memasukkan data pertumbuhan anak secara manual.</string>
     <string name="apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak">Apakah Anda yakin untuk tidak melakukan scan KMS anak?</string>
     <string name="deskripsi_pertanyaan">Deskripsi pertanyaan</string>
+    <string name="ijin_akses_kamera_dan_penyimpanan">Mohon berikan ijin untuk mengakses kamera dan penyimpanan.</string>
+    <string name="ijin_akses_penyimpanan">Mohon berikan ijin untuk mengakses penyimpanan.</string>
+    <string name="gambar_bukan_kms">Gambar bukan KMS. Silahkan ambil ulang.</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

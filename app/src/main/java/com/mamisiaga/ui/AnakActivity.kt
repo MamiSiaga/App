@@ -42,8 +42,6 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
                 TambahEditPertumbuhanAnakActivity.TAMBAH_PERTUMBUHAN_ANAK_RESPONSE_CODE -> {
-                    pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
-
                     seePertumbuhanResponse()
 
                     Toast.makeText(
@@ -104,6 +102,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun seePertumbuhanResponse() {
         pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {
@@ -112,6 +111,12 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
+
+                    binding.textViewJenisKelamin.text = "Jenis kelamin: " +
+                            when (anak.sex) {
+                                1 -> getString(R.string.laki_laki)
+                                else -> getString(R.string.perempuan)
+                            }
 
                     val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!)
 
@@ -150,9 +155,10 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+
+        pertumbuhanViewModel.getPertumbuhan(anak.id!!).removeObservers(this)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun showGrafikKMS(listPertumbuhanData: List<PertumbuhanData>) {
         val lines = arrayListOf<Line>()
         val data = LineChartData()
@@ -166,12 +172,6 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             1 -> arrayBeratBadanLakilaki
             else -> arrayBeratBadanPerempuan
         }
-
-        binding.textViewJenisKelamin.text = "Jenis kelamin: " +
-                when (anak.sex) {
-                    1 -> getString(R.string.laki_laki)
-                    else -> getString(R.string.perempuan)
-                }
 
         val start = when (listPertumbuhanData.size) {
             in 1..12 -> 0

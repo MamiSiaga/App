@@ -124,7 +124,10 @@ interface APIService {
         @Field("$ANAK/{children_id}/$PERTUMBUHAN/{id}") id: String
     ): DeleteAnakResponse
 
-
+    @GET("$ANAK/{children_id}/$IMUNISASI")
+    suspend fun getImunisasiResponse(
+        @Path("children_id") childrenId: Int
+    ): GetImunisasiResponse
 
     companion object {
         private const val DAFTAR = "register"
