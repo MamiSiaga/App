@@ -1,5 +1,6 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -7,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -24,10 +26,7 @@ import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Opsi
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityAnakBinding
-import com.mamisiaga.tools.ResultResponse
-import com.mamisiaga.tools.arrayBeratBadanLakilaki
-import com.mamisiaga.tools.arrayBeratBadanPerempuan
-import com.mamisiaga.tools.isConnected
+import com.mamisiaga.tools.*
 import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 import lecho.lib.hellocharts.model.*
@@ -82,6 +81,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         binding.layoutInfoImunisasi.setOnClickListener(this)
         binding.imageviewOpsiGrafikPertumbuhan.setOnClickListener(this)
         binding.buttonMulaiScanKmsAnak.setOnClickListener(this)
+        binding.buttonLewatiBagianIni.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -98,6 +98,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             R.id.button_mulai_scan_kms_anak -> {
                 startActivity(Intent(this@AnakActivity, ScanKMSActivity::class.java))
             }
+            R.id.button_lewati_bagian_ini -> {
+                showKonfirmasi()
+            }
         }
     }
 
@@ -110,17 +113,31 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
-                    if (resultResponse.data.pertumbuhanData.isEmpty()) {
+                    val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!)
+
+                    if (resultResponse.data.pertumbuhanData.isEmpty() &&
+                        comparison > 0
+                    ) {
                         binding.tubuh2.visibility = View.GONE
                         binding.tubuh1.visibility = View.VISIBLE
+
+                        binding.textviewStatus.text =
+                            getString(R.string.status_usia_anak, comparison.toString())
                     } else {
                         binding.tubuh1.visibility = View.GONE
                         binding.tubuh2.visibility = View.VISIBLE
-                        binding.plot.visibility = View.VISIBLE
 
-                        age = resultResponse.data.pertumbuhanData.size
+                        if (resultResponse.data.pertumbuhanData.isEmpty()) {
+                            binding.plot.visibility = View.INVISIBLE
+                            binding.textviewTidakAdaData.visibility = View.VISIBLE
+                        } else {
+                            binding.textviewTidakAdaData.visibility = View.GONE
+                            binding.plot.visibility = View.VISIBLE
 
-                        showGrafikKMS(resultResponse.data.pertumbuhanData)
+                            age = resultResponse.data.pertumbuhanData.size
+
+                            showGrafikKMS(resultResponse.data.pertumbuhanData)
+                        }
                     }
                 }
                 is ResultResponse.Error -> {
@@ -135,86 +152,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /*
-    private fun showGrafikKMS() {
-        val yGrafikKMS = arrayOf<Number>(
-            5,
-            6.7,
-            7.2,
-            7.7,
-            8,
-            8.2,
-            8,
-            8.7,
-            9.3,
-            9.2,
-            9,
-            9.5,
-            9.8,
-            9,
-            9,
-            9,
-            10,
-            10,
-            11,
-            12,
-            13,
-            14,
-            15
-        )
-
-        val lines = arrayListOf<Line>()
-        val data = LineChartData()
-        val axisValues = arrayListOf<AxisValue>()
-
-        val yGrafikKMSValues = arrayListOf<PointValue>()
-
-        val lineGrafikKMS = Line(yGrafikKMSValues).setColor(Color.parseColor("#0986DF"))
-
-        for (i in arrayBeratBadanLakilaki) {
-            val yBeratBadanLakilaki = arrayListOf<PointValue>()
-
-            for (j in i.indices) {
-                yBeratBadanLakilaki.add(PointValue(j.toFloat(), i[j].toFloat()))
-            }
-
-            val lineBeratBadan = Line(yBeratBadanLakilaki)
-            lineBeratBadan.setHasPoints(false)
-
-            lines.add(lineBeratBadan)
-        }
-
-        for (i in 0..60) {
-            axisValues.add(i, AxisValue(i.toFloat()).setLabel(i.toString()))
-        }
-
-        for (i in yGrafikKMS.indices) {
-            yGrafikKMSValues.add(PointValue(i.toFloat(), yGrafikKMS[i].toFloat()))
-        }
-
-        /*
-        for (i in plus3SD.indices) {
-            yPlus3SDValues.add(PointValue(i.toFloat(), plus3SD[i].toFloat()))
-        }
-        */
-
-        lines.add(lineGrafikKMS)
-
-        data.lines = lines
-
-        binding.plot.lineChartData = data
-        binding.plot.maxZoom = 1f
-
-        val axis = Axis().setName("Usia (bulan)")
-        axis.values = axisValues
-        data.axisXBottom = axis
-
-        val yAxis = Axis().setName("Berat badan (kg)")
-        data.axisYLeft = yAxis
-    }
-
-     */
-
+    @SuppressLint("SetTextI18n")
     private fun showGrafikKMS(listPertumbuhanData: List<PertumbuhanData>) {
         val lines = arrayListOf<Line>()
         val data = LineChartData()
@@ -229,22 +167,23 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             else -> arrayBeratBadanPerempuan
         }
 
-        binding.textViewJenisKelamin.text = when (anak.sex) {
-            1 -> getString(R.string.laki_laki)
-            else -> getString(R.string.perempuan)
-        }
+        binding.textViewJenisKelamin.text = "Jenis kelamin: " +
+                when (anak.sex) {
+                    1 -> getString(R.string.laki_laki)
+                    else -> getString(R.string.perempuan)
+                }
 
         val start = when (listPertumbuhanData.size) {
             in 1..12 -> 0
             else -> listPertumbuhanData.size - 12
         }
 
-        val end = listPertumbuhanData.size
+        val end = listPertumbuhanData.size - 1
 
         for (i in arrayBeratBadan) {
             val yBeratBadan = arrayListOf<PointValue>()
 
-            for (j in start until end) {
+            for (j in start..end) {
                 yBeratBadan.add(PointValue(j.toFloat(), i[j].toFloat()))
             }
 
@@ -254,11 +193,11 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
             lines.add(lineBeratBadan)
         }
 
-        for (i in start until end) {
+        for (i in 0..end) {
             axisValues.add(i, AxisValue(i.toFloat()).setLabel(i.toString()))
         }
 
-        for (i in start until end) {
+        for (i in start..end) {
             yGrafikKMSValues.add(PointValue(i.toFloat(), listPertumbuhanData[i].weight.toFloat()))
         }
 
@@ -266,15 +205,15 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
         data.lines = lines
 
-        binding.plot.lineChartData = data
-        binding.plot.maxZoom = 1f
-
         val axis = Axis().setName("Usia (bulan)")
         axis.values = axisValues
         data.axisXBottom = axis
 
         val yAxis = Axis().setName("Berat badan (kg)")
         data.axisYLeft = yAxis
+
+        binding.plot.lineChartData = data
+        binding.plot.maxZoom = 0f
     }
 
     private fun showOpsi() {
@@ -301,7 +240,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                         this,
                         TambahEditPertumbuhanAnakActivity::class.java
                     ).putExtra(
-                        RiwayatPertumbuhanActivity.EXTRA_IBU,
+                        TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
                         ibu
                     ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
                 )
@@ -348,21 +287,38 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showKonfirmasi() {
         val alert = AlertDialog.Builder(this)
-        val view = layoutInflater.inflate(R.layout.custom_dialog, null)
-        val buttonOK = view.findViewById<Button>(R.id.button_ok)
-        val buttonCancel = view.findViewById<Button>(R.id.button_cancel)
+        val view = layoutInflater.inflate(R.layout.custom_dialog_konfirmasi, null)
+        val buttonYa = view.findViewById<Button>(R.id.button_ya)
+        val buttonTidak = view.findViewById<Button>(R.id.button_tidak)
+        val pertanyaanKonfirmasi = view.findViewById<TextView>(R.id.textview_pertanyaan_konfirmasi)
+        val pertanyaanKonfirmasiDeskripsi = view.findViewById<TextView>(R.id.textview_pertanyaan_konfirmasi_deskripsi)
+
+        pertanyaanKonfirmasi.text=getString(R.string.apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak)
+        pertanyaanKonfirmasiDeskripsi.text=getString(R.string.anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual)
 
         alert.setView(view)
 
         val alertDialog: AlertDialog = alert.create()
 
-        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        //alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        buttonOK.setOnClickListener {
+        buttonYa.setOnClickListener {
+            val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
+
+            responseCode.launch(
+                Intent(
+                    this,
+                    TambahEditPertumbuhanAnakActivity::class.java
+                ).putExtra(
+                    TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
+                    ibu
+                ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
+            )
+
             alertDialog.dismiss()
         }
 
-        buttonCancel.setOnClickListener {
+        buttonTidak.setOnClickListener {
             alertDialog.dismiss()
         }
 

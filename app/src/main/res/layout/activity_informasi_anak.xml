@@ -146,12 +146,11 @@
                         android:layout_height="wrap_content"
                         android:text="@string/no_data"
                         android:textStyle="bold"
-                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/textViewDaftarAnak"
-                        tools:visibility="visible" />
+                        tools:visibility="gone" />
 
                     <ProgressBar
                         android:id="@+id/progressbar"

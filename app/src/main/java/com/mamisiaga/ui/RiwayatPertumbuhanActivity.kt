@@ -99,7 +99,7 @@ class RiwayatPertumbuhanActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun seeRiwayatPertumbuhanAnakResponse() {
-        pertumbuhanViewModel.getPertumbuhan(1).observe(this) { resultResponse ->
+        pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {
                 is ResultResponse.Loading -> {
                     showLoadingSign(true)

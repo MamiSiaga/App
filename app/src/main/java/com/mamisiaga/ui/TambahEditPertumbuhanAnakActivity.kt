@@ -23,7 +23,6 @@ class TambahEditPertumbuhanAnakActivity : AppCompatActivity(), View.OnClickListe
     private lateinit var binding: ActivityTambahEditPertumbuhanAnakBinding
     private lateinit var pertumbuhanViewModel: PertumbuhanViewModel
     private var isEdit = false
-    private var age: Int = 0
     private lateinit var ibu: Ibu
     private var pertumbuhan: Pertumbuhan? = null
 

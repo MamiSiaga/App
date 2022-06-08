@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp"
+    android:paddingBottom="30dp"
     style="@style/CustomDialog1"
     android:orientation="vertical">
 
@@ -11,29 +11,41 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:text="Apakah Anda yakin untuk menyimpannya?"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:text="@string/pertanyaan"
+        style="@style/SmallHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_pertanyaan_konfirmasi_deskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/deskripsi_pertanyaan"
+        android:textSize="15sp"
+        style="@style/Description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_pertanyaan_konfirmasi" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_ya"
         style="@style/ButtonBlueStyle"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="25dp"
         android:text="@string/ya"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_pertanyaan_konfirmasi" />
+        app:layout_constraintTop_toBottomOf="@id/textview_pertanyaan_konfirmasi_deskripsi" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_cancel"
+        android:id="@+id/button_tidak"
         style="@style/ButtonWhiteStyle"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="25dp"
         android:text="@string/tidak"
         app:layout_constraintStart_toStartOf="parent"

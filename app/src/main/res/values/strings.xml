@@ -117,7 +117,7 @@
     <string name="menu_anak">Menu Anak</string>
     <string name="deteksi_dini_penyakit">Deteksi Dini Penyakit</string>
     <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar.</string>
-    <string name="status_usia_anak">Anak Anda sekarang telah berusia 3 bulan.</string>
+    <string name="status_usia_anak">Anak Anda sekarang telah berusia %1s bulan.</string>
     <string name="mulai_scan_kms_anak">Mulai Scan KMS Anak!</string>
     <string name="lewati_tahap_ini">Lewati Tahap Ini</string>
     <string name="lakukan_scan_kms_agar_pengisian_berat_badan_anak_anda_otomatis_dilakukan">Lakukan scan KMS agar pengisian berat badan anak Anda otomatis dilakukan.</string>
@@ -140,6 +140,11 @@
     <string name="gambar_tabel_kms">Gambar Tabel KMS</string>
     <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
     <string name="silahkan_masuk_ke_mamisiaga">Silahkan Masuk ke MamiSiaga!</string>
+    <string name="belum_terdapat_data_pertumbuhan_ntambahkan_data_pertumbuhan_anak_usia_0_telebih_dahulu">Belum terdapat data pertumbuhan.\nTambahkan data pertumbuhan anak usia 0 telebih dahulu.</string>
+    <string name="apakah_anda_yakin_untuk_menyimpannya">Apakah Anda yakin untuk menyimpannya?</string>
+    <string name="anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual">Anda akan memasukkan data pertumbuhan anak secara manual.</string>
+    <string name="apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak">Apakah Anda yakin untuk tidak melakukan scan KMS anak?</string>
+    <string name="deskripsi_pertanyaan">Deskripsi pertanyaan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>
