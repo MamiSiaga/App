@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "864453974390",
+    "project_id": "mamisiagapushnotification",
+    "storage_bucket": "mamisiagapushnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864453974390:android:39d20b06d52fc2c3a64257",
+        "android_client_info": {
+          "package_name": "com.mamisiaga"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864453974390-ulc4r5o0jmqfee560ctp0to06iecq4bl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mamisiaga",
+            "certificate_hash": "dfe4a3009806b33a2d48ca72151333e45f91f818"
+          }
+        },
+        {
+          "client_id": "864453974390-jrigilrorsjdo3ndlihsp217sgf017js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoZM3FBpEXdOrx8MU-1_q8yGeY5Jg6DMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864453974390-jrigilrorsjdo3ndlihsp217sgf017js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
