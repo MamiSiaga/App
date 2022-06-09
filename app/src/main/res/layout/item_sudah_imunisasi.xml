@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_item_sudah_imunisasi"
+        android:id="@+id/cardView_sudah_imunisasi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -20,7 +20,7 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView_JenisImnunisasi"
+                android:id="@+id/textview_isi_imunisasi_anak"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nama_imunisasi"

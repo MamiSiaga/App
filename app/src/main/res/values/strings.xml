@@ -24,10 +24,10 @@
     <string name="panduan_penggunaan">Panduan</string>
     <string name="anda_belum_hamil">Anda Belum Hamil</string>
     <string name="klik_tombol_di_bawah_apabila_anda_sudah_mulai_hamil">Klik tombol di bawah apabila Anda sudah mulai hamil.</string>
-    <string name="saya_sudah_mulai_hamil">Saya Sudah Mulai Hamil!</string>
+    <string name="saya_sudah_mulai_hamil">Saya sudah mulai hamil!</string>
     <string name="anda_sudah_melahirkan">Anda Sudah Melahirkan</string>
     <string name="klik_tombol_di_bawah_apabila_anda_mulai_hamil_lagi">Klik tombol di bawah apabila Anda mulai hamil lagi.</string>
-    <string name="saya_mulai_hamil_lagi">Saya Mulai Hamil Lagi!</string>
+    <string name="saya_mulai_hamil_lagi">Saya mulai hamil lagi!</string>
     <string name="lihat_riwayat_melahirkan">Lihat Riwayat Melahirkan</string>
     <string name="minggu">Minggu</string>
     <string name="aktivitas">Aktivitas</string>
@@ -118,12 +118,12 @@
     <string name="deteksi_dini_penyakit">Deteksi Dini Penyakit</string>
     <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar.</string>
     <string name="status_usia_anak">Anak Anda sekarang telah berusia %1s bulan.</string>
-    <string name="mulai_scan_kms_anak">Mulai Scan KMS Anak!</string>
+    <string name="mulai_scan_kms_anak">Mulai scan KMS anak!</string>
     <string name="lewati_tahap_ini">Lewati Tahap Ini</string>
     <string name="lakukan_scan_kms_agar_pengisian_berat_badan_anak_anda_otomatis_dilakukan">Lakukan scan KMS agar pengisian berat badan anak Anda otomatis dilakukan.</string>
     <string name="data_anak">Data Anak</string>
     <string name="tambah_pertumbuhan_anak">Tambah Pertumbuhan Anak</string>
-    <string name="sudah_imunisasi">Sudah diberikan pada tanggal %1$s</string>
+    <string name="sudah_imunisasi">Sudah diberikan pada %1$s</string>
     <string name="usia_ke">Usia ke-</string>
     <string name="tanggal_prediksi">Tanggal prediksi persalinan</string>
     <string name="edit_pertumbuhan_anak">Edit Pertumbuhan Anak</string>

@@ -48,7 +48,7 @@ class PertumbuhanRepository private constructor(private val apiService: APIServi
 
         try {
             emit(
-                ResultResponse.Success(
+                ResultResponse.Success (
                     apiService.editPertumbuhanResponse(
                         pertumbuhan.childrenId!!,
                         pertumbuhan.id!!,

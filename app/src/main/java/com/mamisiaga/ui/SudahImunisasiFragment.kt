@@ -1,60 +1,117 @@
 package com.mamisiaga.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
+import com.mamisiaga.databinding.FragmentSudahImunisasiBinding
+import com.mamisiaga.tools.isConnected
+import com.mamisiaga.viewmodel.ImunisasiViewModel
+import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SudahImunisasiFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SudahImunisasiFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class SudahImunisasiFragment : Fragment(), View.OnClickListener {
+    private var _binding: FragmentSudahImunisasiBinding? = null
+    private var _imunisasiViewModel: ImunisasiViewModel? = null
+    //private lateinit var imunisasi: Imunisasi
+    private val binding get() = _binding!!
+    private val imunisasiViewModel get() = _imunisasiViewModel!!
+    private var _ibu: Ibu? = null
+    private val ibu: Ibu get() = _ibu!!
+    private var _anak: Anak? = null
+    private val anak: Anak get() = _anak!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sudah_imunisasi, container, false)
+    ): View {
+        _binding = FragmentSudahImunisasiBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SudahImunisasiFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SudahImunisasiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        _ibu = requireActivity().intent.getParcelableExtra<Ibu>("extraIbu") as Ibu
+        _anak = requireActivity().intent.getParcelableExtra<Anak>("extraAnak") as Anak
+
+        _imunisasiViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.ImunisasiViewModelFactory(ibu.token!!)
+        )[ImunisasiViewModel::class.java]
+
+        //getImunisasiDoneResponse()
+
+        binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        _imunisasiViewModel = null
+        _ibu = null
+        _anak = null
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.button_muat_ulang -> {
+                requireActivity().recreate()
+            }
+        }
+    }
+
+    private fun getImunisasiDoneResponse() {
+        /*imunisasiViewModel.getImunisasiResponse(anak.id!!)
+            .observe(viewLifecycleOwner) { resultResponse ->
+                when (resultResponse) {
+                    is ResultResponse.Loading -> {
+
+                    }
+                    is ResultResponse.Success -> {
+                        /*
+                        imunisasiDataAdapter.submitList(resultResponse.data.imunisasiData)
+
+                        if (resultResponse.data.imunisasiData.isEmpty()) {
+                            binding.recyclerViewDataAnak.visibility = View.INVISIBLE
+                            binding.textviewTidakAdaData.visibility = View.VISIBLE
+                        } else {
+                            binding.recyclerViewDataAnak.visibility = View.VISIBLE
+                            binding.textviewTidakAdaData.visibility = View.GONE
+                        }
+                         */
+                    }
+                    is ResultResponse.Error -> {
+                        when (resultResponse.error) {
+                            //"No Internet Connection" -> drawLayout()
+                            //else -> showMasukError(true)
+                        }
+                    }
+                }
+
+                with(binding.recyclerviewImunisasiRekomendasi) {
+                    layoutManager = LinearLayoutManager(context)
+                    setHasFixedSize(true)
+                    //adapter = imunisasiDataAdapter
                 }
             }
+
+         */
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(requireActivity().applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
     }
 }

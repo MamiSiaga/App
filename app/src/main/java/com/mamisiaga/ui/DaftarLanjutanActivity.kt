@@ -128,7 +128,15 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             }
 
         val ibuDaftar =
-            IbuDaftar(name, email, password, passwordConfirm, placeOfBirth, dateOfBirth, profileType)
+            IbuDaftar(
+                name,
+                email,
+                password,
+                passwordConfirm,
+                placeOfBirth,
+                dateOfBirth,
+                profileType
+            )
 
         val dialog = Dialog(this)
 
@@ -144,7 +152,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    if (resultResponse.data.message == null) {
+                    if (resultResponse.data.token != null) {
                         Toast.makeText(
                             this@DaftarLanjutanActivity,
                             getString(R.string.pendaftaran_berhasil),
@@ -157,8 +165,9 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
 
                         startActivity(intent)
                     } else Toast.makeText(
-                        this,
-                        resultResponse.data.message, Toast.LENGTH_SHORT
+                        this@DaftarLanjutanActivity,
+                        "Pendaftaran gagal.",
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
                 is ResultResponse.Error -> {
