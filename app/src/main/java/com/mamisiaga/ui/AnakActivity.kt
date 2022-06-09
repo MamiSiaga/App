@@ -75,6 +75,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         seePertumbuhanResponse()
         //showGrafikKMS()
 
+        binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.layoutInfoImunisasi.setOnClickListener(this)
         binding.imageviewOpsiGrafikPertumbuhan.setOnClickListener(this)
@@ -84,6 +85,9 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view.id) {
+            R.id.button_muat_ulang -> {
+                recreate()
+            }
             R.id.imagebutton_keluar -> {
                 onBackPressed()
             }
@@ -233,17 +237,25 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         // Menu clicked in the bottom sheet dialog
         val opsiAdapter = OpsiAdapter { opsi ->
             if (opsi.item == "Tambah pertumbuhan anak") {
-                val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
+                if (age <= 60) {
+                    val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
 
-                responseCode.launch(
-                    Intent(
+                    responseCode.launch(
+                        Intent(
+                            this,
+                            TambahEditPertumbuhanAnakActivity::class.java
+                        ).putExtra(
+                            TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
+                            ibu
+                        ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
+                    )
+                } else {
+                    Toast.makeText(
                         this,
-                        TambahEditPertumbuhanAnakActivity::class.java
-                    ).putExtra(
-                        TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
-                        ibu
-                    ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
-                )
+                        "Anak Anda, ${anak.name}, telah berusia lebih dari 60 bulan.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
                 bottomSheetDialog.dismiss()
             } else if (opsi.item == "Lihat riwayat pertumbuhan") {
@@ -291,10 +303,13 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         val buttonYa = view.findViewById<Button>(R.id.button_ya)
         val buttonTidak = view.findViewById<Button>(R.id.button_tidak)
         val pertanyaanKonfirmasi = view.findViewById<TextView>(R.id.textview_pertanyaan_konfirmasi)
-        val pertanyaanKonfirmasiDeskripsi = view.findViewById<TextView>(R.id.textview_pertanyaan_konfirmasi_deskripsi)
+        val pertanyaanKonfirmasiDeskripsi =
+            view.findViewById<TextView>(R.id.textview_pertanyaan_konfirmasi_deskripsi)
 
-        pertanyaanKonfirmasi.text=getString(R.string.apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak)
-        pertanyaanKonfirmasiDeskripsi.text=getString(R.string.anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual)
+        pertanyaanKonfirmasi.text =
+            getString(R.string.apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak)
+        pertanyaanKonfirmasiDeskripsi.text =
+            getString(R.string.anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual)
 
         alert.setView(view)
 

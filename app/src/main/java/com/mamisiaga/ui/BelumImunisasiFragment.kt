@@ -6,29 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.mamisiaga.R
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.databinding.FragmentBelumImunisasiBinding
-import com.mamisiaga.tools.ResultResponse
+import com.mamisiaga.tools.isConnected
 import com.mamisiaga.viewmodel.ImunisasiViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
-class BelumImunisasiFragment : Fragment() {
+class BelumImunisasiFragment : Fragment(), View.OnClickListener {
     private var _binding: FragmentBelumImunisasiBinding? = null
     private var _imunisasiViewModel: ImunisasiViewModel? = null
 
     //private lateinit var imunisasi: Imunisasi
     private val binding get() = _binding!!
     private val imunisasiViewModel get() = _imunisasiViewModel!!
+    private var _ibu: Ibu? = null
+    private val ibu: Ibu get() = _ibu!!
+    private var _anak: Anak? = null
+    private val anak: Anak get() = _anak!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _imunisasiViewModel = ViewModelProvider(
-            this,
-            ViewModelFactory.ImunisasiViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
-        )[ImunisasiViewModel::class.java]
-
         _binding = FragmentBelumImunisasiBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -37,17 +38,37 @@ class BelumImunisasiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        _ibu = requireActivity().intent.getParcelableExtra<Ibu>("extraIbu") as Ibu
+        _anak = requireActivity().intent.getParcelableExtra<Anak>("extraAnak") as Anak
+
+        _imunisasiViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.ImunisasiViewModelFactory(ibu.token!!)
+        )[ImunisasiViewModel::class.java]
+
         //getImunisasiNotDoneResponse()
+
+        binding.layoutOffline.buttonMuatUlang.setOnClickListener(this)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
         _imunisasiViewModel = null
+        _ibu = null
+        _anak = null
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.button_muat_ulang -> {
+                requireActivity().recreate()
+            }
+        }
     }
 
     private fun getImunisasiNotDoneResponse() {
-        imunisasiViewModel.getImunisasiNotDoneResponse("anak1")
+        /*imunisasiViewModel.getImunisasiResponse(anak.id!!)
             .observe(viewLifecycleOwner) { resultResponse ->
                 when (resultResponse) {
                     is ResultResponse.Loading -> {
@@ -58,7 +79,7 @@ class BelumImunisasiFragment : Fragment() {
                         imunisasiDataAdapter.submitList(resultResponse.data.imunisasiData)
 
                         if (resultResponse.data.imunisasiData.isEmpty()) {
-                            binding.recyclerViewDataAnak.visibility = View.GONE
+                            binding.recyclerViewDataAnak.visibility = View.INVISIBLE
                             binding.textviewTidakAdaData.visibility = View.VISIBLE
                         } else {
                             binding.recyclerViewDataAnak.visibility = View.VISIBLE
@@ -80,5 +101,18 @@ class BelumImunisasiFragment : Fragment() {
                     //adapter = imunisasiDataAdapter
                 }
             }
+
+         */
+    }
+
+    private fun drawLayout() {
+        // Checking Internet connection
+        if (isConnected(requireActivity().applicationContext)) {
+            binding.layoutOnline.visibility = View.VISIBLE
+            binding.layoutOffline.layoutOffline.visibility = View.GONE
+        } else {
+            binding.layoutOnline.visibility = View.GONE
+            binding.layoutOffline.layoutOffline.visibility = View.VISIBLE
+        }
     }
 }

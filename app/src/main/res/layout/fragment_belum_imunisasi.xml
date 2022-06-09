@@ -4,48 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.BelumImunisasiFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_online"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
-
-            <!--TextView
-                android:id="@+id/textview_imunisasi"
-                style="@style/BigHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/imunisasi_yang_harus_dipenuhi"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textview_imunisasi_deskripsi"
-                style="@style/Description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/yuk_selesaikan_agar_tubuh_anak_anda_kebal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_imunisasi" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_imunisasi_saat_ini"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_margin="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_imunisasi_deskripsi"
-                tools:listitem="@layout/item_belum_imunisasi"/-->
+            android:paddingBottom="20dp"
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/textview_rekomendasi_imunisasi"
@@ -59,21 +31,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
+            <!--Spinner
                 android:id="@+id/spinner_imunisasi"
                 style="@style/SpinnerStyle"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/spinner"
                 android:spinnerMode="dropdown"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_rekomendasi_imunisasi" />
+                app:layout_constraintTop_toBottomOf="@id/textview_rekomendasi_imunisasi"/-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner_imunisasi">
+                app:layout_constraintTop_toBottomOf="@id/textview_rekomendasi_imunisasi">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerview_imunisasi_rekomendasi"
@@ -96,5 +68,9 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/layout_offline"
+            layout="@layout/layout_offline" />
     </LinearLayout>
 </ScrollView>

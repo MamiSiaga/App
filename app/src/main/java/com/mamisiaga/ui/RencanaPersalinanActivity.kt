@@ -39,6 +39,8 @@ class RencanaPersalinanActivity : AppCompatActivity(), View.OnClickListener,
         editTextListener()
         setButtonEnabled()
 
+
+
         kehamilanViewModel = ViewModelProvider(
             this,
             ViewModelFactory.KehamilanViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")

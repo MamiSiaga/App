@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mamisiaga.api.AnakData
 import com.mamisiaga.databinding.ItemAnakBinding
-import com.mamisiaga.tools.withDateFormatID
 import com.mamisiaga.tools.withDateFormatID2
 
 class AnakDataAdapter :

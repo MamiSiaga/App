@@ -4,19 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class DaftarResponse(
-    @field:SerializedName("errors")
-    val error: Errors,
-
-    @field:SerializedName("message")
-    val message: String
-)
-
-data class Errors(
-    @field:SerializedName("password")
-    val password: List<String>,
-
-    @field:SerializedName("email")
-    val email: List<String>
+    @field:SerializedName("token")
+    val token: String
 )
 
 data class MasukResponse(

@@ -180,8 +180,14 @@ class InformasiAnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        Locale.setDefault(Locale("id", "ID"))
+    }
+
     private fun seeDaftarAnakResponse() {
-        userViewModel.getUser(ibu.token!!).observe(this) { resultResponse ->
+                userViewModel.getUser(ibu.token!!).observe(this) { resultResponse ->
             when (resultResponse) {
                 is ResultResponse.Loading -> {
                     showLoadingSign(true)
