@@ -1,23 +1,32 @@
 package com.mamisiaga.ui
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.ScanKMS
 import com.mamisiaga.databinding.ActivityScanKmsBinding
 import com.mamisiaga.tools.Classifier
+import com.mamisiaga.tools.uriToFile
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
+import java.util.regex.Pattern
 
 
 class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
@@ -29,6 +38,33 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var cameraPermission: Array<String>
     private lateinit var storagePermission: Array<String>
     private var photo: Uri? = null
+    private lateinit var bitmap: Bitmap
+    private var isPhotoValid = 0
+    private var resultKMSlist = ArrayList<ScanKMS>()
+
+    private val cropActivityResultContracts = object : ActivityResultContract<Any?, Uri?>() {
+        override fun createIntent(context: Context, input: Any?): Intent {
+            return CropImage.activity()
+                .getIntent(this@ScanKMSActivity)
+        }
+
+        override fun parseResult(resultCode: Int, intent: Intent?): Uri? {
+            return CropImage.getActivityResult(intent)?.uri
+        }
+
+    }
+
+    private val cropActivityResultLauncher = registerForActivityResult(cropActivityResultContracts){
+        it?.let {
+            photo = it
+            Picasso.with(this)
+                .load(photo)
+                .into(binding.imageviewGambar)
+            setButtonEnabled()
+        }
+        val result = uriToFile(photo!!, this)
+        bitmap = BitmapFactory.decodeFile(result.path)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -48,6 +84,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         binding.buttonAmbilGambar.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.buttonLanjut.setOnClickListener(this)
+        binding.buttonTextRecognition.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -64,7 +101,10 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.button_lanjut -> {
-                validateKMS()
+                validateKMS(bitmap)
+            }
+            R.id.button_text_recognition -> {
+                recognizeText(bitmap)
             }
         }
     }
@@ -107,26 +147,8 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            val result = CropImage.getActivityResult(data)
-            if (resultCode == RESULT_OK) {
-                photo = result.uri
-
-                Picasso.with(this).load(photo).into(binding.imageviewGambar)
-
-                setButtonEnabled()
-            }
-        }
-    }
-
-    private fun validateKMS() {
+    private fun validateKMS(bitmap: Bitmap) {
         classifier = Classifier(assets, mModelPath, mLabelPath, mInputSize)
-
-        val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, photo)
         val result = classifier.recognizeImage(bitmap)
         val validity = result[0].title
 
@@ -138,6 +160,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            isPhotoValid = 1
         } else {
             runOnUiThread {
                 Toast.makeText(
@@ -146,16 +169,41 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            isPhotoValid = -1
         }
     }
 
-    private fun recognizeText() {
+    private fun recognizeText(bitmap: Bitmap) {
+        when(isPhotoValid) {
+            1 -> {
+                val recognition = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+                val image = InputImage.fromBitmap(bitmap, 0)
+
+                recognition.process(image)
+                    .addOnSuccessListener {
+                        val text = it.text
+                        binding.tvResultOcr.text = text
+                        Toast.makeText(this, "Teks berhasil dideteksi", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        e.printStackTrace()
+                        Toast.makeText(this,"Gagal mendeteksi teks", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            -1 -> {
+                Toast.makeText(this, getString(R.string.gambar_bukan_kms), Toast.LENGTH_SHORT).show()
+            }
+            0 -> {
+                Toast.makeText(this, "Cek validasi gambar terlebih dahulu!", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
     // Pick image from gallery or camera
     private fun pickFromGallery() {
-        CropImage.activity().start(this@ScanKMSActivity)
+        cropActivityResultLauncher.launch(null)
+//        CropImage.activity().start(this@ScanKMSActivity)
     }
 
     // Request camera permission
@@ -184,6 +232,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private fun setButtonEnabled() {
         binding.apply {
             buttonLanjut.isEnabled = photo != null
+            buttonTextRecognition.isEnabled = photo != null
         }
     }
 
