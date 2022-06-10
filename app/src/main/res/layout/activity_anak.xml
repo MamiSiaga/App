@@ -241,8 +241,8 @@
                         style="@style/Description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/jenis_kelamin"
                         android:layout_marginStart="16dp"
+                        tools:text="@string/jenis_kelamin_anak"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/menu_grafik_pertumbuhan_anak" />
 
