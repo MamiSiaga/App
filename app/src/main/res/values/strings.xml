@@ -7,10 +7,12 @@
     <string name="tab_text_1">Belum Imunisasi</string>
     <string name="tab_text_2">Sudah Imunisasi</string>
     <string name="incorrect_email_format">Format e-mail salah.</string>
+    <string name="password_kurang_dari_8_karakter">Kata sandi kurang dari 8 karakter</string>
+    <string name="kolom_tidak_boleh_kosong">Kolom tidak boleh kosong</string>
     <string name="e_mail">Email</string>
     <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
     <string name="lanjut">Lanjut</string>
-    <string name="silahkan_masuk">Silahkan Masuk!</string>
+    <string name="silakan_masuk">Silakan Masuk!</string>
     <string name="kata_sandi">Kata sandi</string>
     <string name="belum_memiliki_akun">Belum memiliki akun?</string>
     <string name="daftar">Daftar</string>
@@ -55,7 +57,6 @@
     <string name="no_data">Tidak ada data.</string>
     <string name="daftar_anak">Daftar Anak</string>
     <string name="nama">Nama</string>
-    <string name="nik">NIK</string>
     <string name="tanggal_lahir">Tanggal lahir</string>
     <string name="ya">Ya</string>
     <string name="tidak">Tidak</string>
@@ -68,7 +69,7 @@
     <string name="ambil_ulang">Ambil ulang</string>
     <string name="tambah_anak">Tambah Anak</string>
     <string name="jenis_kelamin">Jenis kelamin</string>
-    <string name="jenis_kelamin_anak">Jenis kelamin</string>
+    <string name="jenis_kelamin_anak">Jenis kelamin: %1s</string>
     <string name="laki_laki">Laki-laki</string>
     <string name="perempuan">Perempuan</string>
     <string name="golongan_darah">Golongan darah</string>
@@ -80,7 +81,7 @@
     <string name="tinggi_badan">Tinggi badan (cm)</string>
     <string name="lingkar_kepala">Lingkar kepala (cm)</string>
     <string name="data_anak_baru_lahir">Data Anak Baru Lahir</string>
-    <string name="silahkan_mengisi_form_dengan_benar">Silahkan mengisi form dengan benar.</string>
+    <string name="silahkan_mengisi_form_dengan_benar">Silakan mengisi form dengan benar.</string>
     <string name="gagal_merespon_permintaan">Gagal merespon permintaan</string>
     <string name="tidak_ada_koneksi_internet">Tidak ada koneksi Internet</string>
     <string name="muat_ulang">Muat Ulang</string>
@@ -92,7 +93,7 @@
     <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
     <string name="sudah_periksa">Sudah Periksa?</string>
     <string name="pertanyaan">Pertanyaan</string>
-    <string name="mohon_mengisi_dengan_jujur">Mohon centang dnegan jujur terkait pemeriksaan apa saja yang dilakukan.</string>
+    <string name="mohon_mengisi_dengan_jujur">Mohon centang dengan jujur terkait pemeriksaan apa saja yang Mami lakukan.</string>
     <string name="meliputi">Meliputi …</string>
     <string name="kumpulkan">Kumpulkan</string>
     <string name="imunisasi_yang_harus_dipenuhi">Imunisasi yang harus dipenuhi</string>
@@ -129,7 +130,7 @@
     <string name="edit_pertumbuhan_anak">Edit Pertumbuhan Anak</string>
     <string name="masukkan_email_anda">Masukkan E-mail Anda:</string>
     <string name="edit_kata_sandi">Edit Kata Sandi</string>
-    <string name="silahkan_buat_kata_sandi_yang_baru">Silahkan buat kata sandi yang baru:</string>
+    <string name="silahkan_buat_kata_sandi_yang_baru">Silakan buat kata sandi yang baru:</string>
     <string name="tanggal_ekspetasi_persalinan">Tanggal ekspetasi persalinan:</string>
     <string name="imunisasi_yang_telah_dilaksanakan">Imunisasi yang Telah Dilaksanakan</string>
     <string name="tempat_lahir">Tempat lahir</string>
@@ -138,18 +139,20 @@
     <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
     <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
     <string name="gambar_tabel_kms_berat_badan">Gambar Tabel KMS Berat Badan</string>
-    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS berat badan. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
-    <string name="silahkan_masuk_ke_mamisiaga">Silahkan Masuk ke MamiSiaga!</string>
+    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS berat badan. Apabila tidak, maka ditolak. Silakan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
+    <string name="silahkan_masuk_ke_mamisiaga">Silakan Masuk ke MamiSiaga!</string>
     <string name="belum_terdapat_data_pertumbuhan_ntambahkan_data_pertumbuhan_anak_usia_0_telebih_dahulu">Belum terdapat data pertumbuhan.\nTambahkan data pertumbuhan anak usia 0 telebih dahulu.</string>
     <string name="apakah_anda_yakin_untuk_menyimpannya">Apakah Anda yakin untuk menyimpannya?</string>
     <string name="anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual">Anda akan memasukkan data pertumbuhan anak secara manual.</string>
     <string name="setelah_ini_akan_memasukkan_data_pertumbuhan_anak_secara_manual">Setelah ini, Anda akan memasukkan data pertumbuhan anak secara manual.</string>
     <string name="apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak">Apakah Anda yakin untuk tidak melakukan scan KMS anak?</string>
     <string name="deskripsi_pertanyaan">Deskripsi pertanyaan</string>
-    <string name="ijin_akses_kamera_dan_penyimpanan">Mohon berikan ijin untuk mengakses kamera dan penyimpanan.</string>
-    <string name="ijin_akses_penyimpanan">Mohon berikan ijin untuk mengakses penyimpanan.</string>
-    <string name="gambar_bukan_kms">Gambar bukan KMS. Silahkan ambil ulang.</string>
+    <string name="ijin_akses_kamera_dan_penyimpanan">Mohon berikan izin untuk mengakses kamera dan penyimpanan.</string>
+    <string name="ijin_akses_penyimpanan">Mohon berikan izin untuk mengakses penyimpanan.</string>
+    <string name="gambar_bukan_kms">Gambar bukan KMS. Silakan ambil ulang.</string>
     <string name="deteksi_teks_berat_badan">Deteksi teks berat badan</string>
+    <string name="tampilkan">tampilkan</string>
+    <string name="sembunyikan">sembunyikan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>
