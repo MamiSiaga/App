@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_sudah_imunisasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/textview_isi_imunisasi_anak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_imunisasi"
+                android:layout_marginBottom="8dp"
+                style="@style/SmallHeader"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_status_imunisasi"
+                style="@style/ChipStyle"
+                android:text="@string/sudah_imunisasi"
+                app:chipBackgroundColor="@color/green_50"
+                app:chipStrokeColor="@color/green_100"
+                android:textColor="@color/green_100"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

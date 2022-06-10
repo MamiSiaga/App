@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.DaftarLanjutanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40sp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_judul"
+                style="@style/ViewTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/imagebutton_keluar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/blue_50"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textview_selamat_datang"
+                    style="@style/BigHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/selamat_datang"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imagebutton_keluar" />
+
+                <TextView
+                    android:id="@+id/textview_email"
+                    style="@style/BoldDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/e_mail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_selamat_datang" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_nama"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="40dp"
+                android:hint="@string/nama"
+                android:inputType="text"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_judul" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_tempat_lahir"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="16dp"
+                android:hint="@string/tempat_lahir"
+                android:inputType="text"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_nama" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_tgl_lahir"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="16dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="@string/tanggal_lahir"
+                android:inputType="date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_tempat_lahir" />
+
+            <TextView
+                android:id="@+id/textview_pertanyaan_posyandu"
+                style="@style/SmallHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/apakah_anda_mengikuti_program_posyandu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_tgl_lahir" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_pertanyaan_posyandu"
+                style="@style/RadioGroupStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_pertanyaan_posyandu">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radiobutton_ya"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/ya" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radiobutton_tidak"
+                    style="@style/RadioButtonStyle"
+                    android:text="@string/tidak" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_kata_sandi"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="24dp"
+                android:hint="@string/kata_sandi"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radiogroup_pertanyaan_posyandu" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edittext_ketik_ulang_kata_sandi"
+                style="@style/EditTextStyle"
+                android:layout_marginTop="16dp"
+                android:hint="@string/ketik_ulang_kata_sandi"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_kata_sandi" />
+
+            <com.mamisiaga.customview.CustomViewButtonForm
+                android:id="@+id/button_daftar"
+                style="@style/ButtonBlueStyle"
+                android:layout_marginTop="40dp"
+                android:text="@string/daftar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edittext_ketik_ulang_kata_sandi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

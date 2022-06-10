@@ -1,0 +1,184 @@
+<resources>
+    <string name="app_name">MamiSiaga</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_profil">Profil</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Belum Imunisasi</string>
+    <string name="tab_text_2">Sudah Imunisasi</string>
+    <string name="incorrect_email_format">Format e-mail salah.</string>
+    <string name="e_mail">Email</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
+    <string name="lanjut">Lanjut</string>
+    <string name="silahkan_masuk">Silahkan Masuk!</string>
+    <string name="kata_sandi">Kata sandi</string>
+    <string name="belum_memiliki_akun">Belum memiliki akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk">Masuk</string>
+    <string name="hai">Hai, %1s!</string>
+    <string name="bergabung_dengan_mamisiaga_sekarang">Bergabung dengan MamiSiaga sekarang!</string>
+    <string name="selamat_datang">Selamat Datang!</string>
+    <string name="informasi_ibu_hamil">Informasi Ibu Hamil</string>
+    <string name="informasi_anak">Informasi Anak</string>
+    <string name="konten">Konten</string>
+    <string name="panduan_penggunaan">Panduan</string>
+    <string name="anda_belum_hamil">Anda Belum Hamil</string>
+    <string name="klik_tombol_di_bawah_apabila_anda_sudah_mulai_hamil">Klik tombol di bawah apabila Anda sudah mulai hamil.</string>
+    <string name="saya_sudah_mulai_hamil">Saya sudah mulai hamil!</string>
+    <string name="anda_sudah_melahirkan">Anda Sudah Melahirkan</string>
+    <string name="klik_tombol_di_bawah_apabila_anda_mulai_hamil_lagi">Klik tombol di bawah apabila Anda mulai hamil lagi.</string>
+    <string name="saya_mulai_hamil_lagi">Saya mulai hamil lagi!</string>
+    <string name="lihat_riwayat_melahirkan">Lihat Riwayat Melahirkan</string>
+    <string name="minggu">Minggu</string>
+    <string name="aktivitas">Aktivitas</string>
+    <string name="berdasarkan_minggu_ke">Berdasarkan minggu ke</string>
+    <string name="selengkapnya">Selengkapnya</string>
+    <string name="panggilan_darurat">Panggilan Darurat</string>
+    <string name="rencana_persalinan">Rencana Persalinan</string>
+    <string name="user_profile">User Profile</string>
+    <string name="user_name">%1s</string>
+    <string name="user_email">%1s</string>
+    <string name="keluar">Keluar</string>
+    <string name="lupa_kata_sandi">Lupa kata sandi?</string>
+    <string name="anak">Anak</string>
+    <string name="informasi_imunisasi">Informasi Imunisasi</string>
+    <string name="gizi_anak">Gizi Anak</string>
+    <string name="scan_kms">Scan KMS</string>
+    <string name="grafik_pertumbuhan">Grafik Pertumbuhan</string>
+    <string name="vitamin">Vitamin</string>
+    <string name="foto_anak">Foto Anak</string>
+    <string name="nama_anak">Nama Anak</string>
+    <string name="tgl_lahir">Tgl Lahir</string>
+    <string name="title_info_anak">Informasi Anak</string>
+    <string name="info_umum">Informasi Umum</string>
+    <string name="tambah_data_anak">Tambah data anak</string>
+    <string name="no_data">Tidak ada data.</string>
+    <string name="daftar_anak">Daftar Anak</string>
+    <string name="nama">Nama</string>
+    <string name="nik">NIK</string>
+    <string name="tanggal_lahir">Tanggal lahir</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="apakah_anda_mengikuti_program_posyandu">Apakah Anda mengikuti program Posyandu?</string>
+    <string name="ketik_ulang_kata_sandi">Ketik ulang kata sandi</string>
+    <string name="lokasi_rumah_sakit">Lokasi rumah sakit</string>
+    <string name="simpan">Simpan</string>
+    <string name="kontrol_kehamilan">Kontrol kehamilan</string>
+    <string name="tanggal_melahirkan">Tanggal melahirkan</string>
+    <string name="ambil_ulang">Ambil ulang</string>
+    <string name="tambah_anak">Tambah Anak</string>
+    <string name="jenis_kelamin">Jenis kelamin</string>
+    <string name="jenis_kelamin_anak">Jenis kelamin</string>
+    <string name="laki_laki">Laki-laki</string>
+    <string name="perempuan">Perempuan</string>
+    <string name="golongan_darah">Golongan darah</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="ab">AB</string>
+    <string name="o">O</string>
+    <string name="berat_badan">Berat badan (kg)</string>
+    <string name="tinggi_badan">Tinggi badan (cm)</string>
+    <string name="lingkar_kepala">Lingkar kepala (cm)</string>
+    <string name="data_anak_baru_lahir">Data Anak Baru Lahir</string>
+    <string name="silahkan_mengisi_form_dengan_benar">Silahkan mengisi form dengan benar.</string>
+    <string name="gagal_merespon_permintaan">Gagal merespon permintaan</string>
+    <string name="tidak_ada_koneksi_internet">Tidak ada koneksi Internet</string>
+    <string name="muat_ulang">Muat Ulang</string>
+    <string name="rekomendasi">Rekomendasi</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="informasi_kontrol_kehamilan">Informasi Kontrol Kehamilan</string>
+    <string name="tidak_mendapatkan_permission">Tidak mendapatkan permission.</string>
+    <string name="gagal_memunculkan_kamera">Gagal memunculkan kamera.</string>
+    <string name="gagal_mengambil_gambar">Gagal mengambil gambar.</string>
+    <string name="sudah_periksa">Sudah Periksa?</string>
+    <string name="pertanyaan">Pertanyaan</string>
+    <string name="mohon_mengisi_dengan_jujur">Mohon centang dnegan jujur terkait pemeriksaan apa saja yang dilakukan.</string>
+    <string name="meliputi">Meliputi …</string>
+    <string name="kumpulkan">Kumpulkan</string>
+    <string name="imunisasi_yang_harus_dipenuhi">Imunisasi yang harus dipenuhi</string>
+    <string name="yuk_selesaikan_agar_tubuh_anak_anda_kebal">Yuk, selesaikan agar tubuh anak Anda kebal!</string>
+    <string name="nama_imunisasi">Nama Imunisasi</string>
+    <string name="diberikan_sebelum_dosis_ke_berikutnya">Diberikan sebelum dosis ke berikutnya</string>
+    <string name="rekomendasi_imunisasi_berdasarkan_jenis">Rekomendasi Imunisasi Berdasarkan Jenis</string>
+    <string name="menu_opsi">Menu Item</string>
+    <string name="kehamilan_ke">Kehamilan ke-</string>
+    <string name="tambah_data_kehamilan">Tambah Data Kehamilan</string>
+    <string name="tambah">Tambah</string>
+    <string name="tanggal_hamil">Tanggal hamil</string>
+    <string name="sedang_memuat">Sedang memuat…</string>
+    <string name="sertifikat_penghargaan">Sertifikat Penghargaan</string>
+    <string name="tanggal_imunisasi">Tanggal imunisasi</string>
+    <string name="perkembangan_anak">Perkembangan Anak:</string>
+    <string name="hasil_scan_kms">Hasil Scan KMS</string>
+    <string name="bulan_ke">Bulan ke-</string>
+    <string name="tanggal_pemeriksaan">Tanggal pemeriksaan</string>
+    <string name="edit_data">Edit data</string>
+    <string name="usia_anak">Usia anak</string>
+    <string name="menu_anak">Menu Anak</string>
+    <string name="deteksi_dini_penyakit">Deteksi Dini Penyakit</string>
+    <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar.</string>
+    <string name="status_usia_anak">Anak Anda sekarang telah berusia %1s bulan.</string>
+    <string name="mulai_scan_kms_anak">Mulai scan KMS anak!</string>
+    <string name="lewati_tahap_ini">Lewati Tahap Ini</string>
+    <string name="lakukan_scan_kms_agar_pengisian_berat_badan_anak_anda_otomatis_dilakukan">Lakukan scan KMS agar pengisian berat badan anak Anda otomatis dilakukan.</string>
+    <string name="data_anak">Data Anak</string>
+    <string name="tambah_pertumbuhan_anak">Tambah Pertumbuhan Anak</string>
+    <string name="sudah_imunisasi">Sudah diberikan pada %1$s</string>
+    <string name="usia_ke">Usia ke-</string>
+    <string name="tanggal_prediksi">Tanggal prediksi persalinan</string>
+    <string name="edit_pertumbuhan_anak">Edit Pertumbuhan Anak</string>
+    <string name="masukkan_email_anda">Masukkan E-mail Anda:</string>
+    <string name="edit_kata_sandi">Edit Kata Sandi</string>
+    <string name="silahkan_buat_kata_sandi_yang_baru">Silahkan buat kata sandi yang baru:</string>
+    <string name="tanggal_ekspetasi_persalinan">Tanggal ekspetasi persalinan:</string>
+    <string name="imunisasi_yang_telah_dilaksanakan">Imunisasi yang Telah Dilaksanakan</string>
+    <string name="tempat_lahir">Tempat lahir</string>
+    <string name="status">Status</string>
+    <string name="ambil_gambar">Ambil gambar</string>
+    <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
+    <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
+    <string name="gambar_tabel_kms">Gambar Tabel KMS</string>
+    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
+    <string name="silahkan_masuk_ke_mamisiaga">Silahkan Masuk ke MamiSiaga!</string>
+    <string name="belum_terdapat_data_pertumbuhan_ntambahkan_data_pertumbuhan_anak_usia_0_telebih_dahulu">Belum terdapat data pertumbuhan.\nTambahkan data pertumbuhan anak usia 0 telebih dahulu.</string>
+    <string name="apakah_anda_yakin_untuk_menyimpannya">Apakah Anda yakin untuk menyimpannya?</string>
+    <string name="anda_akan_memasukkan_data_pertumbuhan_anak_secara_manual">Anda akan memasukkan data pertumbuhan anak secara manual.</string>
+    <string name="apakah_anda_yakin_untuk_tidak_melakukan_scan_kms_anak">Apakah Anda yakin untuk tidak melakukan scan KMS anak?</string>
+    <string name="deskripsi_pertanyaan">Deskripsi pertanyaan</string>
+    <string name="ijin_akses_kamera_dan_penyimpanan">Mohon berikan ijin untuk mengakses kamera dan penyimpanan.</string>
+    <string name="ijin_akses_penyimpanan">Mohon berikan ijin untuk mengakses penyimpanan.</string>
+    <string name="gambar_bukan_kms">Gambar bukan KMS. Silahkan ambil ulang.</string>
+    <string-array name="kontrol_kehamilan_sekarang_mulai_array">
+        <item>Detail kontrol kehamilan</item>
+        <item>Buat jadwal</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_sudah_jadwal_array">
+        <item>Detail kontrol kehamilan</item>
+        <item>Buat jadwal</item>
+        <item>Sudah periksa?</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_selesai_array">
+        <item>Detail kontrol kehamilan</item>
+    </string-array>
+    <string-array name="kontrol_kehamilan_sekarang_locked_array">
+        <item>Detail kontrol kehamilan</item>
+    </string-array>
+    <string-array name="opsi_anak_array">
+        <item>Lihat data anak</item>
+        <item>Hapus data anak</item>
+    </string-array>
+    <string-array name="opsi_grafik_pertumbuhan_array">
+        <item>Tambah pertumbuhan anak</item>
+        <item>Lihat riwayat pertumbuhan</item>
+    </string-array>
+    <string-array name="imunisasi_mulai_array">
+        <item>Buat jadwal</item>
+    </string-array>
+    <string-array name="imunisasi_sudah_jadwal_array">
+        <item>Edit jadwal</item>
+    </string-array>
+    <string-array name="imunisasi_sudah_hari_array">
+        <item>Edit jadwal</item>
+        <item>Unggah sertifikat</item>
+    </string-array>
+</resources>

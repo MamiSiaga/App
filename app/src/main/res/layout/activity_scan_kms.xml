@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ScanKMSActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/appBar"
+                style="@style/AppBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/imagebutton_keluar"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@color/blue_50"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:layout_constraintBottom_toBottomOf="@id/appBar"
+                    app:layout_constraintStart_toStartOf="@id/appBar"
+                    app:layout_constraintTop_toTopOf="@id/appBar" />
+
+                <TextView
+                    style="@style/SmallHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_kms"
+                    app:layout_constraintBottom_toBottomOf="@id/appBar"
+                    app:layout_constraintEnd_toEndOf="@id/appBar"
+                    app:layout_constraintStart_toStartOf="@id/appBar"
+                    app:layout_constraintTop_toTopOf="@id/appBar" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textview_gambar_scan_kms"
+                style="@style/BigHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/gambar_tabel_kms"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+            <TextView
+                android:id="@+id/textview_gambar_scan_kms_deskripsi"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms" />
+
+            <ImageView
+                android:id="@+id/imageview_gambar"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms_deskripsi"
+                app:srcCompat="@color/gray_200" />
+
+            <TextView
+                android:id="@+id/tv_result_ocr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@id/imageview_gambar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_ambil_gambar"
+                style="@style/ButtonBlueStyle"
+                android:layout_marginTop="40dp"
+                android:text="@string/ambil_gambar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_result_ocr" />
+
+            <com.mamisiaga.customview.CustomViewButtonForm
+                android:id="@+id/button_lanjut"
+                style="@style/ButtonBlueStyle"
+                android:layout_marginTop="16dp"
+                android:text="Cek Gambar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button_ambil_gambar" />
+
+                <com.mamisiaga.customview.CustomViewButtonForm
+                android:id="@+id/button_text_recognition"
+                style="@style/ButtonBlueStyle"
+                android:layout_marginTop="16dp"
+                android:text="Deteksi Teks"
+                app:layout_constraintTop_toBottomOf="@id/button_lanjut"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
