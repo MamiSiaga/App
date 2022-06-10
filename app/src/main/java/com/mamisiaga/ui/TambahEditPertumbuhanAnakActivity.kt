@@ -1,5 +1,6 @@
 package com.mamisiaga.ui
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -26,6 +27,7 @@ class TambahEditPertumbuhanAnakActivity : AppCompatActivity(), View.OnClickListe
     private lateinit var ibu: Ibu
     private var pertumbuhan: Pertumbuhan? = null
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
 

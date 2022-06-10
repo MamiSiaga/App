@@ -24,6 +24,7 @@ import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityScanKmsBinding
 import com.mamisiaga.tools.Classifier
+import com.mamisiaga.tools.getComparisonWithCurrentDate
 import com.mamisiaga.tools.keepNumbers
 import com.mamisiaga.tools.uriToFile
 import com.squareup.picasso.Picasso
@@ -39,6 +40,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var storagePermission: Array<String>
     private lateinit var ibu: Ibu
     private lateinit var anak: Anak
+    private var ageStart = 0
     private var photo: Uri? = null
     private lateinit var bitmap: Bitmap
     private var isPhotoValid = 0
@@ -56,15 +58,19 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
     private val cropActivityResultLauncher =
         registerForActivityResult(cropActivityResultContracts) {
-            it?.let {
-                photo = it
-                Picasso.with(this)
-                    .load(photo)
-                    .into(binding.imageviewGambar)
-                setButtonEnabled()
+            try {
+                it?.let {
+                    photo = it
+                    Picasso.with(this)
+                        .load(photo)
+                        .into(binding.imageviewGambar)
+                    setButtonEnabled()
+                }
+                val result = uriToFile(photo!!, this)
+                bitmap = BitmapFactory.decodeFile(result.path)
+            } catch (e: Exception) {
+                onBackPressed()
             }
-            val result = uriToFile(photo!!, this)
-            bitmap = BitmapFactory.decodeFile(result.path)
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +84,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
         ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
         anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
+        ageStart = intent.getIntExtra(EXTRA_AGE, 0)
 
         setButtonEnabled()
 
@@ -143,8 +150,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                             this,
                             getString(R.string.ijin_akses_penyimpanan),
                             Toast.LENGTH_LONG
-                        )
-                            .show()
+                        ).show()
                     }
                 }
             }
@@ -184,8 +190,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                             val listPertumbuhan: ArrayList<Pertumbuhan> = ArrayList()
                             val text = keepNumbers(it.text.trim())
                             val listBeratBadan: List<String> = text.split(" ")
-                            var age = 0
-                            val size = listBeratBadan.size
+                            val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
 
                             for (i in listBeratBadan) {
                                 listPertumbuhan.add(
@@ -193,14 +198,16 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                                         null,
                                         anak.id,
                                         null,
-                                        age,
+                                        ageStart,
                                         i.toInt(),
                                         null,
                                         null
                                     )
                                 )
 
-                                age += 1
+                                ageStart += 1
+
+                                if(ageStart == comparison || ageStart == 24) break
                             }
 
                             startActivity(
@@ -283,5 +290,6 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         private const val STORAGE_REQUEST = 200
         const val EXTRA_IBU = "extraIbu"
         const val EXTRA_ANAK = "extraAnak"
+        const val EXTRA_AGE = "extraAge"
     }
 }

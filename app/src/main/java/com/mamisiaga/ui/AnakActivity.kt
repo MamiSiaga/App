@@ -38,6 +38,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var ibu: Ibu
     private lateinit var anak: Anak
     private var age = 0
+    private var comparison = 0
     private val responseCode =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
@@ -103,6 +104,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(
                     intent.putExtra(ScanKMSActivity.EXTRA_IBU, ibu)
                         .putExtra(ScanKMSActivity.EXTRA_ANAK, anak)
+                        .putExtra(ScanKMSActivity.EXTRA_AGE, age)
                 )
             }
             R.id.button_lewati_bagian_ini -> {
@@ -127,7 +129,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                                 else -> getString(R.string.perempuan)
                             }
 
-                    val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!)
+                    comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
 
                     if (resultResponse.data.pertumbuhanData.isEmpty() &&
                         comparison > 0
@@ -243,17 +245,28 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         val opsiAdapter = OpsiAdapter { opsi ->
             if (opsi.item == "Tambah pertumbuhan anak") {
                 if (age <= 60) {
-                    val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
+                    if (age <= comparison) {
+                        val pertumbuhan = Pertumbuhan(null, anak.id, null, age, null, null, null)
 
-                    responseCode.launch(
-                        Intent(
+                        responseCode.launch(
+                            Intent(
+                                this,
+                                TambahEditPertumbuhanAnakActivity::class.java
+                            ).putExtra(
+                                TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
+                                ibu
+                            ).putExtra(
+                                TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN,
+                                pertumbuhan
+                            )
+                        )
+                    } else {
+                        Toast.makeText(
                             this,
-                            TambahEditPertumbuhanAnakActivity::class.java
-                        ).putExtra(
-                            TambahEditPertumbuhanAnakActivity.EXTRA_IBU,
-                            ibu
-                        ).putExtra(TambahEditPertumbuhanAnakActivity.EXTRA_PERTUMBUHAN, pertumbuhan)
-                    )
+                            "Anak Anda, ${anak.name}, masih berusia $comparison bulan.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 } else {
                     Toast.makeText(
                         this,

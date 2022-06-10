@@ -152,7 +152,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                 is ResultResponse.Success -> {
                     dialog.dismiss()
 
-                    if (resultResponse.data.token != null) {
+                    if (resultResponse.data.token == null) {
                         Toast.makeText(
                             this@DaftarLanjutanActivity,
                             getString(R.string.pendaftaran_berhasil),

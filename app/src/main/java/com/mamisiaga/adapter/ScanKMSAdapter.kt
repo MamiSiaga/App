@@ -1,5 +1,6 @@
 package com.mamisiaga.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +11,11 @@ class ScanKMSAdapter(private val scanKMSList: ArrayList<Pertumbuhan>) :
     RecyclerView.Adapter<ScanKMSAdapter.ScanKMSViewHolder>() {
     inner class ScanKMSViewHolder(private val binding: ItemScanKmsBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(pertumbuhan: Pertumbuhan) {
             binding.pertumbuhan = pertumbuhan
             binding.edittextBeratBadan.setText(pertumbuhan.weight.toString())
-            binding.textviewBulan.text = "Bulan ke ${pertumbuhan.age}"
+            binding.textviewBulan.text = "Bulan ke-${pertumbuhan.age}"
         }
     }
 

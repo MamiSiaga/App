@@ -58,7 +58,6 @@ class DaftarActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun editTextListener() {
         binding.apply {
             edittextEmail.addTextChangedListener(object : TextWatcher {

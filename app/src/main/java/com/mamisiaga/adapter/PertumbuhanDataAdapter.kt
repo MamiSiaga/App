@@ -23,23 +23,6 @@ class PertumbuhanDataAdapter(private val editDataListener: (PertumbuhanData) -> 
             binding.textViewLingkarKepala.text =
                 "Lingkar kepala: ${pertumbuhanData.headDiameter} cm"
 
-            /*
-            binding.cardviewPertumbuhan.setOnClickListener {
-                val pertumbuhan = Pertumbuhan(
-                    pertumbuhanData.date_of_measurement,
-                    pertumbuhanData.age,
-                    pertumbuhanData.weight,
-                    pertumbuhanData.height,
-                    pertumbuhanData.headDiameter
-                )
-                val intent = Intent(itemView.context, AnakActivity::class.java)
-
-                //intent.putExtra(AnakActivity.EXTRA_ANAK, pertumbuhanData)
-
-                itemView.context.startActivity(intent)
-            }
-             */
-
             binding.textViewEditData.setOnClickListener {
                 editDataListener(pertumbuhanData)
             }
