@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/appBar"
                 style="@style/AppBar"
@@ -46,11 +47,12 @@
             <TextView
                 android:id="@+id/textview_gambar_scan_kms"
                 style="@style/BigHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:text="@string/gambar_tabel_kms"
+                android:layout_marginEnd="16dp"
+                android:text="@string/gambar_tabel_kms_berat_badan"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/appBar" />
 
@@ -82,9 +84,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                app:layout_constraintTop_toBottomOf="@id/imageview_gambar"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/imageview_gambar" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_ambil_gambar"
@@ -96,22 +98,13 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_result_ocr" />
 
             <com.mamisiaga.customview.CustomViewButtonForm
-                android:id="@+id/button_lanjut"
+                android:id="@+id/button_deteksi_teks_berat_badan"
                 style="@style/ButtonBlueStyle"
                 android:layout_marginTop="16dp"
-                android:text="Cek Gambar"
+                android:text="@string/deteksi_teks_berat_badan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/button_ambil_gambar" />
-
-                <com.mamisiaga.customview.CustomViewButtonForm
-                android:id="@+id/button_text_recognition"
-                style="@style/ButtonBlueStyle"
-                android:layout_marginTop="16dp"
-                android:text="Deteksi Teks"
-                app:layout_constraintTop_toBottomOf="@id/button_lanjut"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </ScrollView>

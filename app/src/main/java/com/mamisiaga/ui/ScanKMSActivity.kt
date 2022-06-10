@@ -19,6 +19,8 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.mamisiaga.R
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityScanKmsBinding
 import com.mamisiaga.tools.Classifier
@@ -26,7 +28,6 @@ import com.mamisiaga.tools.keepNumbers
 import com.mamisiaga.tools.uriToFile
 import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
-
 
 class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityScanKmsBinding
@@ -36,6 +37,8 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private val mInputSize = 150
     private lateinit var cameraPermission: Array<String>
     private lateinit var storagePermission: Array<String>
+    private lateinit var ibu: Ibu
+    private lateinit var anak: Anak
     private var photo: Uri? = null
     private lateinit var bitmap: Bitmap
     private var isPhotoValid = 0
@@ -73,6 +76,9 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
         setContentView(binding.root)
 
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
+        anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
+
         setButtonEnabled()
 
         cameraPermission =
@@ -81,8 +87,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonAmbilGambar.setOnClickListener(this)
         binding.imagebuttonKeluar.setOnClickListener(this)
-        binding.buttonLanjut.setOnClickListener(this)
-        binding.buttonTextRecognition.setOnClickListener(this)
+        binding.buttonDeteksiTeksBeratBadan.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -98,11 +103,8 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                     pickFromGallery()
                 }
             }
-            R.id.button_lanjut -> {
+            R.id.button_deteksi_teks_berat_badan -> {
                 validateKMS(bitmap)
-            }
-            R.id.button_text_recognition -> {
-                recognizeText(bitmap)
             }
         }
     }
@@ -178,41 +180,55 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
                 recognition.process(image)
                     .addOnSuccessListener {
-                        val listPertumbuhan: ArrayList<Pertumbuhan> = ArrayList()
-                        val text = keepNumbers(it.text)
-                        val listBeratBadan: List<String> = text.split(" ")
-                        var age = 0
+                        try {
+                            val listPertumbuhan: ArrayList<Pertumbuhan> = ArrayList()
+                            val text = keepNumbers(it.text.trim())
+                            val listBeratBadan: List<String> = text.split(" ")
+                            var age = 0
+                            val size = listBeratBadan.size
 
-                        val size = listBeratBadan.size
+                            for (i in listBeratBadan) {
+                                listPertumbuhan.add(
+                                    Pertumbuhan(
+                                        null,
+                                        anak.id,
+                                        null,
+                                        age,
+                                        i.toInt(),
+                                        null,
+                                        null
+                                    )
+                                )
 
-                        for (i in listBeratBadan) {
-                            listPertumbuhan.add(
-                                Pertumbuhan(
-                                    null,
-                                    1,
-                                    null,
-                                    age,
-                                    i.toInt(),
-                                    null,
-                                    null
+                                age += 1
+                            }
+
+                            startActivity(
+                                Intent(
+                                    this@ScanKMSActivity,
+                                    HasilScanKMSActivity::class.java
+                                ).putExtra(
+                                    HasilScanKMSActivity.EXTRA_IBU,
+                                    ibu
+                                ).putExtra(
+                                    HasilScanKMSActivity.EXTRA_ANAK,
+                                    anak
+                                ).putExtra(
+                                    HasilScanKMSActivity.EXTRA_LIST_BERAT_BADAN,
+                                    listPertumbuhan
                                 )
                             )
 
-                            age += 1
+                            Toast.makeText(this, "Berhasil mendeteksi teks.", Toast.LENGTH_SHORT)
+                                .show()
+                        } catch (e: Exception) {
+                            Toast.makeText(this, "Gagal mendeteksi teks.", Toast.LENGTH_SHORT)
+                                .show()
                         }
-
-                        startActivity(
-                            Intent(
-                                this@ScanKMSActivity,
-                                HasilScanKMSActivity::class.java
-                            ).putExtra(HasilScanKMSActivity.EXTRA_LIST_BERAT_BADAN, listPertumbuhan)
-                        )
-
-                        Toast.makeText(this, "Teks berhasil dideteksi", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { e ->
                         e.printStackTrace()
-                        Toast.makeText(this, "Gagal mendeteksi teks", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Gagal mendeteksi teks.", Toast.LENGTH_SHORT).show()
                     }
             }
             -1 -> {
@@ -230,7 +246,6 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     // Pick image from gallery or camera
     private fun pickFromGallery() {
         cropActivityResultLauncher.launch(null)
-//        CropImage.activity().start(this@ScanKMSActivity)
     }
 
     // Request camera permission
@@ -253,18 +268,20 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
             this,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
+
         return result && result1
     }
 
     private fun setButtonEnabled() {
         binding.apply {
-            buttonLanjut.isEnabled = photo != null
-            buttonTextRecognition.isEnabled = photo != null
+            buttonDeteksiTeksBeratBadan.isEnabled = photo != null
         }
     }
 
     companion object {
         private const val CAMERA_REQUEST = 100
         private const val STORAGE_REQUEST = 200
+        const val EXTRA_IBU = "extraIbu"
+        const val EXTRA_ANAK = "extraAnak"
     }
 }

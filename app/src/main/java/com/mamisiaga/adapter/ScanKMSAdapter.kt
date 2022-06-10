@@ -13,6 +13,7 @@ class ScanKMSAdapter(private val scanKMSList: ArrayList<Pertumbuhan>) :
         fun bind(pertumbuhan: Pertumbuhan) {
             binding.pertumbuhan = pertumbuhan
             binding.edittextBeratBadan.setText(pertumbuhan.weight.toString())
+            binding.textviewBulan.text = "Bulan ke ${pertumbuhan.age}"
         }
     }
 

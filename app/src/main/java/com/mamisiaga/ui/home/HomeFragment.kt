@@ -19,7 +19,6 @@ import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.isConnected
 import com.mamisiaga.ui.InformasiAnakActivity
 import com.mamisiaga.ui.InformasiIbuHamilActivity
-import com.mamisiaga.ui.ScanKMSActivity
 import com.mamisiaga.viewmodel.LoginPreferenceViewModel
 import com.mamisiaga.viewmodel.UserViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
@@ -93,7 +92,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 )
             }
             R.id.konten -> {
-                startActivity(Intent(activity, ScanKMSActivity::class.java))
+
+            }
+            R.id.panduan_penggunaan -> {
+
             }
         }
     }

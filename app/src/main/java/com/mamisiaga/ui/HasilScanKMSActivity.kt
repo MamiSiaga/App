@@ -15,14 +15,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mamisiaga.R
 import com.mamisiaga.adapter.ScanKMSAdapter
+import com.mamisiaga.dataClass.Anak
+import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityHasilScanKmsBinding
-import com.mamisiaga.viewmodel.AnakViewModel
+import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
 class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityHasilScanKmsBinding
-    private lateinit var anakViewModel: AnakViewModel
+    private lateinit var pertumbuhanViewModel: PertumbuhanViewModel
+    private lateinit var ibu: Ibu
+    private lateinit var anak: Anak
     private lateinit var pertumbuhanList: ArrayList<Pertumbuhan>
 
     @SuppressLint("SourceLockedOrientationActivity")
@@ -35,13 +39,17 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hasil_scan_kms)
 
+        ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
+        anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
         pertumbuhanList =
             intent.getParcelableArrayListExtra<Pertumbuhan>(EXTRA_LIST_BERAT_BADAN) as ArrayList<Pertumbuhan>
 
-        anakViewModel = ViewModelProvider(
+        pertumbuhanViewModel = ViewModelProvider(
             this,
-            ViewModelFactory.AnakViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
-        )[AnakViewModel::class.java]
+            ViewModelFactory.PertumbuhanViewModelFactory("9|4GgQ7ufHhmiMRZ289qHshRM79vFaGquYo3JHJ54z")
+        )[PertumbuhanViewModel::class.java]
+
+        binding.textviewPerkembanganAnak.text = getString(R.string.perkembangan_anak, anak.name)
 
         setAdapter()
 
@@ -73,7 +81,7 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         buttonOK.setOnClickListener {
-            seeAddBeratBadanResponse()
+            seeAddPertumbuhanResponse()
 
             alertDialog.dismiss()
         }
@@ -94,11 +102,13 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun seeAddBeratBadanResponse() {
+    private fun seeAddPertumbuhanResponse() {
 
     }
 
     companion object {
         const val EXTRA_LIST_BERAT_BADAN = "extraListBeratBadan"
+        const val EXTRA_IBU = "extraIbu"
+        const val EXTRA_ANAK = "extraAnak"
     }
 }

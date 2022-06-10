@@ -98,7 +98,12 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 showOpsi()
             }
             R.id.button_mulai_scan_kms_anak -> {
-                startActivity(Intent(this@AnakActivity, ScanKMSActivity::class.java))
+                val intent = Intent(this@AnakActivity, ScanKMSActivity::class.java)
+
+                startActivity(
+                    intent.putExtra(ScanKMSActivity.EXTRA_IBU, ibu)
+                        .putExtra(ScanKMSActivity.EXTRA_ANAK, anak)
+                )
             }
             R.id.button_lewati_bagian_ini -> {
                 showKonfirmasi()

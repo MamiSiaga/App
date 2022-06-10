@@ -14,7 +14,8 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/textview_bulan"
@@ -28,18 +29,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView_tanggal_pemeriksaan"
-            style="@style/BoldDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/tanggal_pemeriksaan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textview_bulan" />
-
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_berat_badan"
             style="@style/EditTextStyle"
@@ -49,7 +38,7 @@
             android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_tanggal_pemeriksaan" />
+            app:layout_constraintTop_toBottomOf="@id/textview_bulan" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edittext_tinggi_badan"

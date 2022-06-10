@@ -108,7 +108,7 @@
     <string name="sedang_memuat">Sedang memuat…</string>
     <string name="sertifikat_penghargaan">Sertifikat Penghargaan</string>
     <string name="tanggal_imunisasi">Tanggal imunisasi</string>
-    <string name="perkembangan_anak">Perkembangan Anak:</string>
+    <string name="perkembangan_anak">Perkembangan Anak: %1s</string>
     <string name="hasil_scan_kms">Hasil Scan KMS</string>
     <string name="bulan_ke">Bulan ke-</string>
     <string name="tanggal_pemeriksaan">Tanggal pemeriksaan</string>
@@ -137,8 +137,8 @@
     <string name="ambil_gambar">Ambil gambar</string>
     <string name="pendaftaran_berhasil">Pendaftaran berhasil.</string>
     <string name="email_atau_kata_sandi_salah">Email atau kata sandi salah.</string>
-    <string name="gambar_tabel_kms">Gambar Tabel KMS</string>
-    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
+    <string name="gambar_tabel_kms_berat_badan">Gambar Tabel KMS Berat Badan</string>
+    <string name="gambar_harus_berupa_tabel_kms_apabila_tidak_maka_ditolak">Gambar harus berupa tabel KMS berat badan. Apabila tidak, maka ditolak. Silahkan mengambil gambar terlebih dahulu sebelum melanjutkan.</string>
     <string name="silahkan_masuk_ke_mamisiaga">Silahkan Masuk ke MamiSiaga!</string>
     <string name="belum_terdapat_data_pertumbuhan_ntambahkan_data_pertumbuhan_anak_usia_0_telebih_dahulu">Belum terdapat data pertumbuhan.\nTambahkan data pertumbuhan anak usia 0 telebih dahulu.</string>
     <string name="apakah_anda_yakin_untuk_menyimpannya">Apakah Anda yakin untuk menyimpannya?</string>
@@ -148,6 +148,7 @@
     <string name="ijin_akses_kamera_dan_penyimpanan">Mohon berikan ijin untuk mengakses kamera dan penyimpanan.</string>
     <string name="ijin_akses_penyimpanan">Mohon berikan ijin untuk mengakses penyimpanan.</string>
     <string name="gambar_bukan_kms">Gambar bukan KMS. Silahkan ambil ulang.</string>
+    <string name="deteksi_teks_berat_badan">Deteksi teks berat badan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>
