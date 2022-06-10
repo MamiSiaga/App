@@ -111,7 +111,7 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun seePertumbuhanResponse() {
         pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {
@@ -121,11 +121,11 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
-                    binding.textViewJenisKelamin.text = "Jenis kelamin: " +
-                            when (anak.sex) {
-                                1 -> getString(R.string.laki_laki)
-                                else -> getString(R.string.perempuan)
-                            }
+                    binding.textViewJenisKelamin.text = resources.getString(R.string.jenis_kelamin_anak,
+                        when (anak.sex) {
+                            1 -> getString(R.string.laki_laki)
+                            else -> getString(R.string.perempuan)
+                        })
 
                     val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!)
 

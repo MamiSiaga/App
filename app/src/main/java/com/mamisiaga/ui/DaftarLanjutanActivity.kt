@@ -9,10 +9,14 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -32,6 +36,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
     private lateinit var binding: ActivityDaftarLanjutanBinding
     private lateinit var autentikasiViewModel: AutentikasiViewModel
     private lateinit var email: String
+    private var isPasswordShown = false
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +59,8 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         binding.imagebuttonKeluar.setOnClickListener(this)
         binding.edittextTglLahir.setOnClickListener(this)
         binding.buttonDaftar.setOnClickListener(this)
+        binding.tvShowHidePass.setOnClickListener(this)
+        binding.tvShowHidePassConfirm.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -95,6 +102,12 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                     seeDaftarResponse()
                 }
             }
+            R.id.tv_show_hide_pass -> {
+                setShowHidePass(binding.tvShowHidePass, binding.edittextKataSandi)
+            }
+            R.id.tv_show_hide_pass_confirm -> {
+                setShowHidePass(binding.tvShowHidePassConfirm, binding.edittextKetikUlangKataSandi)
+            }
         }
     }
 
@@ -103,8 +116,9 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         val year = datePicker.year
         val month = datePicker.month + 1
         val day = datePicker.dayOfMonth
+        val tanggal = "$day-$month-$year".withDateFormatID()
 
-        binding.edittextTglLahir.setText("$day-$month-$year".withDateFormatID())
+        binding.edittextTglLahir.setText(tanggal)
     }
 
     private fun setupViewModel() {
@@ -186,6 +200,24 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
         }
     }
 
+
+    private fun setShowHidePass(textView: TextView, editText: EditText){
+        binding.apply {
+            if(!isPasswordShown){
+                editText.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+                textView.text = getString(R.string.sembunyikan)
+                isPasswordShown = true
+            } else {
+                editText.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+                textView.text = getString(R.string.tampilkan)
+                isPasswordShown = false
+            }
+        }
+    }
+
+
     private fun editTextListener() {
         binding.apply {
             edittextNama.addTextChangedListener(object : TextWatcher {
@@ -240,6 +272,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     setButtonEnabled()
+                    setVisibilityShowHide(tvShowHidePass, edittextKataSandi)
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -255,6 +288,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     setButtonEnabled()
+                    setVisibilityShowHide(tvShowHidePassConfirm, edittextKetikUlangKataSandi)
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -281,6 +315,15 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
                         && password.isNotEmpty() && passwordConfirm.isNotEmpty() &&
                         password.length >= 8 && password == passwordConfirm &&
                         binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId != -1
+        }
+    }
+
+    private fun setVisibilityShowHide(textView: TextView, editText: EditText){
+        val password = editText.text
+        if (!(password != null && password.toString().isNotEmpty() && password.length >= 8)) {
+            textView.visibility = View.GONE
+        } else {
+            textView.visibility = View.VISIBLE
         }
     }
 

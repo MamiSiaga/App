@@ -8,6 +8,8 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -34,9 +36,9 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 
 class MasukActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMasukBinding
-    private lateinit var ibuPreferenceViewModel: IbuPreferenceViewModel
     private lateinit var autentikasiViewModel: AutentikasiViewModel
     private lateinit var login: LoginPreferenceViewModel
+    private var isPasswordShown = false
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +58,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
         binding.textviewLupaKataSandi.setOnClickListener(this)
         binding.buttonMasuk.setOnClickListener(this)
         binding.textviewDaftar.setOnClickListener(this)
+        binding.textviewShowHidePass.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -77,6 +80,9 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, DaftarActivity::class.java))
 
                 finish()
+            }
+            R.id.textview_show_hide_pass -> {
+                setShowHidePass()
             }
         }
     }
@@ -151,6 +157,22 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    private fun setShowHidePass(){
+        binding.apply {
+            if(!isPasswordShown){
+                edittextKataSandi.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+                textviewShowHidePass.text = getString(R.string.sembunyikan)
+                isPasswordShown = true
+            } else {
+                edittextKataSandi.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+                textviewShowHidePass.text = getString(R.string.tampilkan)
+                isPasswordShown = false
+            }
+        }
+    }
+
     private fun editTextListener() {
         binding.apply {
             edittextEmail.addTextChangedListener(object : TextWatcher {
@@ -175,6 +197,7 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     setButtonEnabled()
+                    setVisibilityShowHide()
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -191,7 +214,16 @@ class MasukActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonMasuk.isEnabled =
             email.isNotEmpty() && isEmailFormat(email)
-                    && password.isNotEmpty()
+                    && password.isNotEmpty() && password.length >= 8
+    }
+
+    private fun setVisibilityShowHide(){
+        val password = binding.edittextKataSandi.text
+        if (!(password != null && password.toString().isNotEmpty() && password.length >= 8)) {
+            binding.textviewShowHidePass.visibility = View.GONE
+        } else {
+            binding.textviewShowHidePass.visibility = View.VISIBLE
+        }
     }
 
     private fun showFailure(error: String) = when (error) {

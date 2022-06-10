@@ -8,10 +8,23 @@ data class DaftarResponse(
     val token: String
 )
 
+//data class Errors(
+//    @field:SerializedName("password")
+//    val password: List<String>,
+//
+//    @field:SerializedName("email")
+//    val email: List<String>
+//)
+
 data class MasukResponse(
     @field:SerializedName("data")
     val masukData: MasukData
 )
+
+//data class DaftarData(
+//    @field:SerializedName("token")
+//    val token: String?
+//)
 
 data class MasukData(
     @field:SerializedName("token")

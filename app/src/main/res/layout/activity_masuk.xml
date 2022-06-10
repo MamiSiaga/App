@@ -65,12 +65,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="@string/silahkan_masuk"
+            android:text="@string/silakan_masuk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_judul" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.mamisiaga.customview.CustomEditTextEmail
             android:id="@+id/edittext_email"
             style="@style/EditTextStyle"
             android:layout_marginTop="40dp"
@@ -81,7 +81,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_deskripsi" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.mamisiaga.customview.CustomEditTextPassword
             android:id="@+id/edittext_kata_sandi"
             style="@style/EditTextStyle"
             android:layout_marginTop="16dp"
@@ -91,6 +91,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/edittext_email" />
+
+        <TextView
+            android:id="@+id/textview_show_hide_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tampilkan"
+            app:layout_constraintBottom_toBottomOf="@id/edittext_kata_sandi"
+            app:layout_constraintEnd_toEndOf="@id/edittext_kata_sandi"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="@id/edittext_kata_sandi"
+            app:layout_constraintTop_toTopOf="@id/edittext_kata_sandi"
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/textview_lupa_kata_sandi"

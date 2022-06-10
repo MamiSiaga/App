@@ -2,6 +2,7 @@ package com.mamisiaga.repository
 
 import com.mamisiaga.dataClass.IbuDaftar
 import com.mamisiaga.api.APIService
+import com.mamisiaga.api.DaftarResponse
 import com.mamisiaga.tools.ResultResponse
 import com.mamisiaga.tools.withDateFormatID
 import kotlinx.coroutines.flow.flow
