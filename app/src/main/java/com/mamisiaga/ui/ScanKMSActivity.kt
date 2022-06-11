@@ -157,6 +157,10 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     private fun validateKMS(bitmap: Bitmap) {
         classifier = Classifier(assets, mModelPath, mLabelPath, mInputSize)
         val result = classifier.recognizeImage(bitmap)

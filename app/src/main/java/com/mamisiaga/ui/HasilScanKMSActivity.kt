@@ -1,14 +1,12 @@
 package com.mamisiaga.ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -21,6 +19,7 @@ import com.mamisiaga.dataClass.Anak
 import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityHasilScanKmsBinding
+import com.mamisiaga.tools.OnEditTextChanged
 import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
@@ -30,7 +29,6 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var ibu: Ibu
     private lateinit var anak: Anak
     private lateinit var pertumbuhanList: ArrayList<Pertumbuhan>
-    private var pertumbuhanListNew: ArrayList<Pertumbuhan> = ArrayList()
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +44,6 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
         pertumbuhanList =
             intent.getParcelableArrayListExtra<Pertumbuhan>(EXTRA_LIST_BERAT_BADAN) as ArrayList<Pertumbuhan>
-
-        pertumbuhanListNew = pertumbuhanList
 
         pertumbuhanViewModel = ViewModelProvider(
             this,
@@ -73,33 +69,42 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun seeAddPertumbuhanResponse() {
-        var isNotEmpty = true
+    private fun seeAddPertumbuhanAnakResponse() {
+        val dialog = Dialog(this)
 
-        pertumbuhanList.forEachIndexed { index, pertumbuhan ->
-            Log.d("Check", pertumbuhan.weight.toString())
+        /*pertumbuhanViewModel.addPertumbuhan(pertumbuhan!!).observe(this) { resultResponse ->
+            dialog.setContentView(R.layout.custom_dialog_memuat)
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.setCancelable(false)
 
-            if (pertumbuhan.weight == null) {
-                isNotEmpty = false
+            when (resultResponse) {
+                is ResultResponse.Loading -> {
+                    dialog.show()
+                }
+                is ResultResponse.Success -> {
+                    dialog.dismiss()
+
+                    val intent = Intent(this@HasilScanKMSActivity, AnakActivity::class.java)
+
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+
+                    startActivity(
+                        intent.putExtra(AnakActivity.EXTRA_IBU, ibu).putExtra(AnakActivity.EXTRA_ANAK, anak)
+                    )
+                }
+                is ResultResponse.Error -> {
+                    dialog.dismiss()
+
+                    Toast.makeText(
+                        this@HasilScanKMSActivity,
+                        showFailure(resultResponse.error),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
-
-        if (isNotEmpty) {
-            val intent = Intent(this@HasilScanKMSActivity, AnakActivity::class.java)
-
-            intent.flags =
-                Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
-
-            startActivity(
-                intent.putExtra(AnakActivity.EXTRA_IBU, ibu).putExtra(AnakActivity.EXTRA_ANAK, anak)
-            )
-        } else {
-            Toast.makeText(
-                this@HasilScanKMSActivity,
-                "Ada bagian yang kosong.",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
+         */
     }
 
     private fun showKonfirmasi() {
@@ -123,7 +128,7 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         //alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         buttonYa.setOnClickListener {
-            seeAddPertumbuhanResponse()
+            seeAddPertumbuhanAnakResponse()
 
             alertDialog.dismiss()
         }
@@ -136,7 +141,21 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setAdapter() {
-        val scanKMSAdapter = ScanKMSAdapter(pertumbuhanListNew)
+        val scanKMSAdapter = ScanKMSAdapter(pertumbuhanList, object : OnEditTextChanged {
+            override fun onTextChanged(position: Int, charSeq: String?) {
+                var isNotEmpty = true
+
+                try {
+                    pertumbuhanList[position].weight = charSeq!!.toInt()
+                } catch (e: Exception) {
+                    pertumbuhanList[position].weight = null
+
+                    isNotEmpty = false
+                } finally {
+                    checkIsNotEmpty(isNotEmpty)
+                }
+            }
+        })
 
         binding.recyclerviewPerkembanganAnak.apply {
             layoutManager = LinearLayoutManager(this@HasilScanKMSActivity)
@@ -144,8 +163,25 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun setButtonEnabled() {
+    private fun checkIsNotEmpty(isNotEmpty: Boolean) {
+        var isNotEmpty = isNotEmpty
 
+        if (!isNotEmpty) setButtonEnabled(false)
+        else {
+            for (i in pertumbuhanList) {
+                if (i.weight == null) {
+                    isNotEmpty = false
+
+                    break
+                }
+            }
+
+            setButtonEnabled(isNotEmpty)
+        }
+    }
+
+    private fun setButtonEnabled(isNotEmpty: Boolean) {
+        binding.buttonSimpan.isEnabled = isNotEmpty
     }
 
     companion object {

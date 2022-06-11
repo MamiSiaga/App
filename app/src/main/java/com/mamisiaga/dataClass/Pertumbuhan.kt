@@ -8,8 +8,8 @@ data class Pertumbuhan(
     val id: Int?,
     val childrenId: Int?,
     val dateOfMeasurement: String?,
-    val age: Int?,
-    val weight: Int?,
+    var age: Int?,
+    var weight: Int?,
     val height: Int?,
     val headDiameter: Int?
 ) : Parcelable

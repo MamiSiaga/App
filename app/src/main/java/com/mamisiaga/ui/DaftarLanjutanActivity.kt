@@ -311,7 +311,7 @@ class DaftarLanjutanActivity : AppCompatActivity(), View.OnClickListener,
             val passwordConfirm = edittextKetikUlangKataSandi.text.toString()
 
             buttonDaftar.isEnabled =
-                nama.isNotEmpty() && tglLahir.isNotEmpty()
+                nama.isNotEmpty() && tempatLahir.isNotEmpty() && tglLahir.isNotEmpty()
                         && password.isNotEmpty() && passwordConfirm.isNotEmpty() &&
                         password.length >= 8 && password == passwordConfirm &&
                         binding.radiogroupPertanyaanPosyandu.checkedRadioButtonId != -1

@@ -113,7 +113,6 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun seePertumbuhanResponse() {
         pertumbuhanViewModel.getPertumbuhan(anak.id!!).observe(this) { resultResponse ->
             when (resultResponse) {

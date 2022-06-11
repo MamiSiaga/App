@@ -117,7 +117,7 @@
     <string name="usia_anak">Usia anak</string>
     <string name="menu_anak">Menu Anak</string>
     <string name="deteksi_dini_penyakit">Deteksi Dini Penyakit</string>
-    <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar.</string>
+    <string name="mohon_mengisi_dengan_benar">Mohon mengisi dengan benar. Data berat badan tidak boleh kosong.</string>
     <string name="status_usia_anak">Anak Anda sekarang telah berusia %1s bulan.</string>
     <string name="mulai_scan_kms_anak">Mulai scan KMS anak!</string>
     <string name="lewati_tahap_ini">Lewati Tahap Ini</string>
