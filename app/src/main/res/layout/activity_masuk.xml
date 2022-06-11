@@ -19,13 +19,13 @@
             android:id="@+id/view_judul"
             style="@style/ViewTitle1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:paddingBottom="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <!--TextView
                 android:id="@+id/textview_selamat_datang"
                 style="@style/BigHeader"
                 android:layout_width="wrap_content"
@@ -41,10 +41,10 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="24dp"
-                android:src="@mipmap/ic_launcher_foreground"
+                android:src="@drawable/ic_logo_mamisiaga"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textview_selamat_datang" />
+                app:layout_constraintTop_toBottomOf="@+id/textview_selamat_datang"/-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--        <TextView-->
@@ -97,12 +97,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tampilkan"
+            style="@style/ClickableText"
             app:layout_constraintBottom_toBottomOf="@id/edittext_kata_sandi"
             app:layout_constraintEnd_toEndOf="@id/edittext_kata_sandi"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.951"
             app:layout_constraintStart_toStartOf="@id/edittext_kata_sandi"
             app:layout_constraintTop_toTopOf="@id/edittext_kata_sandi"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintVertical_bias="0.476" />
 
         <TextView
             android:id="@+id/textview_lupa_kata_sandi"

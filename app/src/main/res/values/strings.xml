@@ -151,8 +151,8 @@
     <string name="ijin_akses_penyimpanan">Mohon berikan izin untuk mengakses penyimpanan.</string>
     <string name="gambar_bukan_kms">Gambar bukan KMS. Silakan ambil ulang.</string>
     <string name="deteksi_teks_berat_badan">Deteksi teks berat badan</string>
-    <string name="tampilkan">tampilkan</string>
-    <string name="sembunyikan">sembunyikan</string>
+    <string name="tampilkan">Tampilkan</string>
+    <string name="sembunyikan">Sembunyikan</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

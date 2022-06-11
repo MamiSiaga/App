@@ -142,12 +142,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tampilkan"
+                style="@style/ClickableText"
                 app:layout_constraintBottom_toBottomOf="@id/edittext_kata_sandi"
                 app:layout_constraintEnd_toEndOf="@id/edittext_kata_sandi"
-                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintHorizontal_bias="0.951"
                 app:layout_constraintStart_toStartOf="@id/edittext_kata_sandi"
                 app:layout_constraintTop_toTopOf="@id/edittext_kata_sandi"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.476" />
 
             <com.mamisiaga.customview.CustomEditTextPassword
                 android:id="@+id/edittext_ketik_ulang_kata_sandi"
@@ -165,12 +166,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tampilkan"
+                style="@style/ClickableText"
                 app:layout_constraintBottom_toBottomOf="@id/edittext_ketik_ulang_kata_sandi"
                 app:layout_constraintEnd_toEndOf="@id/edittext_ketik_ulang_kata_sandi"
-                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintHorizontal_bias="0.951"
                 app:layout_constraintStart_toStartOf="@id/edittext_ketik_ulang_kata_sandi"
                 app:layout_constraintTop_toTopOf="@id/edittext_ketik_ulang_kata_sandi"
-                app:layout_constraintVertical_bias="0.5" />
+                app:layout_constraintVertical_bias="0.476" />
 
             <com.mamisiaga.customview.CustomViewButtonForm
                 android:id="@+id/button_daftar"
