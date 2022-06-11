@@ -1,6 +1,5 @@
 package com.mamisiaga.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -122,11 +121,13 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 is ResultResponse.Success -> {
                     showLoadingSign(false)
 
-                    binding.textViewJenisKelamin.text = resources.getString(R.string.jenis_kelamin_anak,
+                    binding.textViewJenisKelamin.text = resources.getString(
+                        R.string.jenis_kelamin_anak,
                         when (anak.sex) {
                             1 -> getString(R.string.laki_laki)
                             else -> getString(R.string.perempuan)
-                        })
+                        }
+                    )
 
                     comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
 

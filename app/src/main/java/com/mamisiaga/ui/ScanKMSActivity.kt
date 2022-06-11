@@ -1,6 +1,7 @@
 package com.mamisiaga.ui
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -41,6 +42,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var ibu: Ibu
     private lateinit var anak: Anak
     private var ageStart = 0
+    private var ageKeep = 0
     private var photo: Uri? = null
     private lateinit var bitmap: Bitmap
     private var isPhotoValid = 0
@@ -73,6 +75,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
 
@@ -85,6 +88,12 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         ibu = intent.getParcelableExtra<Ibu>(EXTRA_IBU) as Ibu
         anak = intent.getParcelableExtra<Anak>(EXTRA_ANAK) as Anak
         ageStart = intent.getIntExtra(EXTRA_AGE, 0)
+        ageKeep = ageStart
+
+        val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
+
+        binding.textviewUsiaAnak.text =
+            "Lakukan scan tabel berat badan mulai dari usia $ageStart hingga ${comparison - 1} bulan saja. Jika tidak berhasil, maka sistem akan memberikan hasil seadanya."
 
         setButtonEnabled()
 
@@ -157,10 +166,6 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     private fun validateKMS(bitmap: Bitmap) {
         classifier = Classifier(assets, mModelPath, mLabelPath, mInputSize)
         val result = classifier.recognizeImage(bitmap)
@@ -191,13 +196,14 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                 recognition.process(image)
                     .addOnSuccessListener {
                         try {
-                            val listPertumbuhan: ArrayList<Pertumbuhan> = ArrayList()
+                            val pertumbuhanList: ArrayList<Pertumbuhan> = ArrayList()
                             val text = keepNumbers(it.text.trim())
                             val listBeratBadan: List<String> = text.split(" ")
-                            val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
+                            val comparison =
+                                getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
 
                             for (i in listBeratBadan) {
-                                listPertumbuhan.add(
+                                pertumbuhanList.add(
                                     Pertumbuhan(
                                         null,
                                         anak.id,
@@ -211,7 +217,7 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
 
                                 ageStart += 1
 
-                                if(ageStart == comparison || ageStart == 24) break
+                                if (ageStart == comparison || ageStart == 24) break
                             }
 
                             startActivity(
@@ -226,12 +232,16 @@ class ScanKMSActivity : AppCompatActivity(), View.OnClickListener {
                                     anak
                                 ).putExtra(
                                     HasilScanKMSActivity.EXTRA_LIST_BERAT_BADAN,
-                                    listPertumbuhan
+                                    pertumbuhanList
                                 )
                             )
 
                             Toast.makeText(this, "Berhasil mendeteksi teks.", Toast.LENGTH_SHORT)
                                 .show()
+
+                            pertumbuhanList.clear()
+
+                            ageStart = ageKeep
                         } catch (e: Exception) {
                             Toast.makeText(this, "Gagal mendeteksi teks.", Toast.LENGTH_SHORT)
                                 .show()

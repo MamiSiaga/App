@@ -67,6 +67,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms" />
 
+            <TextView
+                android:id="@+id/textview_usia_anak"
+                style="@style/SmallerHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/usia_anak"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms_deskripsi" />
+
             <ImageView
                 android:id="@+id/imageview_gambar"
                 android:layout_width="match_parent"
@@ -76,7 +88,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview_gambar_scan_kms_deskripsi"
+                app:layout_constraintTop_toBottomOf="@id/textview_usia_anak"
                 app:srcCompat="@color/gray_200" />
 
             <TextView

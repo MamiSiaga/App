@@ -153,6 +153,8 @@
     <string name="deteksi_teks_berat_badan">Deteksi teks berat badan</string>
     <string name="tampilkan">Tampilkan</string>
     <string name="sembunyikan">Sembunyikan</string>
+    <string name="belum_imunisasi">Belum imunisasi</string>
+    <string name="hasil_scan_masih_kurang">HAsil scan masih kurang.</string>
     <string-array name="kontrol_kehamilan_sekarang_mulai_array">
         <item>Detail kontrol kehamilan</item>
         <item>Buat jadwal</item>

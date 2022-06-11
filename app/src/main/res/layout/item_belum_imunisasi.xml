@@ -43,11 +43,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textview_isi_imunisasi_anak" />
 
-
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_status_imunisasi"
                 style="@style/ChipStyle"
-                android:text="Belum imunisasi"
+                android:text="@string/belum_imunisasi"
                 android:layout_marginTop="8dp"
                 app:chipBackgroundColor="@color/red_50"
                 app:chipStrokeColor="@color/red_100"

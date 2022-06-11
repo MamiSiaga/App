@@ -14,7 +14,6 @@ import com.mamisiaga.ui.MainActivity
 
 
 class PushNotificationService : FirebaseMessagingService() {
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onMessageReceived(message: RemoteMessage) {
         if(message.notification != null){

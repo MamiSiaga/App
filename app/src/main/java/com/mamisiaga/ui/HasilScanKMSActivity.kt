@@ -20,6 +20,7 @@ import com.mamisiaga.dataClass.Ibu
 import com.mamisiaga.dataClass.Pertumbuhan
 import com.mamisiaga.databinding.ActivityHasilScanKmsBinding
 import com.mamisiaga.tools.OnEditTextChanged
+import com.mamisiaga.tools.getComparisonWithCurrentDate
 import com.mamisiaga.viewmodel.PertumbuhanViewModel
 import com.mamisiaga.viewmodelfactory.ViewModelFactory
 
@@ -30,7 +31,7 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var anak: Anak
     private lateinit var pertumbuhanList: ArrayList<Pertumbuhan>
 
-    @SuppressLint("SourceLockedOrientationActivity")
+    @SuppressLint("SourceLockedOrientationActivity", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
 
@@ -51,6 +52,8 @@ class HasilScanKMSActivity : AppCompatActivity(), View.OnClickListener {
         )[PertumbuhanViewModel::class.java]
 
         binding.textviewPerkembanganAnak.text = getString(R.string.perkembangan_anak, anak.name)
+
+        val comparison = getComparisonWithCurrentDate(anak.dateOfBirth!!).toInt()
 
         setAdapter()
 
