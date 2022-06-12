@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
@@ -109,11 +111,13 @@ class EditKataSandiActivity : AppCompatActivity(), View.OnClickListener {
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     setButtonEnabled()
+                    setVisibilityShowHide(tvShowHidePass, edittextKataSandi)
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
 
                 }
+
             })
 
             edittextKetikUlangKataSandi.addTextChangedListener(object : TextWatcher {
@@ -123,6 +127,7 @@ class EditKataSandiActivity : AppCompatActivity(), View.OnClickListener {
 
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                     setButtonEnabled()
+                    setVisibilityShowHide(tvShowHidePassConfirm, edittextKetikUlangKataSandi)
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -140,6 +145,15 @@ class EditKataSandiActivity : AppCompatActivity(), View.OnClickListener {
 
             buttonSimpan.isEnabled = password.isNotEmpty() &&
                     passwordConfirm.isNotEmpty() && password == passwordConfirm
+        }
+    }
+
+    private fun setVisibilityShowHide(textView: TextView, editText: EditText) {
+        val password = editText.text
+        if (!(password != null && password.toString().isNotEmpty() && password.length >= 8)) {
+            textView.visibility = View.GONE
+        } else {
+            textView.visibility = View.VISIBLE
         }
     }
 

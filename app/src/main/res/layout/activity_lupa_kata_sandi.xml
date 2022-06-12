@@ -57,7 +57,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.mamisiaga.customview.CustomEditTextEmail
             android:id="@+id/edittext_email"
             style="@style/EditTextStyle"
             android:layout_marginTop="16dp"

@@ -174,7 +174,7 @@
                         <ImageView
                             android:id="@+id/imageViewGizi"
                             style="@style/InsideVerticalMenuStyle"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/ic_baseline_local_hospital_24" />
 
                         <TextView
                             android:id="@+id/textViewGizi"
@@ -192,7 +192,7 @@
                         <ImageView
                             android:id="@+id/imageViewVitA"
                             style="@style/InsideVerticalMenuStyle"
-                            android:src="@drawable/ic_home_black_24dp" />
+                            android:src="@drawable/ic_baseline_local_hospital_24" />
 
                         <TextView
                             android:id="@+id/textViewVitA"

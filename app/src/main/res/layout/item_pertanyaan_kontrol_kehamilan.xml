@@ -50,7 +50,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:src="@drawable/ic_home_black_24dp"
             android:text=""
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/kontrol_kehamilan" />

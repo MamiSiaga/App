@@ -92,7 +92,12 @@ class AnakActivity : AppCompatActivity(), View.OnClickListener {
                 onBackPressed()
             }
             R.id.layoutInfoImunisasi -> {
-                startActivity(Intent(this, InformasiImunisasiActivity::class.java))
+                val intent = Intent(this@AnakActivity, InformasiImunisasiActivity::class.java)
+
+                startActivity(
+                    intent.putExtra(InformasiImunisasiActivity.EXTRA_IBU, ibu)
+                        .putExtra(InformasiImunisasiActivity.EXTRA_ANAK, anak)
+                )
             }
             R.id.imageview_opsi_grafik_pertumbuhan -> {
                 showOpsi()
