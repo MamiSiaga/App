@@ -206,7 +206,7 @@
                         <ImageView
                             android:id="@+id/imageview_panggilan_darurat"
                             style="@style/InsideVerticalMenuStyle"
-                            android:src="@drawable/ic_baseline_local_hospital_24" />
+                            android:src="@drawable/ic_ambulance_free_icon_font" />
 
                         <TextView
                             android:id="@+id/textview_panggilan_darurat"
